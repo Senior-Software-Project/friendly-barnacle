@@ -10,8 +10,8 @@ jobs:
     - name: Run ESLint
       run: eslint . --ext .js,.jsx,.ts,.tsx
       with:
-      	files: views/, model/, tests/, App.js
+      	files: '**.js'
     - name: Run tests
       run: yarn test
       with:
-      	files: tests/*.js
+      	files: 'tests/**.js'
