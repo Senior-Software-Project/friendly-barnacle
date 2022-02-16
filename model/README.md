@@ -1,0 +1,1 @@
+A directory for backend logic, like classes imported and instanced in the front end. Classes follow single responsibility principle. Logical groups of classes may be stored in subdirectories here, aka packages or modules.
