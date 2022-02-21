@@ -4,6 +4,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { styles } from './Styles'
 
+const Home = () => {
+  return(
+    <View>
+        <Text>Home Screen</Text>
+    </View>
+  )
+}
 function HomeScreen( { navigation } ) {
   return (
       <View style={styles.container}>
