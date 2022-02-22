@@ -17,21 +17,10 @@ function HomeScreen( { navigation } ) {
         <Text>The ? Alarm App</Text>
         <StatusBar style="auto" />
         <TouchableOpacity 
-          onPress={() => navigation.navigate('Puzzler')}>
-          <Text>?</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          onPress={() => navigation.navigate('Settings')}>
-          <Text>Settings</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
           onPress={() => navigation.navigate('Splash')}>
           <Text>Splash</Text>
         </TouchableOpacity>
-        <TouchableOpacity 
-          onPress={() => navigation.navigate('Stats')}>
-          <Text>Stats</Text>
-        </TouchableOpacity>
+
       </View>
   );
 }

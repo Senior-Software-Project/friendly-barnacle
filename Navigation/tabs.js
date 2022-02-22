@@ -8,16 +8,74 @@ import {createBottomTabNavigator, BottomTabBar} from '@react-navigation/bottom-t
 
 import { HomeScreen } from '../views';
 import { images } from '../components';
+import { Puzzler } from '../views';
+import { Settings } from '../views';
+import { Stats } from '../views';
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
 
     return(
-        <Tab.Navigator>
+        <Tab.Navigator
+            tabBarOptions = {{
+                showLabel: true
+            }}
+        >
             <Tab.Screen 
                 name = "Alarm"
                 component = {HomeScreen}
+                options = {{
+                    tabBarIcon: ({focused}) => (
+                        <Image 
+                            source = {images.alarm}
+                            resizeMode = "contain"
+                            style = {{
+                                width : 25,
+                                height : 25,
+                                
+                            }}
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen 
+                name = "Puzzler"
+                component = {Puzzler}
+                options = {{
+                    tabBarIcon: ({focused}) => (
+                        <Image 
+                            source = {images.alarm}
+                            resizeMode = "contain"
+                            style = {{
+                                width : 25,
+                                height : 25,
+                                
+                            }}
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen 
+                name = "Setting"
+                component = {Settings}
+                options = {{
+                    tabBarIcon: ({focused}) => (
+                        <Image 
+                            source = {images.alarm}
+                            resizeMode = "contain"
+                            style = {{
+                                width : 25,
+                                height : 25,
+                                
+                            }}
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen 
+                name = "Stats"
+                component = {Stats}
                 options = {{
                     tabBarIcon: ({focused}) => (
                         <Image 

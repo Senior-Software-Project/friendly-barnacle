@@ -9,10 +9,6 @@ function Settings( { navigation } ) {
       <View style={styles.container}>
         <Text>Settings</Text>
         <StatusBar style="auto" />
-        <TouchableOpacity 
-          onPress={() => navigation.navigate('Home')}>
-          <Text>Return to Home</Text>
-        </TouchableOpacity>
       </View>
   );
 }
