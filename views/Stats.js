@@ -7,11 +7,11 @@ import { styles } from './Styles'
 function Stats( { navigation } ) {
   return (
       <View style={styles.container}>
-        <Text>Statistics About You</Text>
+        <Text style = {styles.text}>Statistics About You</Text>
         <StatusBar style="auto" />
         <TouchableOpacity 
           onPress={() => navigation.navigate('Home')}>
-          <Text>Return to Home</Text>
+          <Text style = {styles.text}>Return to Home</Text>
         </TouchableOpacity>
       </View>
   );

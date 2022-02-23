@@ -7,11 +7,11 @@ import { styles } from './Styles'
 function Splash( { navigation } ) {
   return (
       <View style={styles.container}>
-        <Text>Loading The ? Alarm App</Text>
+        <Text style = {styles.text}>Loading The ? Alarm App</Text>
         <StatusBar style="auto" />
         <TouchableOpacity 
           onPress={() => navigation.navigate('Home')}>
-          <Text>Return to Home</Text>
+          <Text style = {styles.text}>Return to Home</Text>
         </TouchableOpacity>
       </View>
   );

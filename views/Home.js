@@ -7,23 +7,23 @@ import { styles } from './Styles'
 function HomeScreen( { navigation } ) {
   return (
       <View style={styles.container}>
-        <Text>The ? Alarm App</Text>
+        <Text style = {styles.text}>The ? Alarm App</Text>
         <StatusBar style="auto" />
         <TouchableOpacity 
           onPress={() => navigation.navigate('Puzzler')}>
-          <Text>?</Text>
+          <Text style = {styles.text}>?</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           onPress={() => navigation.navigate('Settings')}>
-          <Text>Settings</Text>
+          <Text style = {styles.text}>Settings</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           onPress={() => navigation.navigate('Splash')}>
-          <Text>Splash</Text>
+          <Text style = {styles.text}>Splash</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           onPress={() => navigation.navigate('Stats')}>
-          <Text>Stats</Text>
+          <Text style = {styles.text}>Stats</Text>
         </TouchableOpacity>
       </View>
   );
