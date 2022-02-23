@@ -18,8 +18,12 @@ const Tabs = () => {
 
     return(
         <Tab.Navigator
-            tabBarOptions = {{
-                showLabel: true
+            screenOptions={{
+                tabBarShowLabel: false,
+                tabBarStyle: {
+                    backgroundColor: '#34344A',
+                    borderTopWidth: 0,
+                }
             }}
         >
             <Tab.Screen 
@@ -31,8 +35,9 @@ const Tabs = () => {
                             source = {images.alarm}
                             resizeMode = "contain"
                             style = {{
-                                width : 25,
-                                height : 25,
+                                width : 45,
+                                height : 45,
+                                tintColor: focused ? '#5A57F7' : '#FFFFFF'
                                 
                             }}
                         />
@@ -45,12 +50,12 @@ const Tabs = () => {
                 options = {{
                     tabBarIcon: ({focused}) => (
                         <Image 
-                            source = {images.alarm}
+                            source = {images.puzzle}
                             resizeMode = "contain"
                             style = {{
-                                width : 25,
-                                height : 25,
-                                
+                                width : 45,
+                                height : 45,
+                                tintColor: focused ? '#5A57F7' : '#FFFFFF'
                             }}
                         />
                     )
@@ -62,12 +67,12 @@ const Tabs = () => {
                 options = {{
                     tabBarIcon: ({focused}) => (
                         <Image 
-                            source = {images.alarm}
+                            source = {images.settings}
                             resizeMode = "contain"
                             style = {{
-                                width : 25,
-                                height : 25,
-                                
+                                width : 50,
+                                height : 50,
+                                tintColor: focused ? '#5A57F7' : '#FFFFFF'
                             }}
                         />
                     )
@@ -79,12 +84,12 @@ const Tabs = () => {
                 options = {{
                     tabBarIcon: ({focused}) => (
                         <Image 
-                            source = {images.alarm}
+                            source = {images.stats}
                             resizeMode = "contain"
                             style = {{
-                                width : 25,
-                                height : 25,
-                                
+                                width : 50,
+                                height : 50,
+                                tintColor: focused ? '#5A57F7' : '#FFFFFF'
                             }}
                         />
                     )

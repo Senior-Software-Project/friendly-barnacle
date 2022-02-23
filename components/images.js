@@ -25,6 +25,9 @@ export const seperator = require("../assets/images/Separator.png");
 export const singleLineItem = require("../assets/images/SingleLineItem.png");
 export const splash = require("../assets/splash.png");
 export const timeSelector = require("../assets/images/TimeSelector.png");
+export const settings = require("../assets/images/settings.png");
+export const stats = require("../assets/images/stats.png");
+
 
 export default {
 
@@ -55,5 +58,7 @@ export default {
     singleLineItem,
     splash,
     timeSelector,
+    settings,
+    stats
 
 }
