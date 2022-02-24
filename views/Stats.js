@@ -9,10 +9,6 @@ function Stats( { navigation } ) {
       <View style={styles.container}>
         <Text>Statistics About You</Text>
         <StatusBar style="auto" />
-        <TouchableOpacity 
-          onPress={() => navigation.navigate('Home')}>
-          <Text>Return to Home</Text>
-        </TouchableOpacity>
       </View>
   );
 }
