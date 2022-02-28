@@ -5,8 +5,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#1D1D23',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
+  },
+  text: {
+    color: 'white'
   }
-});
+})
 
 export { styles }
