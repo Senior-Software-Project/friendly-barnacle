@@ -1,1 +1,1 @@
-{ "prettier.printWidth": 120, "prettier.semi": false }
+{ "printWidth": 120, "semi": false }
