@@ -45,7 +45,7 @@ function Puzzler({ navigation }) {
       <View style = {styles.row}>
         {incorrect.map((answer)=>(
           <TouchableOpacity style={styles.button}
-           key={answer}
+          key={answer}
           onPress={() => setSelected(answer)}
           >
           <Text style={styles.text}>
@@ -71,7 +71,8 @@ function Puzzler({ navigation }) {
       <Text style={styles.text}>{type}</Text>
       <View style = {styles.rowBol}>
         {incorrect.map((answer)=>(
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} key={answer}
+          >
           <Text style={styles.text}>
             { decodeURI(answer)}
           </Text>
