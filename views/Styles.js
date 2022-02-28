@@ -27,7 +27,15 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     minWidth: "48%",
     textAlign: "center",
-  }
+  },
+  selected: {
+    backgroundColor: "green",
+    borderWidth: 0,
+  },
+  wrongAnswer: {
+    backgroundColor: "red",
+    borderWidth: 0,
+  },
 })
 
 export { styles }
