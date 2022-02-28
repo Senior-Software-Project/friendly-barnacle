@@ -10,7 +10,7 @@ app.get('/', (req, res) => {
   res.json('hello: world');
 });
 
-const server = app.listen(port, hostname, () => {
+app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
