@@ -1,11 +1,11 @@
-import { React, useCallback, useEffect, useMemo, useState } from "react"
-import { StyleSheet, Animated, Text, Button, Platform, View, TouchableOpacity } from "react-native"
-import AppLoading from "expo-app-loading"
-import { Asset } from "expo-asset"
-import Constants from "expo-constants"
-import * as SplashScreen from "expo-splash-screen"
-import * as Updates from "expo-updates"
-import { styles } from "./Styles"
+import { React, useCallback, useEffect, useMemo, useState } from 'react'
+import { StyleSheet, Animated, Text, Button, Platform, View, TouchableOpacity } from 'react-native'
+import AppLoading from 'expo-app-loading'
+import { Asset } from 'expo-asset'
+import Constants from 'expo-constants'
+import * as SplashScreen from 'expo-splash-screen'
+import * as Updates from 'expo-updates'
+import { styles } from './Styles'
 
 SplashScreen.preventAutoHideAsync().catch(() => {
   /* reloading the app might trigger some race conditions, ignore them */
@@ -13,9 +13,9 @@ SplashScreen.preventAutoHideAsync().catch(() => {
 
 const splashDuration = 3000
 
-export function Splash({ navigation }) {
+export function Splash ({ navigation }) {
   const onReloadPress = useCallback(() => {
-    if (Platform.OS === "web") {
+    if (Platform.OS === 'web') {
       location.reload()
     } else {
       Updates.reloadAsync()
@@ -25,15 +25,15 @@ export function Splash({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Pretty Cool!</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <Text style={styles.text}>Return to Home</Text>
       </TouchableOpacity>
-      <Button title="Run Again" onPress={onReloadPress} />
+      <Button title='Run Again' onPress={onReloadPress} />
     </View>
   )
 }
 
-export function AnimatedAppLoader({ children, image }) {
+export function AnimatedAppLoader ({ children, image }) {
   const [isSplashReady, setSplashReady] = useState(false)
 
   const startAsync = useCallback(
@@ -59,7 +59,7 @@ export function AnimatedAppLoader({ children, image }) {
   return <AnimatedSplashScreen image={image}>{children}</AnimatedSplashScreen>
 }
 
-function AnimatedSplashScreen({ children, image }) {
+function AnimatedSplashScreen ({ children, image }) {
   const animation = useMemo(() => new Animated.Value(1), [])
   const [isAppReady, setAppReady] = useState(false)
   const [isSplashAnimationComplete, setAnimationComplete] = useState(false)
@@ -69,7 +69,7 @@ function AnimatedSplashScreen({ children, image }) {
       Animated.timing(animation, {
         toValue: 0,
         duration: splashDuration,
-        useNativeDriver: true,
+        useNativeDriver: true
       }).start(() => setAnimationComplete(true))
     }
   }, [isAppReady])
@@ -92,25 +92,25 @@ function AnimatedSplashScreen({ children, image }) {
       {isAppReady && children}
       {!isSplashAnimationComplete && (
         <Animated.View
-          pointerEvents="none"
+          pointerEvents='none'
           style={[
             StyleSheet.absoluteFill,
             {
               backgroundColor: Constants.manifest.splash.backgroundColor,
-              opacity: animation,
-            },
+              opacity: animation
+            }
           ]}
         >
           <Animated.Image
             style={{
-              width: "100%",
-              height: "100%",
-              resizeMode: Constants.manifest.splash.resizeMode || "contain",
+              width: '100%',
+              height: '100%',
+              resizeMode: Constants.manifest.splash.resizeMode || 'contain',
               transform: [
                 {
-                  scale: animation,
-                },
-              ],
+                  scale: animation
+                }
+              ]
             }}
             source={image}
             onLoadEnd={onImageLoaded}

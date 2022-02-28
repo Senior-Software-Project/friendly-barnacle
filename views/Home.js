@@ -1,8 +1,8 @@
-import React from "react"
-import { Text, TouchableOpacity, StatusBar, View } from "react-native"
-import { NavigationContainer } from "@react-navigation/native"
-import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { styles } from "./Styles"
+import React from 'react'
+import { Text, TouchableOpacity, StatusBar, View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { styles } from './Styles'
 
 const Home = () => {
   return (
@@ -11,12 +11,12 @@ const Home = () => {
     </View>
   )
 }
-function HomeScreen({ navigation }) {
+function HomeScreen ({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>The ? Alarm App</Text>
-      <StatusBar style="auto" />
-      <TouchableOpacity onPress={() => navigation.navigate("Splash")}>
+      <StatusBar style='auto' />
+      <TouchableOpacity onPress={() => navigation.navigate('Splash')}>
         <Text style={styles.text}>Splash</Text>
       </TouchableOpacity>
     </View>
