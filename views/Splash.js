@@ -28,18 +28,13 @@ export function Splash({ navigation }) {
       style={styles.container}
     >
       <Text
-        style={{
-          color: "black",
-          fontSize: 30,
-          marginBottom: 15,
-          fontWeight: "bold",
-        }}
+        style={styles.text}
       >
         Pretty Cool!
       </Text>
       <TouchableOpacity 
           onPress={() => navigation.navigate('Home')}>
-          <Text>Return to Home</Text>
+          <Text style={styles.text}>Return to Home</Text>
         </TouchableOpacity>
       <Button title="Run Again" onPress={onReloadPress} />
     </View>

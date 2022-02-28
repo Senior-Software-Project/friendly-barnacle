@@ -7,7 +7,7 @@ import { styles } from './Styles'
 function Settings( { navigation } ) {
   return (
       <View style={styles.container}>
-        <Text>Settings</Text>
+        <Text style={styles.text}>Settings</Text>
         <StatusBar style="auto" />
       </View>
   );

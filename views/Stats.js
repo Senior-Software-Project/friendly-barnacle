@@ -7,7 +7,7 @@ import { styles } from './Styles'
 function Stats( { navigation } ) {
   return (
       <View style={styles.container}>
-        <Text>Statistics About You</Text>
+        <Text style={styles.text} >Statistics About You</Text>
         <StatusBar style="auto" />
       </View>
   );

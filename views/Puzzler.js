@@ -8,7 +8,7 @@ import { styles } from './Styles'
 function Puzzler( { navigation } ) {
   return (
       <View style={styles.container}>
-        <Text>The Question</Text>
+        <Text style={styles.text}>The Question</Text>
         <StatusBar style="auto" />
       </View>
   );
