@@ -1,5 +1,6 @@
 # Expo blank template generated list.
 node_modules/
+backend/node_modules/
 .expo/
 dist/
 npm-debug.*
