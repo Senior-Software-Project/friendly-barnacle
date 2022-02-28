@@ -9,6 +9,24 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white'
+  },
+  row: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  rowBol: {
+    flexDirection: "row",
+  },
+  button: {
+    paddingHorizontal: 8,
+    paddingVertical: 6,
+    borderRadius: 4,
+    backgroundColor: "#34344A",
+    alignSelf: "flex-start",
+    marginHorizontal: "1%",
+    marginBottom: 6,
+    minWidth: "48%",
+    textAlign: "center",
   }
 })
 
