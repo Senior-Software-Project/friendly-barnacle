@@ -27,6 +27,7 @@ export const splash = require("../assets/splash.png");
 export const timeSelector = require("../assets/images/TimeSelector.png");
 export const settings = require("../assets/images/settings.png");
 export const stats = require("../assets/images/stats.png");
+export const alarmHeader = require("../assets/images/alarmHeader.png");
 
 
 export default {
@@ -59,6 +60,7 @@ export default {
     splash,
     timeSelector,
     settings,
-    stats
+    stats,
+    alarmHeader
 
 }

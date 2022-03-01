@@ -23,7 +23,9 @@ const Tabs = () => {
                 tabBarStyle: {
                     backgroundColor: '#34344A',
                     borderTopWidth: 0,
-                }
+                },
+                headerShown: false
+                
             }}
         >
             <Tab.Screen 
@@ -62,7 +64,7 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen 
-                name = "Setting"
+                name = "Settings"
                 component = {Settings}
                 options = {{
                     tabBarIcon: ({focused}) => (

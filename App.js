@@ -17,7 +17,7 @@ const App = () => {
         <AnimatedAppLoader image={require('././assets/splash.png')}> 
           <Stack.Navigator
             screenOptions={{
-                headerShown: false
+                headerShown: false,
             }}
             initialRouteName={"Home"}
           >
