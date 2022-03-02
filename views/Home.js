@@ -6,8 +6,7 @@ import { styles } from './Styles'
 import PropTypes from 'prop-types'
 
 HomeScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
-  navigate: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired
 }
 
 function HomeScreen ({ navigation }) {

@@ -9,8 +9,7 @@ import { styles } from './Styles'
 import PropTypes from 'prop-types'
 
 Splash.propTypes = {
-  navigation: PropTypes.object.isRequired,
-  navigate: PropTypes.object.isRequired
+  navigation: PropTypes.object.isRequired
 }
 
 AnimatedAppLoader.propTypes = {
