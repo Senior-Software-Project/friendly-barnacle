@@ -10,8 +10,16 @@ import PropTypes from 'prop-types'
 
 Splash.propTypes = {
   navigation: PropTypes.object.isRequired,
-  navigate: PropTypes.object.isRequired,
-  children: PropTypes.any,
+  navigate: PropTypes.object.isRequired
+}
+
+AnimatedAppLoader.propTypes = {
+  children: PropTypes.node.isRequired,
+  image: PropTypes.any.isRequired
+}
+
+AnimatedSplashScreen.propTypes = {
+  children: PropTypes.node.isRequired,
   image: PropTypes.any.isRequired
 }
 
