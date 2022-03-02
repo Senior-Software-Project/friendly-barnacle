@@ -1,7 +1,6 @@
 import React from 'react'
-import { view, Image, TouchableOpacity } from 'react-native'
-import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs'
-
+import { Image } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeScreen, Puzzler, Settings, Stats } from '../views'
 import { images } from '../components'
 

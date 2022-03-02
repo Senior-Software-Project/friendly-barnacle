@@ -1,18 +1,16 @@
 import React from 'react'
 import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { styles } from './Styles'
 
 // Puzzle Page
-function Puzzler({ navigation }) {
-  let [question, setQuestion] = React.useState('')
-  let [incorrect, setIncorrect] = React.useState([])
-  let [correct, setCorrect] = React.useState([])
-  let [type, setType] = React.useState('')
-  let [selected, setSelected] = React.useState('')
+function Puzzler () {
+  const [question, setQuestion] = React.useState('')
+  const [incorrect, setIncorrect] = React.useState([])
+  const [correct, setCorrect] = React.useState([])
+  const [type, setType] = React.useState('')
+  const [selected, setSelected] = React.useState('')
 
-  function shuffleArray(array) {
+  function shuffleArray (array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[array[i], array[j]] = [array[j], array[i]]
@@ -43,7 +41,7 @@ function Puzzler({ navigation }) {
         {(() => {
           if (selected === correct) {
             return <Text style={styles.text}>Correct!!</Text>
-          } else if (selected != '' && selected != correct) {
+          } else if (selected !== '' && selected !== correct) {
             return <Text style={styles.text}>WRONG!!!!</Text>
           }
         })()}
@@ -54,8 +52,8 @@ function Puzzler({ navigation }) {
             <TouchableOpacity
               style={[
                 styles.button,
-                selected == correct && selected == answer && styles.selected,
-                selected != correct && selected == answer && styles.wrongAnswer
+                selected === correct && selected === answer && styles.selected,
+                selected !== correct && selected === answer && styles.wrongAnswer
               ]}
               key={answer}
               onPress={() => setSelected(answer)}
@@ -77,7 +75,7 @@ function Puzzler({ navigation }) {
         {(() => {
           if (selected === correct) {
             return <Text style={styles.text}>Correct!!</Text>
-          } else if (selected != '' && selected != correct) {
+          } else if (selected !== '' && selected !== correct) {
             return <Text style={styles.text}>WRONG!!!!</Text>
           }
         })()}
@@ -89,8 +87,8 @@ function Puzzler({ navigation }) {
             <TouchableOpacity
               style={[
                 styles.button,
-                selected == correct && selected == answer && styles.selected,
-                selected != correct && selected == answer && styles.wrongAnswer
+                selected === correct && selected === answer && styles.selected,
+                selected !== correct && selected === answer && styles.wrongAnswer
               ]}
               key={answer}
               onPress={() => setSelected(answer)}

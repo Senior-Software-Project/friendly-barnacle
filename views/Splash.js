@@ -6,6 +6,14 @@ import Constants from 'expo-constants'
 import * as SplashScreen from 'expo-splash-screen'
 import * as Updates from 'expo-updates'
 import { styles } from './Styles'
+import PropTypes from 'prop-types'
+
+Splash.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  navigate: PropTypes.object.isRequired,
+  children: PropTypes.any,
+  image: PropTypes.any.isRequired
+}
 
 SplashScreen.preventAutoHideAsync().catch(() => {
   /* reloading the app might trigger some race conditions, ignore them */

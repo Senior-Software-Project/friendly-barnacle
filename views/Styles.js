@@ -11,31 +11,31 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   row: {
-    flexDirection: "row",
-    flexWrap: "wrap",
+    flexDirection: 'row',
+    flexWrap: 'wrap'
   },
   rowBol: {
-    flexDirection: "row",
+    flexDirection: 'row'
   },
   button: {
     paddingHorizontal: 8,
     paddingVertical: 6,
     borderRadius: 4,
-    backgroundColor: "#34344A",
-    alignSelf: "flex-start",
-    marginHorizontal: "1%",
+    backgroundColor: '#34344A',
+    alignSelf: 'flex-start',
+    marginHorizontal: '1%',
     marginBottom: 6,
-    minWidth: "48%",
-    textAlign: "center",
+    minWidth: '48%',
+    textAlign: 'center'
   },
   selected: {
-    backgroundColor: "green",
-    borderWidth: 0,
+    backgroundColor: 'green',
+    borderWidth: 0
   },
   wrongAnswer: {
-    backgroundColor: "red",
-    borderWidth: 0,
-  },
+    backgroundColor: 'red',
+    borderWidth: 0
+  }
 })
 
 export { styles }

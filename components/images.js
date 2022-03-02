@@ -1,10 +1,10 @@
 export const actionBar = require('../assets/images/Action_Bar.png')
 export const accounts = require('../assets/images/account.png')
-export const adaptive_icon = require('../assets/images/adaptive-icon.png')
-export const alarm_1 = require('../assets/images/Alarm-1.png')
+export const adaptiveIcon = require('../assets/images/adaptive-icon.png')
+export const alarmOne = require('../assets/images/Alarm-1.png')
 export const alarm = require('../assets/images/Alarm.png')
 export const appIcon = require('../assets/images/appicon.png')
-export const clock_face_hour = require('../assets/images/Clock_face_hour.png')
+export const clockFaceHour = require('../assets/images/Clock_face_hour.png')
 export const favIcon = require('../assets/images/favicon.png')
 export const footer = require('../assets/images/Footer.png')
 export const group2 = require('../assets/images/Group2.png')
@@ -31,11 +31,11 @@ export const stats = require('../assets/images/stats.png')
 export default {
   actionBar,
   accounts,
-  adaptive_icon,
-  alarm_1,
+  adaptiveIcon,
+  alarmOne,
   alarm,
   appIcon,
-  clock_face_hour,
+  clockFaceHour,
   favIcon,
   footer,
   group2,
