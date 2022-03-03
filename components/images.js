@@ -28,6 +28,7 @@ export const timeSelector = require("../assets/images/TimeSelector.png");
 export const settings = require("../assets/images/settings.png");
 export const stats = require("../assets/images/stats.png");
 export const alarmHeader = require("../assets/images/alarmHeader.png");
+export const clear = require("../assets/images/clear.png");
 
 
 export default {
@@ -61,6 +62,7 @@ export default {
     timeSelector,
     settings,
     stats,
-    alarmHeader
+    alarmHeader,
+    clear
 
 }

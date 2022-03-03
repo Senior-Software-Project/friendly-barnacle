@@ -59,7 +59,7 @@ const HomeScreen = () => {
         }}
       >
          
-        <Text style={styles.modalText}>Hello World!</Text>
+        <Text style={styles.modalText}>Set Alarm!</Text>
         <View style={styles.modalView}>
           <View>
             <Pressable
@@ -67,11 +67,11 @@ const HomeScreen = () => {
             >
               
               <Image
-                source ={images.footer}
+                source ={images.clear}
                 resizeMode = "contain"
                 style = {{
-                  width: 50,
-                  height: 50
+                  width: 25,
+                  height: 25
                 }}
               />
             
@@ -80,11 +80,10 @@ const HomeScreen = () => {
         </View>
 
       </Modal>
-      <View>
+      <View style = {styles.modalToggle}>
         <Pressable
           style = {{
-            width: 50,
-            paddingLeft: 10 * 2,
+            width: 80,
             justifyContent: 'center'
           }}
           onPress = {() => setModalVisible(true)}        
@@ -93,8 +92,8 @@ const HomeScreen = () => {
             source={images.footer}
             resizeMode = "contain"
             style = {{
-              width: 60,
-              height: 60
+              width: 80,
+              height: 80
             }}
           />
         </Pressable>
@@ -133,6 +132,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
+  modalToggle:{
+    flex: 1,
+    padding: 10,
+    justifyContent: 'flex-end',
+    alignSelf: "center",
+
+  }
 });
 
 export default HomeScreen
