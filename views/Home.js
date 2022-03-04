@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { 
-  Text, 
+import {
+  Text,
   TouchableOpacity,
   View,
   StyleSheet,
@@ -50,14 +50,14 @@ const HomeScreen = () => {
           setModalVisible(!modalVisible);
         }}
       >
-         
+
         <Text style={styles.modalText}>Set Alarm!</Text>
         <View style={styles.modalView}>
           <View>
             <Pressable
               onPress={() => setModalVisible(false)}
             >
-              
+
               <Image
                 source ={images.clear}
                 resizeMode = "contain"
@@ -66,8 +66,8 @@ const HomeScreen = () => {
                   height: 25
                 }}
               />
-            
-            </Pressable>    
+
+            </Pressable>
           </View>
         </View>
 
@@ -78,7 +78,7 @@ const HomeScreen = () => {
             width: 80,
             justifyContent: 'center'
           }}
-          onPress = {() => setModalVisible(true)}        
+          onPress = {() => setModalVisible(true)}
         >
           <Image
             source={images.footer}
@@ -92,9 +92,6 @@ const HomeScreen = () => {
       </View>
     </SafeAreaView>
   )
-}
-HomeScreen.propTypes = {
-  navigation: PropTypes.object.isRequired
 }
 
 const styles = StyleSheet.create({
