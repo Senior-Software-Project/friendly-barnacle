@@ -2,20 +2,16 @@ import React, { useState } from "react";
 import { 
   Text, 
   TouchableOpacity,
-  StatusBar,
   View,
   StyleSheet,
   SafeAreaView,
   Image,
-  FlatList,
   Modal,
   Pressable
 } from 'react-native';
 
 import {images} from '../components'
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import PropTypes from 'prop-types'
 
 HomeScreen.propTypes = {
   navigation: PropTypes.object.isRequired
@@ -46,9 +42,6 @@ const HomeScreen = () => {
     )
   }
 
-  function renderFooter(){
-
-  }
   const [modalVisible, setModalVisible] = useState(false);
   return(
     <SafeAreaView style = {styles.container}>
