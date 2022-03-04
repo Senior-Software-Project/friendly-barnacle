@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Text, TouchableOpacity, StatusBar, View } from 'react-native'
 import '@react-navigation/native'
 import '@react-navigation/native-stack'
 import { styles } from './Styles'
-import PropTypes from 'prop-types'
 
 HomeScreen.propTypes = {
   navigation: PropTypes.object.isRequired
