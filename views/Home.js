@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 
 import {images} from '../components'
-import { NavigationContainer } from '@react-navigation/native';
 
 HomeScreen.propTypes = {
   navigation: PropTypes.object.isRequired
