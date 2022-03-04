@@ -1,18 +1,10 @@
 import React from 'react'
-import {
-    view,
-    Image,
-    TouchableOpacity
-} from 'react-native';
-import {createBottomTabNavigator, BottomTabBar} from '@react-navigation/bottom-tabs'
+import { Image } from 'react-native'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { HomeScreen, Puzzler, Settings, Stats } from '../views'
+import { images } from '../components'
 
-import { HomeScreen } from '../views';
-import { images } from '../components';
-import { Puzzler } from '../views';
-import { Settings } from '../views';
-import { Stats } from '../views';
-
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator()
 
 const Tabs = () => {
 
@@ -45,23 +37,24 @@ const Tabs = () => {
                         />
                     )
                 }}
+
             />
-            <Tab.Screen 
-                name = "Puzzler"
-                component = {Puzzler}
-                options = {{
-                    tabBarIcon: ({focused}) => (
-                        <Image 
-                            source = {images.puzzle}
-                            resizeMode = "contain"
-                            style = {{
-                                width : 45,
-                                height : 45,
-                                tintColor: focused ? '#5A57F7' : '#FFFFFF'
-                            }}
-                        />
-                    )
-                }}
+          )
+        }}
+      />
+      <Tab.Screen
+        name='Puzzler'
+        component={Puzzler}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={images.puzzle}
+              resizeMode='contain'
+              style={{
+                width: 45,
+                height: 45,
+                tintColor: focused ? '#5A57F7' : '#FFFFFF'
+              }}
             />
             <Tab.Screen 
                 name = "Settings"
@@ -80,25 +73,28 @@ const Tabs = () => {
                     )
                 }}
             />
-            <Tab.Screen 
-                name = "Stats"
-                component = {Stats}
-                options = {{
-                    tabBarIcon: ({focused}) => (
-                        <Image 
-                            source = {images.stats}
-                            resizeMode = "contain"
-                            style = {{
-                                width : 50,
-                                height : 50,
-                                tintColor: focused ? '#5A57F7' : '#FFFFFF'
-                            }}
-                        />
-                    )
-                }}
+          )
+        }}
+      />
+      <Tab.Screen
+        name='Stats'
+        component={Stats}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={images.stats}
+              resizeMode='contain'
+              style={{
+                width: 50,
+                height: 50,
+                tintColor: focused ? '#5A57F7' : '#FFFFFF'
+              }}
             />
-        </Tab.Navigator>
-    )
+          )
+        }}
+      />
+    </Tab.Navigator>
+  )
 }
 
-export default Tabs;
+export default Tabs

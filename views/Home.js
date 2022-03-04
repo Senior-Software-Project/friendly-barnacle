@@ -15,7 +15,11 @@ import {
 import {images} from '../components'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import PropTypes from 'prop-types'
 
+HomeScreen.propTypes = {
+  navigation: PropTypes.object.isRequired
+}
 
 const HomeScreen = () => {
 

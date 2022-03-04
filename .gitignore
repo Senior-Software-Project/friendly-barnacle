@@ -1,5 +1,6 @@
 # Expo blank template generated list.
 node_modules/
+backend/node_modules/
 .expo/
 dist/
 npm-debug.*
@@ -11,6 +12,7 @@ npm-debug.*
 *.orig.*
 web-build/
 package-lock.json
+yarn.lock
 
 # macOS
 .DS_Store
