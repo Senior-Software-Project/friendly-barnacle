@@ -1,0 +1,13 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: npx yarn
+    - name: Run ESLint
+      run: npx eslint . --ext .js,.jsx,.ts,.tsx
+    - name: Run tests
+      run: npx yarn

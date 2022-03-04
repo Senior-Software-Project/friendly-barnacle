@@ -1,14 +1,9 @@
 import React from 'react'
 import { NavigationContainer, DarkTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-// import HomeScreen from './views/Home'
-// import Puzzler from './views/Puzzler'
-// import Settings from './views/Settings'
 import { AnimatedAppLoader } from './views/Splash'
-// import Stats from './views/Stats'
-
 import Tabs from './Navigation/tabs'
-import { HomeScreen, Puzzler, Settings, Splash, Stats } from './views'
+import { Puzzler, Settings, Splash, Stats } from './views'
 
 const splashImage = require('././assets/splash.png')
 
