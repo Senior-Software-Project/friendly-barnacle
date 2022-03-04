@@ -12,10 +12,6 @@ import {
 
 import {images} from '../components'
 
-HomeScreen.propTypes = {
-  navigation: PropTypes.object.isRequired
-}
-
 const HomeScreen = () => {
 
   function renderHeader(){
@@ -96,6 +92,9 @@ const HomeScreen = () => {
       </View>
     </SafeAreaView>
   )
+}
+HomeScreen.propTypes = {
+  navigation: PropTypes.object.isRequired
 }
 
 const styles = StyleSheet.create({
