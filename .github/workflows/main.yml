@@ -6,8 +6,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: npx yarn
+      run: npm install
     - name: Run ESLint
       run: npx eslint . --ext .js,.jsx,.ts,.tsx
     - name: Run tests
-      run: npx yarn
+      run: npm test
