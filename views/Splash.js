@@ -94,7 +94,7 @@ function AnimatedSplashScreen ({ children, image }) {
     try {
       await SplashScreen.hideAsync()
       // Load stuff
-      Splash()//getAppStack())
+      Splash(getAppStack())
       await Promise.all([])
     } catch (e) {
       // handle errors
