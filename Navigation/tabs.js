@@ -17,30 +17,26 @@ const Tabs = () => {
                     borderTopWidth: 0,
                 },
                 headerShown: false
-                
+
             }}
         >
-            <Tab.Screen 
+            <Tab.Screen
                 name = "Alarm"
                 component = {HomeScreen}
                 options = {{
                     tabBarIcon: ({focused}) => (
-                        <Image 
+                        <Image
                             source = {images.alarm}
                             resizeMode = "contain"
                             style = {{
                                 width : 45,
                                 height : 45,
                                 tintColor: focused ? '#5A57F7' : '#FFFFFF'
-                                
+
                             }}
                         />
                     )
                 }}
-
-            />
-          )
-        }}
       />
       <Tab.Screen
         name='Puzzler'
@@ -56,12 +52,15 @@ const Tabs = () => {
                 tintColor: focused ? '#5A57F7' : '#FFFFFF'
               }}
             />
-            <Tab.Screen 
+          )
+        }}
+        />
+            <Tab.Screen
                 name = "Settings"
                 component = {Settings}
                 options = {{
                     tabBarIcon: ({focused}) => (
-                        <Image 
+                        <Image
                             source = {images.settings}
                             resizeMode = "contain"
                             style = {{
@@ -73,9 +72,6 @@ const Tabs = () => {
                     )
                 }}
             />
-          )
-        }}
-      />
       <Tab.Screen
         name='Stats'
         component={Stats}
