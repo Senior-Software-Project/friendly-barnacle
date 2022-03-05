@@ -7,16 +7,15 @@ import { images } from '../components'
 const Tab = createBottomTabNavigator()
 
 const Tabs = () => {
-
-    return(
+  return (
         <Tab.Navigator
             screenOptions={{
-                tabBarShowLabel: false,
-                tabBarStyle: {
-                    backgroundColor: '#34344A',
-                    borderTopWidth: 0,
-                },
-                headerShown: false
+              tabBarShowLabel: false,
+              tabBarStyle: {
+                backgroundColor: '#34344A',
+                borderTopWidth: 0
+              },
+              headerShown: false
 
             }}
         >
@@ -24,18 +23,18 @@ const Tabs = () => {
                 name = "Alarm"
                 component = {HomeScreen}
                 options = {{
-                    tabBarIcon: ({focused}) => (
+                  tabBarIcon: ({ focused }) => (
                         <Image
                             source = {images.alarm}
                             resizeMode = "contain"
                             style = {{
-                                width : 45,
-                                height : 45,
-                                tintColor: focused ? '#5A57F7' : '#FFFFFF'
+                              width: 45,
+                              height: 45,
+                              tintColor: focused ? '#5A57F7' : '#FFFFFF'
 
                             }}
                         />
-                    )
+                  )
                 }}
       />
       <Tab.Screen
@@ -59,17 +58,17 @@ const Tabs = () => {
                 name = "Settings"
                 component = {Settings}
                 options = {{
-                    tabBarIcon: ({focused}) => (
+                  tabBarIcon: ({ focused }) => (
                         <Image
                             source = {images.settings}
                             resizeMode = "contain"
                             style = {{
-                                width : 50,
-                                height : 50,
-                                tintColor: focused ? '#5A57F7' : '#FFFFFF'
+                              width: 50,
+                              height: 50,
+                              tintColor: focused ? '#5A57F7' : '#FFFFFF'
                             }}
                         />
-                    )
+                  )
                 }}
             />
       <Tab.Screen
