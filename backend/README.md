@@ -1,1 +1,1 @@
-A directory for backend logic, like classes imported and instanced in the front end. Classes follow single responsibility principle. Logical groups of classes may be stored in subdirectories here, aka packages or modules.
+Backend includes the server side development for the front end, like leaderboards, shareable trivia banks, etc.
