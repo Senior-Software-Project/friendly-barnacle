@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "test": "jest --watch --coverage=false --changedSince=origin/main",
+    "test": "jest --watch --coverage=false --changedSince=origin/main --env=node",
     "coverage": "jest --collectCoverage --",
     "testDebug": "jest -o --watch --coverage=false",
     "testFinal": "jest",
@@ -22,6 +22,7 @@
     "expo-status-bar": "~1.2.0",
     "expo-updates": "~0.11.6",
     "jest-expo": "^44.0.1",
+    "jsdom": "^19.0.0",
     "prop-types": "^15.8.1",
     "react": "17.0.2",
     "react-dom": "*",
@@ -56,7 +57,10 @@
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
     ],
-    "setupFilesAfterEnv": ["<rootDir>setupTest.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>setupTest.js"
+    ],
+    "testURL": "http://localhost/",
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
