@@ -2,8 +2,8 @@ on:
   push:
     branches: [main]
   # Test run; remove this when ready.
-  pull_request:
-    branches: [main]
+  #pull_request:
+  #  branches: [main]
 jobs:
   publish:
     runs-on: ubuntu-latest

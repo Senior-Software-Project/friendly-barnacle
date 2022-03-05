@@ -8,6 +8,6 @@ jobs:
     - name: Install modules
       run: npm install --legacy-peer-deps
     - name: Run ESLint
-      run: npx eslint . --ext .js,.jsx,.ts,.tsx
+      run: npx eslint --fix . --ext .js,.jsx,.ts,.tsx
     - name: Run tests
-      run: npm test
+      run: npm run testFinal
