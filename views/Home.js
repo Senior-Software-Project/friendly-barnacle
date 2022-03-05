@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
+  Alert,
   Text,
   TouchableOpacity,
   View,
@@ -8,15 +9,14 @@ import {
   Image,
   Modal,
   Pressable
-} from 'react-native';
+} from 'react-native'
 
-import {images} from '../components'
+import { images } from '../components'
 
 const HomeScreen = () => {
-
-  function renderHeader(){
-    return(
-      <View style = {{flexDirection: 'row', height: 50}}>
+  function renderHeader () {
+    return (
+      <View style = {{ flexDirection: 'row', height: 50 }}>
         <TouchableOpacity
           style = {{
             width: 50,
@@ -37,8 +37,8 @@ const HomeScreen = () => {
     )
   }
 
-  const [modalVisible, setModalVisible] = useState(false);
-  return(
+  const [modalVisible, setModalVisible] = useState(false)
+  return (
     <SafeAreaView style = {styles.container}>
       {renderHeader()}
       <Modal
@@ -46,8 +46,8 @@ const HomeScreen = () => {
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-          setModalVisible(!modalVisible);
+          Alert.alert('Modal has been closed.')
+          setModalVisible(!modalVisible)
         }}
       >
 
@@ -97,25 +97,25 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1D1D23',
+    backgroundColor: '#1D1D23'
   },
-  shadow:{
+  shadow: {
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 3
     },
     shadowOpacity: 0.1,
     shadowRadius: 3,
-    elevation: 1,
+    elevation: 1
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2
@@ -124,13 +124,13 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5
   },
-  modalToggle:{
+  modalToggle: {
     flex: 1,
     padding: 10,
     justifyContent: 'flex-end',
-    alignSelf: "center",
+    alignSelf: 'center'
 
   }
-});
+})
 
 export default HomeScreen
