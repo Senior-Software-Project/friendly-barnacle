@@ -31,13 +31,13 @@ test("renders learn react link", async () => {
 });
 */
 
-//import React from 'react'
+// import React from 'react'
 import renderer from 'react-test-renderer'
 import App from '../App'
 
 describe('<App />', () => {
   test('has many children', async () => {
-    let tree = renderer.create('<App />').toJSON()
+    const tree = renderer.create('<App />').toJSON()
     // expect(tree).toBeNull()
     // expect(tree.children.length).toBe(5)
   })

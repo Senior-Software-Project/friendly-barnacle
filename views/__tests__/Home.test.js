@@ -2,7 +2,7 @@ import HomeScreen from '../../views/Home.js'
 import React from 'react'
 import { render } from '@testing-library/react-native'
 import { describe, test, expect } from '@jest/globals'
-//import { assertPropTypes } from 'check-prop-types'
+// import { assertPropTypes } from 'check-prop-types'
 
 test('tests HomeScreen function', () => {
 

@@ -3,7 +3,7 @@ import { NavigationContainer, DarkTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AnimatedAppLoader } from './views/Splash'
 import Tabs from './Navigation/tabs'
-import { HomeScreen, Puzzler, Settings, Splash, Stats } from './views'
+import { Puzzler, Settings, Splash, Stats } from './views'
 
 const splashImage = require('././assets/splash.png')
 
@@ -34,4 +34,4 @@ const App = () => {
   )
 }
 
-export default App//{ App, getAppStack }
+export default App// { App, getAppStack }
