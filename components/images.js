@@ -1,7 +1,7 @@
 export const actionBar = require('../assets/images/Action_Bar.png')
 export const accounts = require('../assets/images/account.png')
 export const adaptiveIcon = require('../assets/images/adaptive-icon.png')
-export const alarmOne = require('../assets/images/Alarm-1.png')
+export const alarm1 = require('../assets/images/Alarm-1.png')
 export const alarm = require('../assets/images/Alarm.png')
 export const appIcon = require('../assets/images/appicon.png')
 export const clockFaceHour = require('../assets/images/Clock_face_hour.png')
@@ -27,12 +27,15 @@ export const splash = require('../assets/splash.png')
 export const timeSelector = require('../assets/images/TimeSelector.png')
 export const settings = require('../assets/images/settings.png')
 export const stats = require('../assets/images/stats.png')
+export const alarmHeader = require('../assets/images/alarmHeader.png')
+export const clear = require('../assets/images/clear.png')
 
 export default {
+
   actionBar,
   accounts,
   adaptiveIcon,
-  alarmOne,
+  alarm1,
   alarm,
   appIcon,
   clockFaceHour,
@@ -57,5 +60,8 @@ export default {
   splash,
   timeSelector,
   settings,
-  stats
+  stats,
+  alarmHeader,
+  clear
+
 }

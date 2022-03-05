@@ -8,31 +8,34 @@ const Tab = createBottomTabNavigator()
 
 const Tabs = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: '#34344A',
-          borderTopWidth: 0
-        }
-      }}
-    >
-      <Tab.Screen
-        name='Alarm'
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={images.alarm}
-              resizeMode='contain'
-              style={{
-                width: 45,
-                height: 45,
-                tintColor: focused ? '#5A57F7' : '#FFFFFF'
-              }}
-            />
-          )
-        }}
+        <Tab.Navigator
+            screenOptions={{
+              tabBarShowLabel: false,
+              tabBarStyle: {
+                backgroundColor: '#34344A',
+                borderTopWidth: 0
+              },
+              headerShown: false
+
+            }}
+        >
+            <Tab.Screen
+                name = "Alarm"
+                component = {HomeScreen}
+                options = {{
+                  tabBarIcon: ({ focused }) => (
+                        <Image
+                            source = {images.alarm}
+                            resizeMode = "contain"
+                            style = {{
+                              width: 45,
+                              height: 45,
+                              tintColor: focused ? '#5A57F7' : '#FFFFFF'
+
+                            }}
+                        />
+                  )
+                }}
       />
       <Tab.Screen
         name='Puzzler'
@@ -50,24 +53,24 @@ const Tabs = () => {
             />
           )
         }}
-      />
-      <Tab.Screen
-        name='Setting'
-        component={Settings}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={images.settings}
-              resizeMode='contain'
-              style={{
-                width: 50,
-                height: 50,
-                tintColor: focused ? '#5A57F7' : '#FFFFFF'
-              }}
+        />
+            <Tab.Screen
+                name = "Settings"
+                component = {Settings}
+                options = {{
+                  tabBarIcon: ({ focused }) => (
+                        <Image
+                            source = {images.settings}
+                            resizeMode = "contain"
+                            style = {{
+                              width: 50,
+                              height: 50,
+                              tintColor: focused ? '#5A57F7' : '#FFFFFF'
+                            }}
+                        />
+                  )
+                }}
             />
-          )
-        }}
-      />
       <Tab.Screen
         name='Stats'
         component={Stats}
