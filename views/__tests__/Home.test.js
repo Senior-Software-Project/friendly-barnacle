@@ -1,20 +1,28 @@
-import HomeScreen from '../../views/Home.js'
-import React from 'react'
-import { render } from '@testing-library/react-native'
-import { describe, test, expect } from '@jest/globals'
-// import { assertPropTypes } from 'check-prop-types'
+import HomeScreen from '../Home.js'
+import React, { useState } from 'react'
+import { shallow } from 'enzyme'
+import { describe, expect, test, } from '@jest/globals'
+import { create } from "react-test-renderer"
 
-test('tests HomeScreen function', () => {
-
-})
-/*
-assertPropTypes(HomeScreen.propTypes)
-//tests HomeScreen function
-//Console.log(typeof(async(HomeScreen)))
 describe('<HomeScreen />', () => {
-  test('renders the correct message', () => {
-    const { queryAllByText } = render('@/views/Home')
-    expect(HomeScreen.queryAllByText('The ? Alarm App'))//.not.toBeNull()
+  test('HomeScreen should not have lexical errors.', () => {
+    expect(shallow(<HomeScreen />))
+  }),
+  test('HomeScreen should not return null.', () => {
+    const result = shallow(<HomeScreen />)
+    expect(typeof (result)).not.toEqual(null)
+  }),
+  test('HomeScreen should return HomeScreen view.', () => {
+    const result = JSON.stringify(<HomeScreen />)
+    expect(typeof (result)).not.toEqual(null)
+  }),
+  test('Testing HomeScreen', () => {
+    let component = create(<HomeScreen />)
+    const tree = component.toJSON()
+    expect(tree.type).toMatch('RCTSafeAreaView')
+    expect(tree.children.length).toEqual(3)
+    const childrenTypes = JSON.stringify(tree.children)
+    expect(childrenTypes).toMatch('"type":"Modal"')
+    expect(childrenTypes).toMatch('"type":"View"')
   })
 })
-*/
