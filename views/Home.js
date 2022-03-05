@@ -36,7 +36,6 @@ const HomeScreen = () => {
       </View>
     )
   }
-
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <SafeAreaView style = {styles.container}>
@@ -50,14 +49,12 @@ const HomeScreen = () => {
           setModalVisible(!modalVisible)
         }}
       >
-
         <Text style={styles.modalText}>Set Alarm!</Text>
         <View style={styles.modalView}>
           <View>
             <Pressable
               onPress={() => setModalVisible(false)}
             >
-
               <Image
                 source ={images.clear}
                 resizeMode = "contain"
@@ -66,11 +63,9 @@ const HomeScreen = () => {
                   height: 25
                 }}
               />
-
             </Pressable>
           </View>
         </View>
-
       </Modal>
       <View style = {styles.modalToggle}>
         <Pressable
