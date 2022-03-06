@@ -8,6 +8,11 @@ import { Puzzler, Settings, Splash, Stats } from './views'
 const splashImage = require('././assets/splash.png')
 
 const Stack = createNativeStackNavigator()
+
+export const getAppStack = () => {
+  return (Stack)
+}
+
 const App = () => {
   return (
     <NavigationContainer theme={DarkTheme}>
@@ -28,4 +33,5 @@ const App = () => {
     </NavigationContainer>
   )
 }
-export default App
+
+export default App// { App, getAppStack }

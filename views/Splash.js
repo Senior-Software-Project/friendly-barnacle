@@ -7,6 +7,7 @@ import * as SplashScreen from 'expo-splash-screen'
 import * as Updates from 'expo-updates'
 import { styles } from './Styles'
 import PropTypes from 'prop-types'
+import getAppStack from '../App'
 
 Splash.propTypes = {
   navigation: PropTypes.object.isRequired
@@ -93,7 +94,7 @@ function AnimatedSplashScreen ({ children, image }) {
     try {
       await SplashScreen.hideAsync()
       // Load stuff
-      Splash()
+      Splash(getAppStack())
       await Promise.all([])
     } catch (e) {
       // handle errors
