@@ -31,13 +31,13 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-web": "0.17.1",
-    "react-navigation": "^4.4.4",
-    "react-test-renderer": "17.0.1"
+    "react-navigation": "^4.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "jest": "^26.6.3",
     "jest-expo": "^44.0.1",
+    "react-test-renderer": "17.0.1",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
