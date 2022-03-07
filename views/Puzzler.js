@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'react-native'
 import { styles } from './Styles'
+import { decode } from 'html-entities'
 
 // Puzzle Page
 function Puzzler () {
@@ -25,10 +26,10 @@ function Puzzler () {
       .then((response) => response.json())
       .then((response) => {
         console.log(response.results[0])
-        setQuestion(decodeURI(response.results[0].question))
+        setQuestion(decode(response.results[0].question))
         setType(response.results[0].type)
-        setIncorrect(shuffleArray(response.results[0].incorrect_answers.concat(response.results[0].correct_answer)))
-        setCorrect(response.results[0].correct_answer)
+        setIncorrect(shuffleArray(decode(response.results[0].incorrect_answers.concat(response.results[0].correct_answer))))
+        setCorrect(decode(response.results[0].correct_answer))
         setSelected('')
       })
       .catch((err) => {
