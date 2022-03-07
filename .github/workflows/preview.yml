@@ -18,7 +18,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
 
       - name: 🚀 Publish preview
         run: expo publish --release-channel=pr-${{ github.event.number }} --non-interactive

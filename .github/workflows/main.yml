@@ -6,7 +6,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: npm install --legacy-peer-deps
+      run: npm install
     - name: Run ESLint
       run: npm run checkStyle
     - name: Run tests
