@@ -5,10 +5,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
-const app = express();
+const app = express()
 
-var hostname = '127.0.0.1';
-var port = 3000;
+const hostname = '127.0.0.1'
+const port = 3000
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -27,8 +27,8 @@ app.get('/', (req, res) => {
 */
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+  console.log(`Server running at http://${hostname}:${port}/`)
+})
 
 /*
 import { createServer } from 'http';
