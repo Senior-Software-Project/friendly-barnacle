@@ -11,6 +11,22 @@ function Puzzler () {
   const [type, setType] = React.useState('')
   const [selected, setSelected] = React.useState('')
 
+  // let questionsSeen
+  let correctAnswers
+  let incorrectAnswers
+  // const questionSeen_KEY = '@save'
+  // const correctAnswers_KEY = '@save2'
+  // const incorrectAnswers_KEY = '@save3'
+
+  /** const saveData = async () => {
+    try {
+      await AsyncStorage.setItem(questionSeen_KEY, questionsSeen)
+      alert('Data successfully saved')
+    } catch (e) {
+      alert('Failed to save the data to the storage')
+    }
+  } */
+
   function shuffleArray (array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
@@ -41,8 +57,14 @@ function Puzzler () {
       <View style={styles.container}>
         {(() => {
           if (selected === correct) {
+            correctAnswers = correctAnswers++
+            localStorage.setItem('correctAnswers', correctAnswers)
+            // await AsyncStorage.setItem(correctAnswers_KEY, correctAnswers)
             return <Text style={styles.text}>Correct!!</Text>
           } else if (selected !== '' && selected !== correct) {
+            incorrectAnswers = incorrectAnswers++
+            localStorage.setItem('incorrectAnswers', incorrectAnswers)
+            // await AsyncStorage.setItem(incorrectAnswers_KEY, incorrectAnswers)
             return <Text style={styles.text}>WRONG!!!!</Text>
           }
         })()}
