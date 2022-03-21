@@ -3,6 +3,14 @@ import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'rea
 import { styles } from './Styles'
 import { decode } from 'html-entities'
 
+const iaKey = 'incorrectAnswers'
+const caKey = 'correctAnswers'
+
+var correctAnswers = 0
+var incorrectAnswers = 0
+var saveCorrect
+var saveIncorrect
+
 // Puzzle Page
 function Puzzler () {
   const [question, setQuestion] = React.useState('')
@@ -10,6 +18,11 @@ function Puzzler () {
   const [correct, setCorrect] = React.useState([])
   const [type, setType] = React.useState('')
   const [selected, setSelected] = React.useState('')
+
+  // let questionsSeen
+
+  // localStorage.setItem(caKey, correctAnswers)
+  // localStorage.setItem(iaKey, incorrectAnswers)
 
   function shuffleArray (array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -36,15 +49,26 @@ function Puzzler () {
         console.log(err)
       })
   }
+  // eslint-disable-next-line no-debugger
+  debugger
   if (type === 'multiple') {
     return (
       <View style={styles.container}>
         {(() => {
           if (selected === correct) {
+            correctAnswers += 1
+            // alert('correct', correctAnswers)
+            localStorage.setItem(caKey, correctAnswers)
             return <Text style={styles.text}>Correct!!</Text>
           } else if (selected !== '' && selected !== correct) {
+            incorrectAnswers += 1
+            localStorage.setItem(iaKey, incorrectAnswers)
             return <Text style={styles.text}>WRONG!!!!</Text>
           }
+          saveIncorrect = incorrectAnswers
+          saveCorrect = correctAnswers
+          // alert(saveIncorrect)
+          // alert(saveCorrect)
         })()}
         <Text style={styles.text}>{question}</Text>
         <Text style={styles.text}>{type}</Text>
@@ -75,8 +99,14 @@ function Puzzler () {
       <View style={styles.container}>
         {(() => {
           if (selected === correct) {
+            correctAnswers = correctAnswers++
+            // alert('retCorr', correctAnswers)
+            localStorage.setItem('correctAnswers', correctAnswers)
             return <Text style={styles.text}>Correct!!</Text>
           } else if (selected !== '' && selected !== correct) {
+            incorrectAnswers = incorrectAnswers++
+            // alert('retInCorr', incorrectAnswers)
+            localStorage.setItem('incorrectAnswers', incorrectAnswers)
             return <Text style={styles.text}>WRONG!!!!</Text>
           }
         })()}
@@ -107,5 +137,7 @@ function Puzzler () {
     )
   }
 }
+
+export { iaKey, caKey }
 
 export default Puzzler
