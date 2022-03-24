@@ -6,10 +6,10 @@ import { decode } from 'html-entities'
 const iaKey = 'incorrectAnswers'
 const caKey = 'correctAnswers'
 
-var correctAnswers = 0
-var incorrectAnswers = 0
-var saveCorrect
-var saveIncorrect
+let correctAnswers = 0
+let incorrectAnswers = 0
+let saveCorrect
+let saveIncorrect
 
 // Puzzle Page
 function Puzzler () {
@@ -59,16 +59,18 @@ function Puzzler () {
             correctAnswers += 1
             // alert('correct', correctAnswers)
             localStorage.setItem(caKey, correctAnswers)
-            return <Text style={styles.text}>Correct!!</Text>
+            // return <Text style={styles.text}>Correct!!</Text>
+            return <Text style={styles.text}>Number of correct answers : {correctAnswers}</Text>
           } else if (selected !== '' && selected !== correct) {
             incorrectAnswers += 1
             localStorage.setItem(iaKey, incorrectAnswers)
-            return <Text style={styles.text}>WRONG!!!!</Text>
+            // return <Text style={styles.text}>WRONG!!!!</Text>
+            return <Text style={styles.text}>Number of incorrect answers : {incorrectAnswers}</Text>
           }
           saveIncorrect = incorrectAnswers
           saveCorrect = correctAnswers
-          // alert(saveIncorrect)
-          // alert(saveCorrect)
+          alert('save inc', saveIncorrect)
+          alert('save corr', saveCorrect)
         })()}
         <Text style={styles.text}>{question}</Text>
         <Text style={styles.text}>{type}</Text>
@@ -97,19 +99,21 @@ function Puzzler () {
   } else {
     return (
       <View style={styles.container}>
-        {(() => {
+        {() => {
           if (selected === correct) {
             correctAnswers = correctAnswers++
             // alert('retCorr', correctAnswers)
             localStorage.setItem('correctAnswers', correctAnswers)
-            return <Text style={styles.text}>Correct!!</Text>
+            // return <Text style={styles.text}>Correct!!</Text>
+            return <Text style={styles.text}>Correct : {correctAnswers}</Text>
           } else if (selected !== '' && selected !== correct) {
             incorrectAnswers = incorrectAnswers++
             // alert('retInCorr', incorrectAnswers)
             localStorage.setItem('incorrectAnswers', incorrectAnswers)
-            return <Text style={styles.text}>WRONG!!!!</Text>
+            // return <Text style={styles.text}>WRONG!!!!</Text>
+            return <Text style={styles.text}>WRONG : {incorrectAnswers}</Text>
           }
-        })()}
+        }})(){'}'}
 
         <Text style={styles.text}>{decodeURI(question)}</Text>
         <Text style={styles.text}>{type}</Text>
