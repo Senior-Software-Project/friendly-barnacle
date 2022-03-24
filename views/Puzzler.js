@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'react-native'
 import { styles } from './Styles'
 import { decode } from 'html-entities'
+import { Storage } from 'expo-storage'
 
 const iaKey = 'incorrectAnswers'
 const caKey = 'correctAnswers'
@@ -21,8 +22,8 @@ function Puzzler () {
 
   // let questionsSeen
 
-  // localStorage.setItem(caKey, correctAnswers)
-  // localStorage.setItem(iaKey, incorrectAnswers)
+  localStorage.setItem(caKey, correctAnswers)
+  localStorage.setItem(iaKey, incorrectAnswers)
 
   function shuffleArray (array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -54,16 +55,18 @@ function Puzzler () {
   if (type === 'multiple') {
     return (
       <View style={styles.container}>
-        {(() => {
+        {(async () => {
           if (selected === correct) {
             correctAnswers += 1
             // alert('correct', correctAnswers)
-            localStorage.setItem(caKey, correctAnswers)
+            // localStorage.setItem(caKey, correctAnswers)
             // return <Text style={styles.text}>Correct!!</Text>
+            await Storage.setItem({ key: `${caKey}`, value: `${correctAnswers}` })
             return <Text style={styles.text}>Number of correct answers : {correctAnswers}</Text>
           } else if (selected !== '' && selected !== correct) {
             incorrectAnswers += 1
-            localStorage.setItem(iaKey, incorrectAnswers)
+            // localStorage.setItem(iaKey, incorrectAnswers)
+            await Storage.setItem({ key: `${iaKey}`, value: `${incorrectAnswers}` })
             // return <Text style={styles.text}>WRONG!!!!</Text>
             return <Text style={styles.text}>Number of incorrect answers : {incorrectAnswers}</Text>
           }
@@ -99,18 +102,20 @@ function Puzzler () {
   } else {
     return (
       <View style={styles.container}>
-        {() => {
+        {async () => {
           if (selected === correct) {
             correctAnswers = correctAnswers++
             // alert('retCorr', correctAnswers)
-            localStorage.setItem('correctAnswers', correctAnswers)
+            // localStorage.setItem('correctAnswers', correctAnswers)
             // return <Text style={styles.text}>Correct!!</Text>
+            await Storage.setItem({ key: `${caKey}`, value: `${correctAnswers}` })
             return <Text style={styles.text}>Correct : {correctAnswers}</Text>
           } else if (selected !== '' && selected !== correct) {
             incorrectAnswers = incorrectAnswers++
             // alert('retInCorr', incorrectAnswers)
-            localStorage.setItem('incorrectAnswers', incorrectAnswers)
+            // localStorage.setItem('incorrectAnswers', incorrectAnswers)
             // return <Text style={styles.text}>WRONG!!!!</Text>
+            await Storage.setItem({ key: `${iaKey}`, value: `${incorrectAnswers}` })
             return <Text style={styles.text}>WRONG : {incorrectAnswers}</Text>
           }
         }})(){'}'}

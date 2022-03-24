@@ -6,14 +6,19 @@ import { iaKey, caKey } from './Puzzler'
 // alert('cakey', caKey)
 // import { Button } from 'react-native'
 
-function Stats () {
+// create a function and a button that will reload the values for display
+
+async function Stats () {
+  // eslint-disable-next-line no-return-assign
+  const itemI = JSON.parse(await Storage.getItem({ key: `${iaKey}` }))
+  const itemC = JSON.parse(await Storage.getItem({ key: `${caKey}` }))
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Number of Correct Questions:
-      {localStorage.getItem(caKey)}
+      <Text style={styles.text}>Number of Correct Questions: {itemC}
+      {/* localStorage.getItem(caKey) */}
       </Text>
-      <Text style={styles.text}>Number of Incorrect Questions:
-      {localStorage.getItem(iaKey)}
+      <Text style={styles.text}>Number of Incorrect Questions: {itemI}
+      {/* localStorage.getItem(iaKey) */}
       </Text>
       <StatusBar style='auto' />
     </View>
