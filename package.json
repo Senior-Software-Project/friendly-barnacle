@@ -35,17 +35,18 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "jest": "^26.6.3",
-    "jest-expo": "^44.0.1",
-    "react-test-renderer": "17.0.1",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.29.2",
+    "jest": "^26.6.3",
+    "jest-expo": "^44.0.1",
+    "jest-sonar-reporter": "^2.0.0",
     "prettier": "2.5.1",
     "prettier-standard": "^13.0.6",
+    "react-test-renderer": "17.0.1",
     "standard": "^16.0.4"
   },
   "private": true,
@@ -57,6 +58,7 @@
     "setupFilesAfterEnv": [
       "<rootDir>setupTest.js"
     ],
+    "testResultsProcessor": "jest-sonar-reporter",
     "testURL": "http://localhost/",
     "collectCoverage": true,
     "collectCoverageFrom": [
