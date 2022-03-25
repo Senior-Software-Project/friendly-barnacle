@@ -4,7 +4,7 @@ import { styles } from './Styles'
 import { decode } from 'html-entities'
 import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from './Stats'
 
-function shuffleArray (array) {
+export function shuffleArray (array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[array[i], array[j]] = [array[j], array[i]]

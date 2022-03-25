@@ -1,4 +1,4 @@
-import Puzzler from '../Puzzler'
+import Puzzler, {shuffleArray} from '../Puzzler'
 import React from 'react'
 import { describe, expect, test } from '@jest/globals'
 import { create } from 'react-test-renderer'
@@ -14,5 +14,14 @@ describe('<Puzzler />', () => {
     const component = create(<Puzzler />)
     const tree = component.toJSON()
     expect(tree.type).toMatch('View')
+  })
+  test('Shuffler', () => {
+    arr = [4, 3, 2, 1]
+    response = shuffleArray(arr)
+    console.log(response)
+    expect(response.length).toBe(arr.length)
+    for ( let i = 0; i < arr.length; i++) {
+      expect(arr.includes(response[i])).toBeTruthy()
+    }
   })
 })
