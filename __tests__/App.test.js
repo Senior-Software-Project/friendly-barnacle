@@ -1,8 +1,10 @@
+import React from 'react'
 import App from '../App'
 import { describe, expect, test } from '@jest/globals'
-import getAppStack from '../App'
-import {NavigationContainer} from '@react-navigation/native'
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
+const getAppStack = App
 
 describe('<App />', () => {
   test('App should return Home as the initial view.', () => {
@@ -12,14 +14,14 @@ describe('<App />', () => {
   test('App stack returns NavigationStack', () => {
     expect(App).toStrictEqual(getAppStack)
     expect(JSON.stringify(getAppStack())).toMatch('"initialRouteName":"Home"')
-    expect(typeof(getAppStack)).toBe(typeof(() => {}))
+    expect(typeof (getAppStack)).toBe(typeof (() => {}))
     expect(getAppStack).toBeTruthy()
   })
   test('Mock the app', () => {
     const Stack = createNativeStackNavigator()
     const component = {}
     const params = {}
-    const MockedNavigator = () => {
+    const app = () => {
       return (
         <NavigationContainer>
           <Stack.Navigator>
@@ -32,7 +34,7 @@ describe('<App />', () => {
         </NavigationContainer>
       )
     }
-    expect(Stack).toBe(Stack)
+    expect(app).toBeTruthy()
   })
   test('Compare everything', () => {
     expect(JSON.stringify(getAppStack())).toBe(JSON.stringify(App()))
