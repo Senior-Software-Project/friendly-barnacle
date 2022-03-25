@@ -2,11 +2,7 @@ import React, { useState } from 'react'
 import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'react-native'
 import { styles } from './Styles'
 import { decode } from 'html-entities'
-import { setCorrect, setIncorrect} from './Stats'
 import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from './Stats'
-import { userStats } from './Stats'
-//import { countCorrect, countIncorrect } from './Stats'
-//import Stats from './Stats'
 
 function shuffleArray (array) {
   for (let i = array.length - 1; i > 0; i--) {

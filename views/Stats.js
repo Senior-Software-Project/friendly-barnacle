@@ -7,47 +7,35 @@ import { styles } from './Styles'
 
 const caKey = 'correctAnswers'
 const iaKey = 'incorrectAnswers'
-const fs = require('fs');
-//const stats = readStats()
 const stats = {
-  caKey: 0,
-  iaKey: 0
-}
-
-function writeStats() {
-  const data = JSON.stringify(stats);
-  fs.writeFile('stats.json', data, (err) => {
-      if (err) {
-          throw err
-      }
-  })
-}
-
-function readStats() {
-  fs.readFile('stats.json', 'utf-8', (err, data) => {
-      if (err) {
-          throw err
-      }
-      return JSON.parse(data.toString());
-  })
+  caKey: getCorrect(),
+  iaKey: getIncorrect()
 }
 
 function setCorrect(correctAnswers) {
   stats.caKey = correctAnswers
-  //writeStats()
+  localStorage.setItem(caKey, correctAnswers)
 }
 
 function setIncorrect(incorrectAnswers) {
   stats.iaKey = incorrectAnswers
-  //writeStats()
+  localStorage.setItem(iaKey, incorrectAnswers)
 }
 
 function getCorrect() {
-  return stats.caKey
+  try {
+    return parseInt(localStorage.getItem(caKey))
+  } catch (e) {
+    return 0
+  }
 }
 
 function getIncorrect() {
-  return stats.iaKey
+  try {
+    return parseInt(localStorage.getItem(iaKey))
+  } catch (e) {
+    return 0
+  }
 }
 
 function incrementCorrect() {
@@ -58,7 +46,7 @@ function incrementIncorrect() {
   setIncorrect(getIncorrect() + 1)
 }
 
-export const userStats = createContext(stats)
+const userStats = createContext(stats)
 
 function Stats () {
   const renderStats = useContext(userStats)
