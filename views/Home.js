@@ -9,7 +9,7 @@ import {
   Image,
   Modal,
   Pressable
-  
+
 } from 'react-native'
 
 import { images } from '../components'
