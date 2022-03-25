@@ -49,7 +49,7 @@ function Puzzler () {
     }
   }
 
-  let isMultiple = type === 'multiple'
+  const isMultiple = type === 'multiple'
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Number of correct answers : {getCorrect()}</Text>

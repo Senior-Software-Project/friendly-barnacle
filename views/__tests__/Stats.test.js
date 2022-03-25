@@ -1,8 +1,7 @@
-import Stats from '../Stats'
+import Stats, { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from '../Stats'
 import React from 'react'
 import { describe, expect, test } from '@jest/globals'
 import { create } from 'react-test-renderer'
-import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from '../Stats'
 
 describe('<Stats />', () => {
   test('Stats should not have lexical errors.', () => {

@@ -1,10 +1,8 @@
-import React, { useState, createContext, useContext } from 'react'
-import { Text, StatusBar, View } from 'react-native'
+import React, { createContext, useContext } from 'react'
+import { Text, View } from 'react-native'
 import { styles } from './Styles'
 
-
 // create a function and a button that will reload the values for display
-
 
 const caKey = 'correctAnswers'
 const iaKey = 'incorrectAnswers'
@@ -13,7 +11,7 @@ const stats = {
   iaKey: getIncorrect()
 }
 
-function isWindowed() {
+function isWindowed () {
   try {
     return localStorage === window.localStorage
   } catch (e) {
@@ -21,21 +19,21 @@ function isWindowed() {
   }
 }
 
-function setCorrect(correctAnswers) {
+function setCorrect (correctAnswers) {
   stats.caKey = correctAnswers
   if (isWindowed()) {
     localStorage.setItem(caKey, correctAnswers)
   }
 }
 
-function setIncorrect(incorrectAnswers) {
+function setIncorrect (incorrectAnswers) {
   stats.iaKey = incorrectAnswers
   if (isWindowed()) {
     localStorage.setItem(iaKey, incorrectAnswers)
   }
 }
 
-function getCorrect() {
+function getCorrect () {
   try {
     if (isWindowed()) {
       return parseInt(localStorage.getItem(caKey))
@@ -47,7 +45,7 @@ function getCorrect() {
   }
 }
 
-function getIncorrect() {
+function getIncorrect () {
   try {
     if (isWindowed()) {
       return parseInt(localStorage.getItem(iaKey))
@@ -59,11 +57,11 @@ function getIncorrect() {
   }
 }
 
-function incrementCorrect() {
+function incrementCorrect () {
   setCorrect(getCorrect() + 1)
 }
 
-function incrementIncorrect() {
+function incrementIncorrect () {
   setIncorrect(getIncorrect() + 1)
 }
 
