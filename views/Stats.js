@@ -2,6 +2,7 @@ import React, { useState, createContext, useContext } from 'react'
 import { Text, StatusBar, View } from 'react-native'
 import { styles } from './Styles'
 
+
 // create a function and a button that will reload the values for display
 
 
@@ -12,19 +13,35 @@ const stats = {
   iaKey: getIncorrect()
 }
 
+function isWindowed() {
+  try {
+    return localStorage === window.localStorage
+  } catch (e) {
+    return false
+  }
+}
+
 function setCorrect(correctAnswers) {
   stats.caKey = correctAnswers
-  localStorage.setItem(caKey, correctAnswers)
+  if (isWindowed()) {
+    localStorage.setItem(caKey, correctAnswers)
+  }
 }
 
 function setIncorrect(incorrectAnswers) {
   stats.iaKey = incorrectAnswers
-  localStorage.setItem(iaKey, incorrectAnswers)
+  if (isWindowed()) {
+    localStorage.setItem(iaKey, incorrectAnswers)
+  }
 }
 
 function getCorrect() {
   try {
-    return parseInt(localStorage.getItem(caKey))
+    if (isWindowed()) {
+      return parseInt(localStorage.getItem(caKey))
+    } else {
+      return stats.caKey
+    }
   } catch (e) {
     return 0
   }
@@ -32,7 +49,11 @@ function getCorrect() {
 
 function getIncorrect() {
   try {
-    return parseInt(localStorage.getItem(iaKey))
+    if (isWindowed()) {
+      return parseInt(localStorage.getItem(iaKey))
+    } else {
+      return stats.iaKey
+    }
   } catch (e) {
     return 0
   }
