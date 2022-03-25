@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, createContext, useContext } from 'react'
 import { Text, StatusBar, View } from 'react-native'
 import { styles } from './Styles'
 
@@ -8,6 +8,7 @@ import { styles } from './Styles'
 const caKey = 'correctAnswers'
 const iaKey = 'incorrectAnswers'
 const fs = require('fs');
+//const stats = readStats()
 const stats = {
   caKey: 0,
   iaKey: 0
@@ -33,10 +34,12 @@ function readStats() {
 
 function setCorrect(correctAnswers) {
   stats.caKey = correctAnswers
+  //writeStats()
 }
 
 function setIncorrect(incorrectAnswers) {
   stats.iaKey = incorrectAnswers
+  //writeStats()
 }
 
 function getCorrect() {
@@ -55,11 +58,14 @@ function incrementIncorrect() {
   setIncorrect(getIncorrect() + 1)
 }
 
+export const userStats = createContext(stats)
+
 function Stats () {
+  const renderStats = useContext(userStats)
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Number of Correct Answers: {stats.caKey}</Text>
-      <Text style={styles.text}>Number of Incorrect Answers: {stats.iaKey}</Text>
+      <Text style={styles.text}>Number of Correct Answers: {renderStats.caKey} </Text>
+      <Text style={styles.text}>Number of Incorrect Answers: {renderStats.iaKey} </Text>
     </View>
   )
 }
