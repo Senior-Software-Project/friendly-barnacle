@@ -1,28 +1,69 @@
 import React from 'react'
 import { Text, StatusBar, View } from 'react-native'
 import { styles } from './Styles'
-import { iaKey, caKey } from './Puzzler'
-// alert('iaKey', iaKey)
-// alert('cakey', caKey)
-// import { Button } from 'react-native'
 
 // create a function and a button that will reload the values for display
 
-async function Stats () {
-  // eslint-disable-next-line no-return-assign
-  const itemI = JSON.parse(await Storage.getItem({ key: `${iaKey}` }))
-  const itemC = JSON.parse(await Storage.getItem({ key: `${caKey}` }))
+
+const caKey = 'correctAnswers'
+const iaKey = 'incorrectAnswers'
+const fs = require('fs');
+const stats = {
+  caKey: 0,
+  iaKey: 0
+}
+
+function writeStats() {
+  const data = JSON.stringify(stats);
+  fs.writeFile('stats.json', data, (err) => {
+      if (err) {
+          throw err
+      }
+  })
+}
+
+function readStats() {
+  fs.readFile('stats.json', 'utf-8', (err, data) => {
+      if (err) {
+          throw err
+      }
+      return JSON.parse(data.toString());
+  })
+}
+
+function setCorrect(correctAnswers) {
+  stats.caKey = correctAnswers
+}
+
+function setIncorrect(incorrectAnswers) {
+  stats.iaKey = incorrectAnswers
+}
+
+function getCorrect() {
+  return stats.caKey
+}
+
+function getIncorrect() {
+  return stats.iaKey
+}
+
+function incrementCorrect() {
+  setCorrect(getCorrect() + 1)
+}
+
+function incrementIncorrect() {
+  setIncorrect(getIncorrect() + 1)
+}
+
+function Stats () {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Number of Correct Questions: {itemC}
-      {/* localStorage.getItem(caKey) */}
-      </Text>
-      <Text style={styles.text}>Number of Incorrect Questions: {itemI}
-      {/* localStorage.getItem(iaKey) */}
-      </Text>
-      <StatusBar style='auto' />
+      <Text style={styles.text}>Number of Correct Answers: {stats.caKey}</Text>
+      <Text style={styles.text}>Number of Incorrect Answers: {stats.iaKey}</Text>
     </View>
   )
 }
+
+export { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect }
 
 export default Stats

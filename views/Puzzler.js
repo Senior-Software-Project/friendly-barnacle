@@ -2,15 +2,7 @@ import React from 'react'
 import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'react-native'
 import { styles } from './Styles'
 import { decode } from 'html-entities'
-import { Storage } from 'expo-storage'
-
-const iaKey = 'incorrectAnswers'
-const caKey = 'correctAnswers'
-
-let correctAnswers = 0
-let incorrectAnswers = 0
-let saveCorrect
-let saveIncorrect
+import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from './Stats'
 
 // Puzzle Page
 function Puzzler () {
@@ -20,11 +12,6 @@ function Puzzler () {
   const [type, setType] = React.useState('')
   const [selected, setSelected] = React.useState('')
 
-  // let questionsSeen
-
-  localStorage.setItem(caKey, correctAnswers)
-  localStorage.setItem(iaKey, incorrectAnswers)
-
   function shuffleArray (array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
@@ -33,7 +20,7 @@ function Puzzler () {
     return array
   }
 
-  const fetchApiCall = () => {
+  const fetchApiCall = async () => {
     fetch('https://opentdb.com/api.php?amount=1', {
       method: 'GET'
     })
@@ -50,31 +37,24 @@ function Puzzler () {
         console.log(err)
       })
   }
-  // eslint-disable-next-line no-debugger
-  debugger
+
   if (type === 'multiple') {
     return (
       <View style={styles.container}>
-        {(async () => {
+        { () => {
           if (selected === correct) {
-            correctAnswers += 1
-            // alert('correct', correctAnswers)
-            // localStorage.setItem(caKey, correctAnswers)
-            // return <Text style={styles.text}>Correct!!</Text>
-            await Storage.setItem({ key: `${caKey}`, value: `${correctAnswers}` })
-            return <Text style={styles.text}>Number of correct answers : {correctAnswers}</Text>
+            return (
+              incrementCorrect(),
+              <Text style={styles.text}>Number of correct answers : {getCorrect()}</Text>
+            )
           } else if (selected !== '' && selected !== correct) {
-            incorrectAnswers += 1
-            // localStorage.setItem(iaKey, incorrectAnswers)
-            await Storage.setItem({ key: `${iaKey}`, value: `${incorrectAnswers}` })
-            // return <Text style={styles.text}>WRONG!!!!</Text>
-            return <Text style={styles.text}>Number of incorrect answers : {incorrectAnswers}</Text>
+            return (
+              incrementIncorrect(),
+              <Text style={styles.text}>Number of incorrect answers : {getIncorrect()}</Text>
+            )
           }
-          saveIncorrect = incorrectAnswers
-          saveCorrect = correctAnswers
-          alert('save inc', saveIncorrect)
-          alert('save corr', saveCorrect)
-        })()}
+        }
+      }
         <Text style={styles.text}>{question}</Text>
         <Text style={styles.text}>{type}</Text>
         <View style={styles.row}>
@@ -102,28 +82,26 @@ function Puzzler () {
   } else {
     return (
       <View style={styles.container}>
-        {async () => {
+        { () => {
           if (selected === correct) {
-            correctAnswers = correctAnswers++
-            // alert('retCorr', correctAnswers)
-            // localStorage.setItem('correctAnswers', correctAnswers)
-            // return <Text style={styles.text}>Correct!!</Text>
-            await Storage.setItem({ key: `${caKey}`, value: `${correctAnswers}` })
-            return <Text style={styles.text}>Correct : {correctAnswers}</Text>
+            return (
+              incrementCorrect(),
+              <Text style={styles.text}>Correct : {getCorrect()}</Text>
+            )
+
           } else if (selected !== '' && selected !== correct) {
-            incorrectAnswers = incorrectAnswers++
-            // alert('retInCorr', incorrectAnswers)
-            // localStorage.setItem('incorrectAnswers', incorrectAnswers)
-            // return <Text style={styles.text}>WRONG!!!!</Text>
-            await Storage.setItem({ key: `${iaKey}`, value: `${incorrectAnswers}` })
-            return <Text style={styles.text}>WRONG : {incorrectAnswers}</Text>
+            return (
+              incrementIncorrect(),
+              <Text style={styles.text}>WRONG : {getIncorrect()}</Text>
+            )
           }
-        }})(){'}'}
+        }
+      }
 
         <Text style={styles.text}>{decodeURI(question)}</Text>
         <Text style={styles.text}>{type}</Text>
         <View style={styles.rowBol}>
-          {incorrect.map((answer) => (
+        { incorrect.map((answer) => (
             <TouchableOpacity
               style={[
                 styles.button,
@@ -135,7 +113,8 @@ function Puzzler () {
             >
               <Text style={styles.text}>{decodeURI(answer)}</Text>
             </TouchableOpacity>
-          ))}
+          ))
+        }
         </View>
         <TouchableHighlight onPress={fetchApiCall}>
           <Text style={styles.text}>Press to get Question</Text>
@@ -146,7 +125,5 @@ function Puzzler () {
     )
   }
 }
-
-export { iaKey, caKey }
 
 export default Puzzler
