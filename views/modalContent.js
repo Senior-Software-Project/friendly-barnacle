@@ -1,46 +1,43 @@
 import React, { useState } from 'react'
 import {
-    Text,
-    TouchableOpacity,
-    View,
-    Button
-  } from 'react-native'
+  Text,
+  View,
+  Button
+} from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
-import { Platform } from 'expo-modules-core';
-
+import { Platform } from 'expo-modules-core'
 
 const ModalContent = () => {
+  const [date, setDate] = useState(new Date())
+  const [mode, setMode] = useState('date')
+  const [show, setShow] = useState(false)
+  const [text, setText] = useState('Empty')
 
-    const [date, setDate] = useState(new Date());
-    const [mode, setMode] = useState('date');
-    const [show, setShow] = useState(false);
-    const [text, setText] = useState('Empty');
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date
+    setShow(Platform.OS === 'android')
+    setDate(currentDate)
 
-    const onChange = (event, selectedDate) => {
-        const currentDate = selectedDate || date;
-        setShow(Platform.OS == 'android');
-        setDate(currentDate);
+    const tempDate = new Date(currentDate)
+    const fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear()
+    const fTime = 'Hours:' + tempDate.getHours() + ' | Miniutes:' + tempDate.getMinutes()
+    setText(fDate + '\n' + fTime)
 
-        let tempDate = new Date(currentDate);
-        let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear();
-        let fTime = 'Hours:' + tempDate.getHours() + ' | Miniutes:' + tempDate.getMinutes()
-        setText(fDate + '\n' + fTime)
+    console.log(fDate + ' (' + fTime + ') ')
+  }
 
-        console.log(fDate + ' (' + fTime + ') ')
-    }
-
-    const showMode = (currentMode) => {
-        setShow(true);
-        setMode(currentMode);
-    }
-    return (
+  const showMode = (currentMode) => {
+    setShow(true)
+    setMode(currentMode)
+  }
+  return (
         <View>
-            
+
             <Text>{text}</Text>
-            <View style = {{margin: 20}}>
+            <View style = {{ margin: 20 }}>
                 <Button title = 'DatePicker' onPress={() => showMode('date')}/>
             </View>
-            <View style = {{margin: 20}}>
+            <View style = {{ margin: 20 }}>
                 <Button title = 'TimePicker' onPress={() => showMode('time')}/>
             </View>
             {show && (
@@ -55,8 +52,7 @@ const ModalContent = () => {
 
         </View>
 
-
-    );
+  )
 }
 
-export default ModalContent;
+export default ModalContent
