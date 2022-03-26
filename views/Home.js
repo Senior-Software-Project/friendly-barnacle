@@ -10,7 +10,7 @@ import {
   Modal,
   Pressable
 } from 'react-native'
-
+import { styles } from './Styles'
 import { images } from '../components'
 
 const HomeScreen = () => {
@@ -88,44 +88,5 @@ const HomeScreen = () => {
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1D1D23'
-  },
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 1
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  modalToggle: {
-    flex: 1,
-    padding: 10,
-    justifyContent: 'flex-end',
-    alignSelf: 'center'
-
-  }
-})
 
 export default HomeScreen
