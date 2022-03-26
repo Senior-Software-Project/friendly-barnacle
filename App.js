@@ -34,4 +34,4 @@ const App = () => {
   )
 }
 
-export default App// { App, getAppStack }
+export default App
