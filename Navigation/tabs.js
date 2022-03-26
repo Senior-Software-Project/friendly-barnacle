@@ -22,6 +22,21 @@ function MenuIcon(icon) {
   )
 }
 
+const TabScreen = (name, component, icon) => {
+  return (
+    <Tab.Screen
+      name = {name}
+      component = {component}
+      options = {{tabBarIcon: MenuIcon(icon)}}
+    />
+  )
+}
+
+const alarmTab = TabScreen('Alarm', HomeScreen, images.alarm)
+const puzzleTab = TabScreen('Puzzler', Puzzler, images.puzzle)
+const settingsTab = TabScreen('Settings', Settings, images.settings)
+const statsTab = TabScreen('Stats', Stats, images.stats)
+
 const Tabs = () => {
   return (
     <Tab.Navigator
@@ -34,26 +49,10 @@ const Tabs = () => {
         headerShown: false
       }}
     >
-        <Tab.Screen
-          name = 'Alarm'
-          component = {HomeScreen}
-          options = {{tabBarIcon: MenuIcon(images.alarm)}}
-        />
-        <Tab.Screen
-          name = 'Puzzler'
-          component = {Puzzler}
-          options = {{tabBarIcon: MenuIcon(images.puzzle)}}
-        />
-        <Tab.Screen
-          name = 'Settings'
-          component = {Settings}
-          options = {{tabBarIcon: MenuIcon(images.settings)}}
-        />
-        <Tab.Screen
-          name = 'Stats'
-          component = {Stats}
-          options = {{tabBarIcon: MenuIcon(images.stats)}}
-        />
+      {alarmTab}
+      {puzzleTab}
+      {settingsTab}
+      {statsTab}
     </Tab.Navigator>
   )
 }
