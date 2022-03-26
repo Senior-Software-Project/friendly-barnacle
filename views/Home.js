@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 
 import { images } from '../components'
+import ModalContent from './modalContent'
 
 const HomeScreen = () => {
   function renderHeader () {
@@ -49,8 +50,9 @@ const HomeScreen = () => {
           setModalVisible(!modalVisible)
         }}
       >
-        <Text style={styles.modalText}>Set Alarm!</Text>
         <View style={styles.modalView}>
+          <Text style={styles.modalText}>Set Alarm!</Text>
+          <ModalContent/>
           <View>
             <Pressable
               onPress={() => setModalVisible(false)}
@@ -92,6 +94,7 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: 200,
     backgroundColor: '#1D1D23'
   },
   shadow: {
@@ -108,11 +111,11 @@ const styles = StyleSheet.create({
     margin: 20,
     backgroundColor: 'white',
     borderRadius: 20,
-    padding: 35,
+    padding: 140,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
-      width: 0,
+      width: 2,
       height: 2
     },
     shadowOpacity: 0.25,
