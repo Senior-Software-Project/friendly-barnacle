@@ -5,3 +5,6 @@
 
 
 An alarm app with github suggested repo name.
+npm install -g expo-cli  
+npm install react-native-alarm-manager
+
