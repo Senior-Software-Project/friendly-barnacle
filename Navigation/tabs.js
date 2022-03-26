@@ -22,7 +22,7 @@ function MenuIcon(icon) {
   )
 }
 
-const TabScreen = (name, component, icon) => {
+function TabScreen(name, component, icon) {
   return (
     <Tab.Screen
       name = {name}
