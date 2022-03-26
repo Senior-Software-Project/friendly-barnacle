@@ -65,14 +65,17 @@ function incrementIncorrect () {
   setIncorrect(getIncorrect() + 1)
 }
 
-const userStats = createContext(stats)
+function Stat (props) {
+  return (
+    <Text style={styles.text}>{props.stat}</Text>
+  )
+}
 
 function Stats () {
-  const renderStats = useContext(userStats)
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Number of Correct Answers: {renderStats.caKey} </Text>
-      <Text style={styles.text}>Number of Incorrect Answers: {renderStats.iaKey} </Text>
+      <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
+      <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
     </View>
   )
 }
