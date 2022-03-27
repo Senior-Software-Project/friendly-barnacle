@@ -16,5 +16,6 @@ describe('<Splash />', () => {
     const nav = createNativeStackNavigator().Navigator
     const tree = JSON.stringify(create(Splash))
     expect(tree).toMatch('null')
+    expect(nav).toMatch('null')
   })
 })

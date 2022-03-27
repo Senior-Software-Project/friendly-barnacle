@@ -1,6 +1,7 @@
-import React, { createContext, useContext } from 'react'
+import React from 'react'
 import { Text, View } from 'react-native'
 import { styles } from './Styles'
+import PropTypes from 'prop-types'
 
 // create a function and a button that will reload the values for display
 
@@ -63,6 +64,10 @@ function incrementCorrect () {
 
 function incrementIncorrect () {
   setIncorrect(getIncorrect() + 1)
+}
+
+Stat.propTypes = {
+  stat: PropTypes.string
 }
 
 function Stat (props) {

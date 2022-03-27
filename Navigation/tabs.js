@@ -6,9 +6,8 @@ import { images } from '../components'
 
 const Tab = createBottomTabNavigator()
 
-function MenuIcon(icon) {
+function MenuIcon (icon, focused) {
   return (
-     ({ focused }) => (
       <Image
         source = {icon}
         resizeMode = "contain"
@@ -18,16 +17,15 @@ function MenuIcon(icon) {
           tintColor: focused ? '#5A57F7' : '#FFFFFF'
         }}
       />
-    )
   )
 }
 
-function TabScreen(name, component, icon) {
+function TabScreen (name, component, icon) {
   return (
     <Tab.Screen
       name = {name}
       component = {component}
-      options = {{tabBarIcon: MenuIcon(icon)}}
+      options = {{ tabBarIcon: ({ focused }) => (MenuIcon(icon, focused)) }}
     />
   )
 }
