@@ -4,7 +4,13 @@ import { styles } from './Styles'
 import PropTypes from 'prop-types'
 import { useIsFocused } from '@react-navigation/native'
 
-// create a function and a button that will reload the values for display
+Stat.propTypes = {
+  stat: PropTypes.string
+}
+
+Stats.propTypes = {
+  navigation: PropTypes.object
+}
 
 const caKey = 'correctAnswers'
 const iaKey = 'incorrectAnswers'
@@ -65,10 +71,6 @@ function incrementCorrect () {
 
 function incrementIncorrect () {
   setIncorrect(getIncorrect() + 1)
-}
-
-Stat.propTypes = {
-  stat: PropTypes.string
 }
 
 function Stat (props) {

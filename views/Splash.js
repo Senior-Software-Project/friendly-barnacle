@@ -1,4 +1,4 @@
-import { React, useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { StyleSheet, Animated, Text, Button, Platform, View, TouchableOpacity } from 'react-native'
 import AppLoading from 'expo-app-loading'
 import { Asset } from 'expo-asset'
@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import getAppStack from '../App'
 
 Splash.propTypes = {
-  navigation: PropTypes.object.isRequired
+  navigation: PropTypes.object
 }
 
 AnimatedAppLoader.propTypes = {
