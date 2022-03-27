@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   View,
   SafeAreaView,
-  Image,
   Modal,
   Pressable
 } from 'react-native'

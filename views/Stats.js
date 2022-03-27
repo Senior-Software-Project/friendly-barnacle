@@ -85,7 +85,7 @@ function Stats () {
   useEffect(() => {
     correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
     incorrectCount = <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
-  }), [isFocused]
+  }, [isFocused])
   return (
     <View style={styles.container}>
       {correctCount}

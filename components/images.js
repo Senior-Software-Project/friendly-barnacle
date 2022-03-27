@@ -1,3 +1,4 @@
+import React from 'react'
 import { Image } from 'react-native'
 
 export const images = {
@@ -35,7 +36,7 @@ export const images = {
 }
 
 // Write images function that returns a resized image.
-export function getImage(image, width, height, customStyle, resizeMode = 'contain') {
+export function getImage (image, width, height, customStyle, resizeMode = 'contain') {
   return (
     <Image
       source = {image}

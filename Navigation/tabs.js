@@ -1,5 +1,4 @@
 import React from 'react'
-import { Image } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeScreen, Puzzler, Settings, Stats } from '../views'
 import { images, getImage } from '../components/images'
@@ -11,8 +10,10 @@ function TabScreen (name, component, icon, width, height) {
     <Tab.Screen
       name = {name}
       component = {component}
-      options = {{ tabBarIcon: ({ focused }) => (getImage(icon, width, height,
-        {tintColor: focused ? '#5A57F7' : '#FFFFFF'})) }}
+      options = {{
+        tabBarIcon: ({ focused }) => (getImage(icon, width, height,
+          { tintColor: focused ? '#5A57F7' : '#FFFFFF' }))
+      }}
     />
   )
 }
