@@ -1,7 +1,8 @@
+import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Splash from '../Splash'
+import { Splash } from '../Splash'
 import { describe, expect, test } from '@jest/globals'
-import { create } from 'react-test-renderer'
+import renderer, { create } from 'react-test-renderer'
 
 describe('<Splash />', () => {
   test('Splash should not have lexical errors.', () => {
@@ -17,5 +18,9 @@ describe('<Splash />', () => {
     const tree = JSON.stringify(create(Splash))
     expect(tree).toMatch('null')
     expect(nav).toBeTruthy()
+  })
+  test('Is Splash rendering', () => {
+    const tree = renderer.create(<Splash />).toJSON()
+    expect(tree.children.length).toBe(3)
   })
 })
