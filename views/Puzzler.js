@@ -27,7 +27,6 @@ function Puzzler () {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.results[0])
         setQuestion(decode(response.results[0].question))
         setType(response.results[0].type)
         setIncorrect(shuffleArray(decode(response.results[0].incorrect_answers.concat(response.results[0].correct_answer))))

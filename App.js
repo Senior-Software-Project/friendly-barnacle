@@ -4,8 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AnimatedAppLoader } from './views/Splash'
 import Tabs from './Navigation/tabs'
 import { Puzzler, Settings, Splash, Stats } from './views'
-
-const splashImage = require('././assets/splash.png')
+import { images } from './components/images'
 
 const Stack = createNativeStackNavigator()
 
@@ -16,7 +15,7 @@ export const getAppStack = () => {
 const App = () => {
   return (
     <NavigationContainer theme={DarkTheme}>
-      <AnimatedAppLoader image={splashImage}>
+      <AnimatedAppLoader image={images.splash}>
         <Stack.Navigator
           screenOptions={{
             headerShown: false

@@ -2,38 +2,25 @@ import React from 'react'
 import { Image } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeScreen, Puzzler, Settings, Stats } from '../views'
-import { images } from '../components'
+import { images, getImage } from '../components/images'
 
 const Tab = createBottomTabNavigator()
 
-function MenuIcon (icon, focused) {
-  return (
-      <Image
-        source = {icon}
-        resizeMode = "contain"
-        style = {{
-          width: 45,
-          height: 45,
-          tintColor: focused ? '#5A57F7' : '#FFFFFF'
-        }}
-      />
-  )
-}
-
-function TabScreen (name, component, icon) {
+function TabScreen (name, component, icon, width, height) {
   return (
     <Tab.Screen
       name = {name}
       component = {component}
-      options = {{ tabBarIcon: ({ focused }) => (MenuIcon(icon, focused)) }}
+      options = {{ tabBarIcon: ({ focused }) => (getImage(icon, width, height,
+        {tintColor: focused ? '#5A57F7' : '#FFFFFF'})) }}
     />
   )
 }
 
-const alarmTab = TabScreen('Alarm', HomeScreen, images.alarm)
-const puzzleTab = TabScreen('Puzzler', Puzzler, images.puzzle)
-const settingsTab = TabScreen('Settings', Settings, images.settings)
-const statsTab = TabScreen('Stats', Stats, images.stats)
+const alarmTab = TabScreen('Alarm', HomeScreen, images.alarm, 45, 45)
+const puzzleTab = TabScreen('Puzzler', Puzzler, images.puzzle, 45, 45)
+const settingsTab = TabScreen('Settings', Settings, images.settings, 50, 50)
+const statsTab = TabScreen('Stats', Stats, images.stats, 50, 50)
 
 const Tabs = () => {
   return (

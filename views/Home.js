@@ -10,8 +10,8 @@ import {
   Pressable
 } from 'react-native'
 import { styles } from './Styles'
-import { images } from '../components'
-import ModalContent from './modalContent'
+import { images, getImage } from '../components/images'
+import ModalContent from '../components/modalContent'
 
 const HomeScreen = () => {
   function renderHeader () {
@@ -24,14 +24,7 @@ const HomeScreen = () => {
             justifyContent: 'center'
           }}
         >
-          <Image
-            source={images.alarmHeader}
-            resizeMode = "contain"
-            style = {{
-              width: 45,
-              height: 23
-            }}
-          />
+          {getImage(images.alarmHeader, 45, 23)}
         </TouchableOpacity>
       </View>
     )
@@ -56,14 +49,7 @@ const HomeScreen = () => {
             <Pressable
               onPress={() => setModalVisible(false)}
             >
-              <Image
-                source ={images.clear}
-                resizeMode = "contain"
-                style = {{
-                  width: 25,
-                  height: 25
-                }}
-              />
+              {getImage(images.clear, 25, 25)}
             </Pressable>
           </View>
         </View>
@@ -76,14 +62,7 @@ const HomeScreen = () => {
           }}
           onPress = {() => setModalVisible(true)}
         >
-          <Image
-            source={images.footer}
-            resizeMode = "contain"
-            style = {{
-              width: 80,
-              height: 80
-            }}
-          />
+          {getImage(images.footer, 80, 80)}
         </Pressable>
       </View>
     </SafeAreaView>
