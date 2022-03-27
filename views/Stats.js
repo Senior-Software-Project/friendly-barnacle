@@ -80,7 +80,7 @@ function Stat (props) {
 let correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
 let incorrectCount = <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
 
-function Stats () {
+function Stats ({ navigation }) {
   const isFocused = useIsFocused()
   useEffect(() => {
     correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
