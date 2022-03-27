@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { styles } from './Styles'
 import PropTypes from 'prop-types'
+import { useIsFocused } from '@react-navigation/native'
 
 // create a function and a button that will reload the values for display
 
@@ -76,11 +77,19 @@ function Stat (props) {
   )
 }
 
+let correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
+let incorrectCount = <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
+
 function Stats () {
+  const isFocused = useIsFocused()
+  useEffect(() => {
+    correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
+    incorrectCount = <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
+  }), [isFocused]
   return (
     <View style={styles.container}>
-      <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
-      <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
+      {correctCount}
+      {incorrectCount}
     </View>
   )
 }
