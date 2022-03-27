@@ -1,4 +1,3 @@
-import '../index.js'
 import { describe, expect, test } from '@jest/globals'
 
 describe('index', () => {
