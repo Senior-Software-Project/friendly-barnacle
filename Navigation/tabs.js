@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeScreen, Puzzler, Settings, Stats } from '../views'
 import { images, getImage } from '../components/images'
@@ -25,21 +26,23 @@ const statsTab = TabScreen('Stats', Stats, images.stats, 50, 50)
 
 const Tabs = () => {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: '#34344A',
-          borderTopWidth: 0
-        },
-        headerShown: false
-      }}
-    >
-      {alarmTab}
-      {puzzleTab}
-      {settingsTab}
-      {statsTab}
-    </Tab.Navigator>
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={{
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            backgroundColor: '#34344A',
+            borderTopWidth: 0
+          },
+          headerShown: false
+        }}
+      >
+        {alarmTab}
+        {puzzleTab}
+        {settingsTab}
+        {statsTab}
+      </Tab.Navigator>
+    </NavigationContainer>
   )
 }
 

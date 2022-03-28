@@ -1,42 +1,30 @@
 import React from 'react'
-import App from '../App'
-import { describe, expect, test } from '@jest/globals'
-import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import App, { getAppStack } from '../App'
+import { describe, expect, test, beforeEach } from '@jest/globals'
+import { render } from '@testing-library/react-native'
 
-const getAppStack = App
+const mockedDispatch = jest.fn()
 
-describe('<App />', () => {
-  test('App should return Home as the initial view.', () => {
-    const result = JSON.stringify(App())
-    expect(result).toMatch('"initialRouteName":"Home"')
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: jest.fn(),
+      dispatch: mockedDispatch
+    })
+  }
+})
+
+describe('App Stack', () => {
+  beforeEach(() => {
+    mockedDispatch.mockClear()
   })
-  test('App stack returns NavigationStack', () => {
-    expect(App).toStrictEqual(getAppStack)
-    expect(JSON.stringify(getAppStack())).toMatch('"initialRouteName":"Home"')
-    expect(typeof (getAppStack)).toBe(typeof (() => {}))
-    expect(getAppStack).toBeTruthy()
-  })
-  test('Mock the app', () => {
-    const Stack = createNativeStackNavigator()
-    const component = {}
-    const params = {}
-    const app = () => {
-      return (
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="MockedScreen"
-              component={component}
-              initialParams={params}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      )
-    }
-    expect(app).toBeTruthy()
+
+  test('Render App', () => {
+    render(<App />)
   })
   test('Compare everything', () => {
-    expect(JSON.stringify(getAppStack())).toBe(JSON.stringify(App()))
+    expect(getAppStack()).toBeTruthy()
   })
 })

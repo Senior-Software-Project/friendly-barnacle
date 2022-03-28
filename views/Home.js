@@ -33,20 +33,22 @@ const HomeScreen = () => {
     <SafeAreaView style = {styles.container}>
       {renderHeader()}
       <Modal
-        animationType="slide"
+        testID = 'Modal.close'
+        animationType = 'slide'
         transparent={true}
-        visible={modalVisible}
+        visible = {modalVisible}
         onRequestClose={() => {
           Alert.alert('Modal has been closed.')
           setModalVisible(!modalVisible)
         }}
       >
-        <View style={styles.modalView}>
-          <Text style={styles.modalText}>Set Alarm!</Text>
+        <View style = {styles.modalView}>
+          <Text style = {styles.modalText}>Set Alarm!</Text>
           <ModalContent/>
           <View>
             <Pressable
-              onPress={() => setModalVisible(false)}
+              testID = 'Modal.open'
+              onPress = {() => setModalVisible(false)}
             >
               {getImage(images.clear, 25, 25)}
             </Pressable>

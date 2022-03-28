@@ -1,5 +1,5 @@
 import React from 'react'
-import View from '../tabs.js'
+import ModalContent from '../modalContent.js'
 import { describe, test, beforeEach } from '@jest/globals'
 import { render } from '@testing-library/react-native'
 
@@ -16,11 +16,11 @@ jest.mock('@react-navigation/native', () => {
   }
 })
 
-describe('Tabs Stack', () => {
+describe('ModalContent', () => {
   beforeEach(() => {
     mockedDispatch.mockClear()
   })
-  test('Render Tabs', () => {
-    render(<View />)
+  test('Render Modal Contant', () => {
+    render(<ModalContent />)
   })
 })

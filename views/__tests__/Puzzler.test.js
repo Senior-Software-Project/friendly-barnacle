@@ -1,19 +1,27 @@
-import Puzzler, { shuffleArray } from '../Puzzler'
 import React from 'react'
-import { describe, expect, test } from '@jest/globals'
-import { create } from 'react-test-renderer'
+import View, { shuffleArray } from '../Puzzler.js'
+import { describe, expect, test, beforeEach } from '@jest/globals'
+import { render } from '@testing-library/react-native'
 
-describe('<Puzzler />', () => {
-  test('Puzzler should not have lexical errors.', () => {
-    expect(<Puzzler />).toBeTruthy()
+const mockedDispatch = jest.fn()
+
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: jest.fn(),
+      dispatch: mockedDispatch
+    })
+  }
+})
+
+describe('Puzzler View', () => {
+  beforeEach(() => {
+    mockedDispatch.mockClear()
   })
-  test('Puzzler should not return null.', () => {
-    expect(typeof (<Puzzler/>)).not.toEqual(null)
-  })
-  test('Puzzler should return a View component.', () => {
-    const component = create(<Puzzler />)
-    const tree = component.toJSON()
-    expect(tree.type).toMatch('View')
+  test('Render Puzzler', () => {
+    render(<View />)
   })
   test('Verify shuffleArray', () => {
     const arr = [4, 3, 2, 1]
@@ -22,11 +30,5 @@ describe('<Puzzler />', () => {
     for (let i = 0; i < arr.length; i++) {
       expect(arr.includes(response[i])).toBeTruthy()
     }
-  })
-  test('Fetch api call', () => {
-    expect(true).toBeTruthy()
-  })
-  test('Verify returned jsx / React component', () => {
-    expect(true).toBeTruthy()
   })
 })
