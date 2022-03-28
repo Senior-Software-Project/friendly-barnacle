@@ -1,8 +1,16 @@
-import React, { createContext, useContext } from 'react'
+import React, { useEffect } from 'react'
 import { Text, View } from 'react-native'
 import { styles } from './Styles'
+import PropTypes from 'prop-types'
+import { useIsFocused } from '@react-navigation/native'
 
-// create a function and a button that will reload the values for display
+Stat.propTypes = {
+  stat: PropTypes.string
+}
+
+Stats.propTypes = {
+  navigation: PropTypes.object
+}
 
 const caKey = 'correctAnswers'
 const iaKey = 'incorrectAnswers'
@@ -65,14 +73,25 @@ function incrementIncorrect () {
   setIncorrect(getIncorrect() + 1)
 }
 
-const userStats = createContext(stats)
+function Stat (props) {
+  return (
+    <Text style={styles.text}>{props.stat}</Text>
+  )
+}
 
-function Stats () {
-  const renderStats = useContext(userStats)
+let correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
+let incorrectCount = <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
+
+function Stats ({ navigation }) {
+  const isFocused = useIsFocused()
+  useEffect(() => {
+    correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
+    incorrectCount = <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
+  }, [isFocused])
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Number of Correct Answers: {renderStats.caKey} </Text>
-      <Text style={styles.text}>Number of Incorrect Answers: {renderStats.iaKey} </Text>
+      {correctCount}
+      {incorrectCount}
     </View>
   )
 }

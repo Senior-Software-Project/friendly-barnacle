@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: 200,
     backgroundColor: '#1D1D23',
     alignItems: 'center',
     justifyContent: 'center'
@@ -35,6 +36,38 @@ const styles = StyleSheet.create({
   wrongAnswer: {
     backgroundColor: 'red',
     borderWidth: 0
+  },
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 1
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 140,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 2,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalToggle: {
+    flex: 1,
+    padding: 10,
+    justifyContent: 'flex-end',
+    alignSelf: 'center'
+
   }
 })
 
