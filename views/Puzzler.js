@@ -30,8 +30,7 @@ export async function fetchTrivia () {
         correct_answer: 'Bergamot oil',
         incorrect_answers: ['Lavender', 'Vanilla', 'Honey']
       }
-    }
-    )
+    })
 }
 
 // Puzzle Page
@@ -71,7 +70,7 @@ function Puzzler () {
       <Text style={styles.text}>{decodeURI(question)}</Text>
       <Text style={styles.text}>{type}</Text>
       <View testID = 'View.answers' style={isMultiple ? styles.row : styles.rowBol}>
-        {incorrect.map((answer, index) => (
+        {incorrect.map((answer) => (
           <TouchableOpacity
             style={[
               styles.button,
