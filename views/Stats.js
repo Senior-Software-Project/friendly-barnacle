@@ -96,6 +96,6 @@ function Stats ({ navigation }) {
   )
 }
 
-export { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect }
+export { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect, Stat }
 
 export default Stats
