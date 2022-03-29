@@ -4,14 +4,13 @@ import {
   Text,
   TouchableOpacity,
   View,
-  StyleSheet,
   SafeAreaView,
-  Image,
   Modal,
   Pressable
 } from 'react-native'
-
-import { images } from '../components'
+import { styles } from './Styles'
+import { images, getImage } from '../components/images'
+import ModalContent from '../components/modalContent'
 
 const HomeScreen = () => {
   function renderHeader () {
@@ -24,14 +23,7 @@ const HomeScreen = () => {
             justifyContent: 'center'
           }}
         >
-          <Image
-            source={images.alarmHeader}
-            resizeMode = "contain"
-            style = {{
-              width: 45,
-              height: 23
-            }}
-          />
+          {getImage(images.alarmHeader, 45, 23)}
         </TouchableOpacity>
       </View>
     )
@@ -49,20 +41,14 @@ const HomeScreen = () => {
           setModalVisible(!modalVisible)
         }}
       >
-        <Text style={styles.modalText}>Set Alarm!</Text>
         <View style={styles.modalView}>
+          <Text style={styles.modalText}>Set Alarm!</Text>
+          <ModalContent/>
           <View>
             <Pressable
               onPress={() => setModalVisible(false)}
             >
-              <Image
-                source ={images.clear}
-                resizeMode = "contain"
-                style = {{
-                  width: 25,
-                  height: 25
-                }}
-              />
+              {getImage(images.clear, 25, 25)}
             </Pressable>
           </View>
         </View>
@@ -75,57 +61,11 @@ const HomeScreen = () => {
           }}
           onPress = {() => setModalVisible(true)}
         >
-          <Image
-            source={images.footer}
-            resizeMode = "contain"
-            style = {{
-              width: 80,
-              height: 80
-            }}
-          />
+          {getImage(images.footer, 80, 80)}
         </Pressable>
       </View>
     </SafeAreaView>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1D1D23'
-  },
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 1
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  modalToggle: {
-    flex: 1,
-    padding: 10,
-    justifyContent: 'flex-end',
-    alignSelf: 'center'
-
-  }
-})
 
 export default HomeScreen

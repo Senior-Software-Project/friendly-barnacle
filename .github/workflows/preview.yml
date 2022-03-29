@@ -1,3 +1,4 @@
+name: 'Preview'
 on: [pull_request]
 jobs:
   publish:

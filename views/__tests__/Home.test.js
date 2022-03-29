@@ -17,4 +17,9 @@ describe('<HomeScreen />', () => {
     expect(childrenTypes).toMatch('"type":"Modal"')
     expect(childrenTypes).toMatch('"type":"View"')
   })
+  /* // Naughty!
+  test('Check HomeScreen contents', () => {
+    console.log(JSON.stringify(HomeScreen()))
+  })
+  */
 })
