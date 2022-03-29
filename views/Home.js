@@ -33,7 +33,6 @@ const HomeScreen = () => {
     <SafeAreaView style = {styles.container}>
       {renderHeader()}
       <Modal
-        testID = 'Modal.close'
         animationType = 'slide'
         transparent={true}
         visible = {modalVisible}
@@ -47,7 +46,7 @@ const HomeScreen = () => {
           <ModalContent/>
           <View>
             <Pressable
-              testID = 'Modal.open'
+              testID = 'Modal.close'
               onPress = {() => setModalVisible(false)}
             >
               {getImage(images.clear, 25, 25)}
@@ -61,6 +60,7 @@ const HomeScreen = () => {
             width: 80,
             justifyContent: 'center'
           }}
+          testID = 'Modal.open'
           onPress = {() => setModalVisible(true)}
         >
           {getImage(images.footer, 80, 80)}

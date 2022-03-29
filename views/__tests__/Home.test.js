@@ -1,8 +1,7 @@
 import React from 'react'
 import View from '../Home.js'
 import { describe, expect, test, beforeEach } from '@jest/globals'
-import { render } from '@testing-library/react-native'
-// import { HomeScreen } from '@testing-library/jest-dom'
+import { render, fireEvent, waitFor } from '@testing-library/react-native'
 
 const mockedDispatch = jest.fn()
 
@@ -30,30 +29,23 @@ describe('Homescreen View', () => {
   test('Homescreen Renders', () => {
     render(<View />)
   })
-  // test('Homescreen Renders Correctly', () => {
-  //   const tree = create(<HomeScreen />)
-  //   expect(tree).toMatchSnapshot()
-  // })
   test('Open & Close Modal', async () => {
     const { getByTestId } = render(<View />)
-    // expect(getByTestId('Modal.close')).toBeInTheDocument()
-    // expect(getByTestId('Modal.open')).toBeInTheDocument()
     expect(() => getByTestId('Modal.close')).toThrow(
       'Unable to find an element with testID: Modal.close'
     )
-    /*
     fireEvent.press(getByTestId('Modal.open'))
     await waitFor(() => getByTestId('Modal.open'))
     fireEvent.press(getByTestId('Modal.close'))
 
     expect(() => getByTestId('Modal.close')).toThrow(
-      'Unable to find an element with testID: Modal.close',
+      'Unable to find an element with testID: Modal.close'
     )
-    */
   })
 })
 
 /*
   Sources:
+  - https://spin.atomicobject.com/2021/02/24/react-navigation-5-unit-testing-components/
   - https://github.com/vanGalilea/react-native-testing/blob/master/__tests__/Modal.test.tsx
 */
