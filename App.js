@@ -8,7 +8,7 @@ import { images } from './components/images'
 
 const Stack = createNativeStackNavigator()
 
-export const getAppStack = () => {
+export function getAppStack () {
   return (Stack)
 }
 

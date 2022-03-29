@@ -27,7 +27,7 @@ function Puzzler () {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.results[0])
+        // console.log(response.results[0])
         setQuestion(decode(response.results[0].question))
         setType(response.results[0].type)
         setIncorrect(shuffleArray(decode(response.results[0].incorrect_answers.concat(response.results[0].correct_answer))))
@@ -65,16 +65,17 @@ function Puzzler () {
               selected !== correct && selected === answer && styles.wrongAnswer
             ]}
             key={answer}
-            onPress={() => setSelected(answer)}
+            testID = 'Question.answer'
+            onPress = {() => setSelected(answer)}
           >
-            <Text style={styles.text}>{decodeURI(answer)}</Text>
+            <Text style = {styles.text}>{decodeURI(answer)}</Text>
           </TouchableOpacity>
         ))}
       </View>
-      <TouchableHighlight onPress={fetchApiCall}>
-        <Text style={styles.text}>Press to get Question</Text>
+      <TouchableHighlight testID = 'Question.get' onPress={fetchApiCall}>
+        <Text style = {styles.text}>Press to get Question</Text>
       </TouchableHighlight>
-      <Text style={styles.text}>The Question</Text>
+      <Text style = {styles.text}>The Question</Text>
       <StatusBar style="auto" />
     </View>
   )

@@ -1,22 +1,23 @@
-import Stats, { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from '../Stats'
-import React from 'react'
-import { describe, expect, test } from '@jest/globals'
-// import { create } from 'react-test-renderer'
+import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from '../Stats.js'
+import { describe, expect, test, beforeEach } from '@jest/globals'
 
-describe('<Stats />', () => {
-  test('Stats should not have lexical errors.', () => {
-    expect(<Stats />).toBeTruthy()
+const mockedDispatch = jest.fn()
+
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: jest.fn(),
+      dispatch: mockedDispatch
+    })
+  }
+})
+
+describe('Stats View', () => {
+  beforeEach(() => {
+    mockedDispatch.mockClear()
   })
-  test('Stats should not return null.', () => {
-    expect(typeof (<Stats/>)).not.toEqual(null)
-  })
-  /*
-  test('Stats returns a View jsx element.', () => {
-    const component = create(<Stats />)
-    const tree = component.toJSON()
-    expect(tree.type).toMatch('View')
-  })
-  */
   test('Stats functions', () => {
     expect(getCorrect()).toBe(0)
     expect(getIncorrect()).toBe(0)
