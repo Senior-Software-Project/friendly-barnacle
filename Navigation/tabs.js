@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { HomeScreen, Puzzler, Settings, Stats } from '../views'
 import { images, getImage } from '../components/images'
