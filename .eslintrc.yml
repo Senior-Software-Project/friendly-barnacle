@@ -11,4 +11,7 @@ parserOptions:
   sourceType: module
 plugins:
   - react
+settings:
+  react:
+    version: detect
 rules: {}
