@@ -14,8 +14,8 @@ const ModalContent = () => {
   const [text, setText] = useState('Empty')
 
   const onChange = (event, selectedDate) => {
+    setShow(false)
     const currentDate = selectedDate || date
-    setShow(Platform.OS === 'android')
     setDate(currentDate)
 
     const tempDate = new Date(currentDate)
