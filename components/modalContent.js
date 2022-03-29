@@ -5,7 +5,6 @@ import {
   Button
 } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
-import { Platform } from 'expo-modules-core'
 
 const ModalContent = () => {
   const [date, setDate] = useState(new Date())
