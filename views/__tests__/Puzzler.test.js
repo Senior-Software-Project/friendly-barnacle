@@ -53,7 +53,7 @@ describe('Puzzler View', () => {
         })
       }
     }
-  })
+  }, 30000)
   test('Fetch Trivia Catches Errors', async () => {
     fetchMock.enableMocks()
     try {
