@@ -26,23 +26,21 @@ const statsTab = TabScreen('Stats', Stats, images.stats, 50, 50)
 
 const Tabs = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          tabBarShowLabel: false,
-          tabBarStyle: {
-            backgroundColor: '#34344A',
-            borderTopWidth: 0
-          },
-          headerShown: false
-        }}
-      >
-        {alarmTab}
-        {puzzleTab}
-        {settingsTab}
-        {statsTab}
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          backgroundColor: '#34344A',
+          borderTopWidth: 0
+        },
+        headerShown: false
+      }}
+    >
+      {alarmTab}
+      {puzzleTab}
+      {settingsTab}
+      {statsTab}
+    </Tab.Navigator>
   )
 }
 

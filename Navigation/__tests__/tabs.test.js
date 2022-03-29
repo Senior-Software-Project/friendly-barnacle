@@ -1,5 +1,6 @@
 import React from 'react'
 import View from '../tabs.js'
+import { NavigationContainer } from '@react-navigation/native'
 import { describe, test, beforeEach } from '@jest/globals'
 import { render } from '@testing-library/react-native'
 
@@ -21,6 +22,6 @@ describe('Tabs Stack', () => {
     mockedDispatch.mockClear()
   })
   test('Render Tabs', () => {
-    render(<View />)
+    render(<NavigationContainer><View /></NavigationContainer>)
   })
 })
