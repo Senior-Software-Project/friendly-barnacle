@@ -1,7 +1,10 @@
 import React from 'react'
-import View, { shuffleArray } from '../Puzzler.js'
+import View, { shuffleArray, fetchTrivia } from '../Puzzler.js'
+import { getCorrect } from '../Stats.js'
 import { describe, expect, test, beforeEach } from '@jest/globals'
 import { render, fireEvent, waitFor } from '@testing-library/react-native'
+import { act } from 'react-test-renderer'
+import fetchMock from 'jest-fetch-mock'
 
 const mockedDispatch = jest.fn()
 
@@ -19,6 +22,7 @@ jest.mock('@react-navigation/native', () => {
 describe('Puzzler View', () => {
   beforeEach(() => {
     mockedDispatch.mockClear()
+    fetchMock.resetMocks()
   })
   test('Render Puzzler', () => {
     render(<View />)
@@ -31,21 +35,31 @@ describe('Puzzler View', () => {
       expect(arr.includes(response[i])).toBeTruthy()
     }
   })
-  test('Select and answer trivia', async () => {
-    const { getByTestId } = render(<View />)
-    expect(() => getByTestId('Question.answer')).toThrow(
-      'Unable to find an element with testID: Question.answer'
-    )
-    fireEvent.press(getByTestId('Question.get'))
-    await waitFor(() => getByTestId('Question.get'))
-    // fireEvent.press(getByTestId('Question.answer'))
+  test('Fetch Trivia', async () => {
+    const result = await fetchTrivia()
+    expect(result).toBeTruthy()
   })
-  /*
-  expect(() => getByTestId('Modal.close')).toThrow(
-      'Unable to find an element with testID: Modal.close'
-    )
-  fireEvent.press(getByTestId('Modal.open'))
-  await waitFor(() => getByTestId('Modal.open'))
-  fireEvent.press(getByTestId('Modal.close'))
-  */
+  test('Trigger Fetch Trivia', async () => {
+    const { getByTestId, getAllByTestId } = render(<View />)
+    await waitFor(() => fireEvent.press(getByTestId('Question')))
+    expect(getByTestId('View.answers')).toBeTruthy()
+    const answers = getAllByTestId('Answers')
+    const correctCount = getCorrect()
+    for (let i = 0; i < answers.length; i++) {
+      if (correctCount === getCorrect()) {
+        act(() => {
+          fireEvent.press(answers[i])
+        })
+      }
+    }
+  })
+  test('Fetch Trivia Catches Errors', async () => {
+    fetchMock.enableMocks()
+    try {
+      await fetchTrivia()
+    } catch (e) {
+      expect(e).toMatch('FetchError')
+    }
+    fetchMock.dontMock()
+  })
 })

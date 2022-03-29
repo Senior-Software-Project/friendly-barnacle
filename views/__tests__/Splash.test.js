@@ -20,11 +20,8 @@ describe('Splash Animation', () => {
   beforeEach(() => {
     mockedDispatch.mockClear()
   })
-  test('Render Splash', () => {
-    create(<Splash />)
-  })
-  test('Splash Tree is Correct', () => {
-    const tree = create(<Splash />).toJSON()
+  test('Splash Tree is Correct', async () => {
+    const tree = await create(<Splash />).toJSON()
     expect(tree.children.length).toBe(3)
   })
 })

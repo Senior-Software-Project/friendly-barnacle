@@ -1,7 +1,7 @@
 import React from 'react'
 import App, { getAppStack } from '../App'
 import { describe, expect, test, beforeEach } from '@jest/globals'
-import { render } from '@testing-library/react-native'
+import { render, waitFor } from '@testing-library/react-native'
 
 const mockedDispatch = jest.fn()
 
@@ -21,8 +21,9 @@ describe('App Stack', () => {
     mockedDispatch.mockClear()
   })
 
-  test('Render App', () => {
-    render(<App />)
+  test('Render App', async () => {
+    const { findByTestId } = render(<App />)
+    await waitFor(() => { findByTestId('App.nav') })
   })
   test('Compare everything', () => {
     expect(getAppStack()).toBeTruthy()
