@@ -22,8 +22,6 @@ jest.mock('@react-navigation/native', () => {
 describe('Puzzler View', () => {
   beforeEach(() => {
     mockedDispatch.mockClear()
-    fetchMock.resetMocks()
-    jest.useFakeTimers()
   })
   test('Render Puzzler', () => {
     render(<View />)
