@@ -23,6 +23,7 @@ describe('Puzzler View', () => {
   beforeEach(() => {
     mockedDispatch.mockClear()
     fetchMock.resetMocks()
+    jest.useFakeTimers()
   })
   test('Render Puzzler', () => {
     render(<View />)
@@ -41,11 +42,7 @@ describe('Puzzler View', () => {
   })
   test('Trigger Fetch Trivia', async () => {
     const { getByTestId, getAllByTestId } = render(<View />)
-    if (setTimeout._isMockFunction || Object.prototype.hasOwnProperty.call(setTimeout, 'clock')) {
-      waitFor(() => fireEvent.press(getByTestId('Question')))
-    } else {
-      await waitFor(() => fireEvent.press(getByTestId('Question')))
-    }
+    await waitFor(() => fireEvent.press(getByTestId('Question')))
     expect(getByTestId('View.answers')).toBeTruthy()
     const answers = getAllByTestId('Answers')
     const correctCount = getCorrect()
@@ -73,4 +70,5 @@ describe('Puzzler View', () => {
   - [React Testing Library Timeout Helpers](https://github.com/testing-library/dom-testing-library/blob/main/src/helpers.js)
   - [React Testing Library waitFor](https://github.com/testing-library/dom-testing-library/blob/main/src/wait-for.js#L53)
   - [waitFor vs await waitFor Timeout Issue](https://github.com/callstack/react-native-testing-library/issues/506)
+  - [Jest & Github Actions](https://medium.com/swlh/jest-and-github-actions-eaf3eaf2427d)
 */
