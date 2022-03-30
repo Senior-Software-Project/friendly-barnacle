@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {
-  Alert,
   Text,
   TouchableOpacity,
   View,
@@ -42,23 +41,21 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
       <Modal
-        animationType="slide"
+        animationType = 'slide'
         transparent={true}
-        visible={modalVisible}
+        visible = {modalVisible}
         onRequestClose={() => {
           // Alert.alert('Modal has been closed.')
           setModalVisible(!modalVisible)
         }}
       >
-        <View style={styles.modalView}>
-          <Text style={styles.modalText}>Set Alarm!</Text>
+        <View style = {styles.modalView}>
+          <Text style = {styles.modalText}>Set Alarm!</Text>
           <ModalContent/>
           <View>
             <Pressable
-              onPress={() => {
-                setModalVisible(false)
-                // Alert.alert('Modal has been closed.')
-              }}
+              testID = 'Modal.close'
+              onPress = {() => setModalVisible(false)}
             >
               {getImage(images.clear, 25, 25)}
             </Pressable>
@@ -71,6 +68,7 @@ const HomeScreen = () => {
             width: 80,
             justifyContent: 'center'
           }}
+          testID = 'Modal.open'
           onPress = {() => setModalVisible(true)}
         >
           {getImage(images.footer, 80, 80)}

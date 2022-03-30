@@ -1,10 +1,27 @@
 import React from 'react'
-import Tabs from '../tabs.js'
-import { describe, expect, test } from '@jest/globals'
+import View from '../tabs.js'
+import { NavigationContainer } from '@react-navigation/native'
+import { describe, test, beforeEach } from '@jest/globals'
+import { render } from '@testing-library/react-native'
 
-describe('<Tabs />', () => {
-  test('Tabs should return a non null value', () => {
-    const result = JSON.stringify(<Tabs />)
-    expect(typeof (result)).not.toEqual(null)
+const mockedDispatch = jest.fn()
+
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: jest.fn(),
+      dispatch: mockedDispatch
+    })
+  }
+})
+
+describe('Tabs Stack', () => {
+  beforeEach(() => {
+    mockedDispatch.mockClear()
+  })
+  test('Render Tabs', () => {
+    render(<NavigationContainer><View /></NavigationContainer>)
   })
 })
