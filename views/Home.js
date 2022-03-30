@@ -11,6 +11,7 @@ import {
 import { styles } from './Styles'
 import { images, getImage } from '../components/images'
 import ModalContent from '../components/modalContent'
+import ReactNativeAN from 'react-native-alarm-notification'
 
 const HomeScreen = () => {
   function renderHeader () {
@@ -32,12 +33,20 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style = {styles.container}>
       {renderHeader()}
+      <View>
+        <TouchableOpacity
+                style = {styles.button}
+                onPress={ () => ReactNativeAN.stopAlarmSound()}
+        >
+          <Text>Stop Alarm</Text>
+        </TouchableOpacity>
+      </View>
       <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.')
+          // Alert.alert('Modal has been closed.')
           setModalVisible(!modalVisible)
         }}
       >
@@ -46,7 +55,10 @@ const HomeScreen = () => {
           <ModalContent/>
           <View>
             <Pressable
-              onPress={() => setModalVisible(false)}
+              onPress={() => {
+                setModalVisible(false)
+                // Alert.alert('Modal has been closed.')
+              }}
             >
               {getImage(images.clear, 25, 25)}
             </Pressable>

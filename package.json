@@ -1,7 +1,6 @@
 {
   "name": "alarm-app",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "fixStyle": "npx eslint --fix . --ext .js",
     "checkStyle": "npx eslint . --ext .js",
@@ -9,7 +8,10 @@
     "coverage": "jest --collectCoverage --",
     "testDebug": "jest -o --watch --coverage=false",
     "testFinal": "jest",
-    "updateSnapshots": "jest -u --coverage=false"
+    "updateSnapshots": "jest -u --coverage=false",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "^6.1.0",

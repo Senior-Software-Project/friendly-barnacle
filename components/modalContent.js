@@ -5,6 +5,7 @@ import {
   Button
 } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
+import ReactNativeAN from 'react-native-alarm-notification'
 
 const ModalContent = () => {
   const [date, setDate] = useState(new Date())
@@ -19,8 +20,28 @@ const ModalContent = () => {
 
     const tempDate = new Date(currentDate)
     const fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear()
-    const fTime = 'Hours:' + tempDate.getHours() + ' | Miniutes:' + tempDate.getMinutes()
+    const fTime = tempDate.getHours() + ':' + tempDate.getMinutes() + ':' + tempDate.getSeconds()
     setText(fDate + '\n' + fTime)
+
+    const alarmNotifData = {
+      title: 'asdf resdfa asdf',
+      message: 'asdf sdf asdsadf',
+      channel: 'my_channel_id',
+      small_icon: 'ic_launcher',
+      loop_sound: true,
+      sound_name: 'sound.mp3',
+      auto_cancel: false,
+
+      // You can add any additional data that is important for the notification
+      // It will be added to the PendingIntent along with the rest of the bundle.
+      // e.g.
+      data: { foo: 'bar' }
+    }
+
+    async function method () {
+      ReactNativeAN.sendNotification(alarmNotifData)
+    }
+    method()
 
     console.log(fDate + ' (' + fTime + ') ')
   }
