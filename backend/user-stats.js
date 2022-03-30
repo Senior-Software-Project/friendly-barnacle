@@ -18,7 +18,7 @@ export default function (app) {
     const index = _.findIndex(
       _userStats,
       (o) => {
-        //eslint-disable-next-line eqeqeq
+        // eslint-disable-next-line eqeqeq
         return o.userId == req.params.id
       }
     )
