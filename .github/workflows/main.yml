@@ -7,10 +7,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
-      run: npm install 
-    - name: Install Sonar module
-      run: npm install jest-sonar-reporter
+      run: npm install
     - name: Run ESLint
       run: npm run checkStyle
-    - name: Run tests
-      run: npm run testFinal
