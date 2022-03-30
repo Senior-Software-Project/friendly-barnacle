@@ -66,9 +66,6 @@
     "setupFiles": [
       "<rootDir>/jest/setup.js"
     ],
-    "setupFilesAfterEnv": [
-      "<rootDir>setupTest.js"
-    ],
     "testResultsProcessor": "jest-sonar-reporter",
     "testURL": "http://localhost/",
     "collectCoverage": true,
