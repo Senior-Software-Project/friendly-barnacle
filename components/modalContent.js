@@ -26,20 +26,23 @@ const ModalContent = () => {
     const alarmNotifData = {
       title: 'asdf resdfa asdf',
       message: 'asdf sdf asdsadf',
-      channel: 'my_channel_id',
+      channel: 'alarm',
       small_icon: 'ic_launcher',
       loop_sound: true,
       sound_name: 'sound.mp3',
-      auto_cancel: false,
+      auto_cancel: false
 
       // You can add any additional data that is important for the notification
       // It will be added to the PendingIntent along with the rest of the bundle.
       // e.g.
-      data: { foo: 'bar' }
     }
 
     async function method () {
-      ReactNativeAN.sendNotification(alarmNotifData)
+      const alarm = await ReactNativeAN.scheduleAlarm({ ...alarmNotifData, fire_date: ReactNativeAN.parseDate(tempDate)})
+      const alarms = await ReactNativeAN.getScheduledAlarms()
+
+      console.log(alarm) // { id: 1 }
+      console.log(alarms) // { id: 1 }
     }
     method()
 
