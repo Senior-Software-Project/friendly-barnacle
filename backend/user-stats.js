@@ -11,19 +11,20 @@ export default function (app) {
 
   /* Read */
   app.get('/userStats', (req, res) => {
-    res.send(_userStats)
+    res.json(_userStats.toString())
   })
 
   app.get('/userStats/:id', (req, res) => {
     const index = _.findIndex(
       _userStats,
       (o) => {
-        return o.userId === req.params.id
+        return o.userId == req.params.id
       }
     )
 
-    // res.json(`index ${index} found for param ${req.params.id}`);
-    res.json(_userStats[index])
+    res.json(`index ${index} found for param ${req.params.id}`);
+    //res.json(`record found at index ${index}`);
+    //res.json(_userStats[index])
   })
 
   /* Update */
