@@ -18,13 +18,13 @@ export default function (app) {
     const index = _.findIndex(
       _userStats,
       (o) => {
-        return o.userId == req.params.id
+        return o.userId === req.params.id
       }
     )
 
-    res.json(`index ${index} found for param ${req.params.id}`);
-    //res.json(`record found at index ${index}`);
-    //res.json(_userStats[index])
+    res.json(`index ${index} found for param ${req.params.id}`)
+    // res.json(`record found at index ${index}`);
+    // res.json(_userStats[index])
   })
 
   /* Update */
