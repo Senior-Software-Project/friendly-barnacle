@@ -5,7 +5,6 @@ import {
   Button
 } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
-import { Platform } from 'expo-modules-core'
 
 const ModalContent = () => {
   const [date, setDate] = useState(new Date())
@@ -14,8 +13,8 @@ const ModalContent = () => {
   const [text, setText] = useState('Empty')
 
   const onChange = (event, selectedDate) => {
+    setShow(false)
     const currentDate = selectedDate || date
-    setShow(Platform.OS === 'android')
     setDate(currentDate)
 
     const tempDate = new Date(currentDate)
