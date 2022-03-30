@@ -5,6 +5,7 @@ import {
   Button
 } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
+import Notification, { schedulePushNotification } from './notification.js'
 
 const ModalContent = () => {
   const [date, setDate] = useState(new Date())
@@ -21,7 +22,7 @@ const ModalContent = () => {
     const fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear()
     const fTime = 'Hours:' + tempDate.getHours() + ' | Miniutes:' + tempDate.getMinutes()
     setText(fDate + '\n' + fTime)
-
+    schedulePushNotification()
     console.log(fDate + ' (' + fTime + ') ')
   }
 
