@@ -24,8 +24,8 @@ const ModalContent = () => {
     setText(fDate + '\n' + fTime)
 
     const alarmNotifData = {
-      title: 'asdf resdfa asdf',
-      message: 'asdf sdf asdsadf',
+      title: 'Test Title',
+      message: 'Test Message',
       channel: 'alarm',
       small_icon: 'ic_launcher',
       loop_sound: true,
@@ -37,14 +37,13 @@ const ModalContent = () => {
       // e.g.
     }
 
-    async function method () {
-      const alarm = await ReactNativeAN.scheduleAlarm({ ...alarmNotifData, fire_date: ReactNativeAN.parseDate(tempDate)})
-      const alarms = await ReactNativeAN.getScheduledAlarms()
-
-      console.log(alarm) // { id: 1 }
-      console.log(alarms) // { id: 1 }
+    async function scheduleAlarm () {
+      const alarm = await ReactNativeAN.scheduleAlarm({ ...alarmNotifData, fire_date: ReactNativeAN.parseDate(tempDate) })
+      const alarms = await ReactNativeAN.getScheduledAlarms() // List alarms
+      console.log(alarms)
+      console.log(alarm)
     }
-    method()
+    scheduleAlarm()
 
     console.log(fDate + ' (' + fTime + ') ')
   }
