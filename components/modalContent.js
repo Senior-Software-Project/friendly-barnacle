@@ -3,9 +3,26 @@ import {
   Text,
   View,
   Button
+  , NativeEventEmitter, NativeModules
 } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import ReactNativeAN from 'react-native-alarm-notification'
+
+const { RNAlarmNotification } = NativeModules
+const RNAlarmEmitter = new NativeEventEmitter(RNAlarmNotification)
+
+const dismissSubscription = RNAlarmEmitter.addListener(
+  'OnNotificationDismissed', (data) => {
+    const obj = JSON.parse(data)
+    console.log(`notification id: ${obj.id} dismissed`)
+  })
+
+const openedSubscription = RNAlarmEmitter.addListener(
+  'OnNotificationOpened', (data) => {
+    const obj = JSON.parse(data)
+    console.log(`app opened by notification: ${obj.id}`)
+  }
+)
 
 const ModalContent = () => {
   const [date, setDate] = useState(new Date())
@@ -30,7 +47,8 @@ const ModalContent = () => {
       small_icon: 'ic_launcher',
       loop_sound: true,
       sound_name: 'sound.mp3',
-      auto_cancel: false
+      auto_cancel: false,
+      data: { foo: 'bar' }
 
       // You can add any additional data that is important for the notification
       // It will be added to the PendingIntent along with the rest of the bundle.
@@ -40,7 +58,7 @@ const ModalContent = () => {
     async function scheduleAlarm () {
       const alarm = await ReactNativeAN.scheduleAlarm({ ...alarmNotifData, fire_date: ReactNativeAN.parseDate(tempDate) })
       const alarms = await ReactNativeAN.getScheduledAlarms() // List alarms
-      console.log(alarms)
+      // console.log(alarms)
       console.log(alarm)
     }
     scheduleAlarm()
