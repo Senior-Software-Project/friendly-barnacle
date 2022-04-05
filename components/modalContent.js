@@ -23,7 +23,8 @@ const openedSubscription = RNAlarmEmitter.addListener(
     console.log(`app opened by notification: ${obj.id}`)
   }
 )
-
+dismissSubscription()
+openedSubscription()
 const ModalContent = () => {
   const [date, setDate] = useState(new Date())
   const [mode, setMode] = useState('date')
@@ -57,7 +58,6 @@ const ModalContent = () => {
 
     async function scheduleAlarm () {
       const alarm = await ReactNativeAN.scheduleAlarm({ ...alarmNotifData, fire_date: ReactNativeAN.parseDate(tempDate) })
-      const alarms = await ReactNativeAN.getScheduledAlarms() // List alarms
       // console.log(alarms)
       console.log(alarm)
     }
