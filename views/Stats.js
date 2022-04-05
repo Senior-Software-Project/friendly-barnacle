@@ -23,7 +23,6 @@ function isWindowed () {
   try {
     return localStorage === window.localStorage
   } catch (e) {
-    console.log(e)
     return false
   }
 }

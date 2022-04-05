@@ -11,20 +11,19 @@ import ReactNativeAN from 'react-native-alarm-notification'
 const { RNAlarmNotification } = NativeModules
 const RNAlarmEmitter = new NativeEventEmitter(RNAlarmNotification)
 
-const dismissSubscription = RNAlarmEmitter.addListener(
+RNAlarmEmitter.addListener(
   'OnNotificationDismissed', (data) => {
     const obj = JSON.parse(data)
     console.log(`notification id: ${obj.id} dismissed`)
   })
 
-const openedSubscription = RNAlarmEmitter.addListener(
+RNAlarmEmitter.addListener(
   'OnNotificationOpened', (data) => {
     const obj = JSON.parse(data)
     console.log(`app opened by notification: ${obj.id}`)
   }
 )
-dismissSubscription()
-openedSubscription()
+
 const ModalContent = () => {
   const [date, setDate] = useState(new Date())
   const [mode, setMode] = useState('date')
