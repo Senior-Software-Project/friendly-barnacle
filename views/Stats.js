@@ -90,8 +90,8 @@ function Stats ({ navigation }) {
   }, [isFocused])
   return (
     <View style={styles.container}>
-      {correctCount}
-      {incorrectCount}
+      <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
+      <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
     </View>
   )
 }
