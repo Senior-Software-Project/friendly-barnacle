@@ -430,3 +430,5 @@ web-build/
 dist/
 
 # @end expo-cli
+
+test-report.xml
