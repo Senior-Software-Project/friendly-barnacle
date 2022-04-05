@@ -4,6 +4,7 @@ import { styles } from './Styles'
 import { decode } from 'html-entities'
 import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from './Stats'
 import ReactNativeAN from 'react-native-alarm-notification'
+let newCount = 0
 const numCorrect = 5
 
 export function shuffleArray (array) {
