@@ -79,19 +79,14 @@ function Stat (props) {
   )
 }
 
-let correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
-let incorrectCount = <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
-
 function Stats ({ navigation }) {
   const isFocused = useIsFocused()
-  useEffect(() => {
-    correctCount = <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
-    incorrectCount = <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
+  useEffect(() => { // this is necessary for stats to update dynamically
   }, [isFocused])
   return (
     <View style={styles.container}>
-      {correctCount}
-      {incorrectCount}
+      <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
+      <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
     </View>
   )
 }
