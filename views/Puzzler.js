@@ -3,6 +3,9 @@ import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'rea
 import { styles } from './Styles'
 import { decode } from 'html-entities'
 import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from './Stats'
+import ReactNativeAN from 'react-native-alarm-notification'
+let newCount = 0
+const numCorrect = 5
 
 export function shuffleArray (array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -57,9 +60,16 @@ function Puzzler () {
     if (selected === correct) {
       answeredCorrectly(true)
       incrementCorrect()
+      newCount++
+      console.log(newCount)
     } else if (selected !== '' && selected !== correct) {
       incrementIncorrect()
     }
+  }
+
+  if (newCount >= numCorrect) {
+    ReactNativeAN.stopAlarmSound()
+    newCount = 0
   }
 
   const isMultiple = type === 'multiple'
