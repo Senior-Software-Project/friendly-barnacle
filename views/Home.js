@@ -11,6 +11,8 @@ import {
 import { styles } from './Styles'
 import { images, getImage } from '../components/images'
 import ModalContent from '../components/modalContent'
+import AlarmPreview from '../components/alarmPreview'
+
 
 const HomeScreen = () => {
   function renderHeader () {
@@ -54,6 +56,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </Modal>
+      <AlarmPreview/>
       <View style = {styles.modalToggle}>
         <Pressable
           style = {{
