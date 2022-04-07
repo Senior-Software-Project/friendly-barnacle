@@ -26,6 +26,7 @@ describe('Homescreen View', () => {
   beforeEach(() => {
     mockedDispatch.mockClear()
   })
+
   test('Homescreen Renders', () => {
     render(<View />)
   })
@@ -35,7 +36,7 @@ describe('Homescreen View', () => {
       'Unable to find an element with testID: Modal.close'
     )
     fireEvent.press(getByTestId('Modal.open'))
-    await waitFor(() => getByTestId('Modal.open'))
+    await waitFor(() => { getByTestId('Modal.open') })
     fireEvent.press(getByTestId('Modal.close'))
 
     expect(() => getByTestId('Modal.close')).toThrow(

@@ -20,6 +20,7 @@ const App = () => {
           screenOptions={{
             headerShown: false
           }}
+          testID = 'App.nav'
           initialRouteName="Home"
         >
           <Stack.Screen name="Home" component={Tabs} />

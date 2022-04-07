@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { StyleSheet, Animated, Text, Button, Platform, View, TouchableOpacity } from 'react-native'
 import AppLoading from 'expo-app-loading'
 import { Asset } from 'expo-asset'
-import Constants from 'expo-constants'
 import * as SplashScreen from 'expo-splash-screen'
 import * as Updates from 'expo-updates'
 import { styles } from './Styles'
@@ -112,7 +111,7 @@ function AnimatedSplashScreen ({ children, image }) {
           style={[
             StyleSheet.absoluteFill,
             {
-              backgroundColor: Constants.manifest.splash.backgroundColor,
+              // backgroundColor: Constants.manifest.splash.backgroundColor,
               opacity: animation
             }
           ]}
@@ -121,7 +120,7 @@ function AnimatedSplashScreen ({ children, image }) {
             style={{
               width: '100%',
               height: '100%',
-              resizeMode: Constants.manifest.splash.resizeMode || 'contain',
+              // resizeMode: Constants.manifest.splash.resizeMode || 'contain',
               transform: [
                 {
                   scale: animation

@@ -83,6 +83,7 @@ function Stats ({ navigation }) {
   const isFocused = useIsFocused()
   useEffect(() => { // this is necessary for stats to update dynamically
   }, [isFocused])
+
   return (
     <View style={styles.container}>
       <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
