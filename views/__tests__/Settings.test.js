@@ -1,18 +1,26 @@
-import Settings from '../Settings'
 import React from 'react'
-import { describe, expect, test } from '@jest/globals'
-import { create } from 'react-test-renderer'
+import View from '../Settings.js'
+import { describe, test, beforeEach } from '@jest/globals'
+import { render } from '@testing-library/react-native'
 
-describe('<Settings />', () => {
-  test('Settings should not have lexical errors.', () => {
-    expect(<Settings />).toBeTruthy()
+const mockedDispatch = jest.fn()
+
+jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native')
+  return {
+    ...actualNav,
+    useNavigation: () => ({
+      navigate: jest.fn(),
+      dispatch: mockedDispatch
+    })
+  }
+})
+
+describe('Settings View', () => {
+  beforeEach(() => {
+    mockedDispatch.mockClear()
   })
-  test('Settings should not return null.', () => {
-    expect(typeof (<Settings/>)).not.toEqual(null)
-  })
-  test('Settings should shuffle array.', () => {
-    const component = create(<Settings />)
-    const tree = component.toJSON()
-    expect(tree.type).toMatch('View')
+  test('Render Settings', () => {
+    render(<View />)
   })
 })

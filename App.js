@@ -8,7 +8,7 @@ import { images } from './components/images'
 
 const Stack = createNativeStackNavigator()
 
-export const getAppStack = () => {
+export function getAppStack () {
   return (Stack)
 }
 
@@ -20,6 +20,7 @@ const App = () => {
           screenOptions={{
             headerShown: false
           }}
+          testID = 'App.nav'
           initialRouteName="Home"
         >
           <Stack.Screen name="Home" component={Tabs} />
