@@ -11,6 +11,7 @@ import { styles } from './Styles'
 import { images, getImage } from '../components/images'
 import ModalContent from '../components/modalContent'
 import ReactNativeAN from 'react-native-alarm-notification'
+import AlarmPreview from '../components/alarmPreview'
 
 const HomeScreen = () => {
   function renderHeader () {
