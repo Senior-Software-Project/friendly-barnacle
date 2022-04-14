@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
   text: {
     color: 'white'
   },
+  title: {
+    color: 'white',
+    fontSize: 20
+  },
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap'

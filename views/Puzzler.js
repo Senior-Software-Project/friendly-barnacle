@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'rea
 import { styles } from './Styles'
 import { decode } from 'html-entities'
 import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from './Stats'
+import { getCategory } from './Settings'
 import ReactNativeAN from 'react-native-alarm-notification'
 let newCount = 0
 const numCorrect = 5
@@ -16,7 +17,8 @@ export function shuffleArray (array) {
 }
 
 export async function fetchTrivia () {
-  return await fetch('https://opentdb.com/api.php?amount=1', {
+  console.log('https://opentdb.com/api.php?amount=1&category=' + getCategory())
+  return await fetch('https://opentdb.com/api.php?amount=1&category=' + getCategory(), {
     method: 'GET'
   }).then((response) => response.json())
     .then((response) => {
