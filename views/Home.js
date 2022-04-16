@@ -5,7 +5,9 @@ import {
   View,
   SafeAreaView,
   Modal,
-  Pressable
+  Pressable,
+  FlatList,
+  Button
 } from 'react-native'
 import { styles } from './Styles'
 import { images, getImage } from '../components/images'
@@ -30,6 +32,34 @@ const HomeScreen = () => {
     )
   }
   const [modalVisible, setModalVisible] = useState(false)
+  const [data, setData] = useState([])
+  const Item = ({ title, day, month, year, hour, minute, second }) => (
+
+    <View>
+      <Text style={{ backgroundColor: 'white' }}>[{title}- </Text>
+      <Text style={{ backgroundColor: 'white' }}>alarm: {day}-{month}-{year} {hour}:{minute}:{second}] </Text>
+      <Button
+            title="Remove"
+            color="red"
+            onPress={() => {
+              const id = parseInt(title, 10)
+
+              ReactNativeAN.deleteAlarm(id)
+              // onPress()
+            }}
+          />
+    </View>
+  )
+  const renderItem = ({ item }) => (
+    <Item title={item.alarmId} day={item.day} month ={item.month} year ={item.year} hour ={item.hour}
+      minute ={item.minute} second ={item.second}
+    />
+  )
+  async function onPress () {
+    console.log(await ReactNativeAN.getScheduledAlarms())
+    setData(await ReactNativeAN.getScheduledAlarms())
+  }
+
   return (
     <SafeAreaView style = {styles.container}>
       {renderHeader()}
@@ -64,6 +94,12 @@ const HomeScreen = () => {
         </View>
       </Modal>
       <AlarmPreview title={'alarmtitle'} time={'Time!'}/>
+      <TouchableOpacity
+      onPress={onPress}>
+      <Text style={{color:"white", backgroundColor:"blue"}}>
+        Click me to show alarms
+      </Text>
+      </TouchableOpacity>
       <View style = {styles.modalToggle}>
         <Pressable
           style = {{
@@ -76,6 +112,17 @@ const HomeScreen = () => {
           {getImage(images.footer, 80, 80)}
         </Pressable>
       </View>
+      <View style={{ flex: 1 }}>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={{
+          flexGrow: 1
+        }}
+      />
+      </View>
+
     </SafeAreaView>
   )
 }
