@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Text,
   TouchableOpacity,
@@ -14,7 +14,7 @@ import { styles } from './Styles'
 import { images, getImage } from '../components/images'
 
 const HomeScreen = () => {
-  const onReloadPress = useCallback(async () => {
+  const onReloadPress = (async () => {
     try {
       /* Source: https://aboutreact.com/react-native-restart-reset-current-screen/ */
       await RNRestart.Restart()
