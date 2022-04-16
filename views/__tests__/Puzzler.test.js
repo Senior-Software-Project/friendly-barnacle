@@ -35,7 +35,7 @@ describe('Puzzler View', () => {
     }
   })
   test('Fetch Trivia', async () => {
-    const result = await fetchTrivia()
+    const result = await waitFor(() => fetchTrivia())
     expect(result).toBeTruthy()
   })
   test('Trigger Fetch Trivia', async () => {
