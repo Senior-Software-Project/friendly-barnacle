@@ -58,11 +58,10 @@ function AnimatedSplashScreen ({ children, image }) {
       /* See https://github.com/expo/expo/tree/master/packages/expo-splash-screen#-api */
       await SplashScreen.hideAsync()
       // Load stuff
-      // Splash(getAppStack())
       await Promise.all([])
     } catch (e) {
       // handle errors
-      console.log('Error animating splash screen: ' + e)
+      console.warn('Error animating splash screen: ' + e)
     } finally {
       setAppReady(true)
     }
