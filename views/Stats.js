@@ -80,9 +80,10 @@ function Stat (props) {
 }
 
 function Stats ({ navigation }) {
-  const isFocused = useIsFocused()
+  // const isFocused = useIsFocused()
+  // console.log({ navigation })
   useEffect(() => { // this is necessary for stats to update dynamically
-  }, [isFocused])
+  }, [useIsFocused()])
 
   return (
     <View style={styles.container}>

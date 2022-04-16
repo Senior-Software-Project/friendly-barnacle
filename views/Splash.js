@@ -1,16 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import { StyleSheet, Animated, Text, Button, Platform, View, TouchableOpacity } from 'react-native'
-import AppLoading from 'expo-app-loading'
+import { StyleSheet, Animated, View } from 'react-native'
 import { Asset } from 'expo-asset'
 import * as SplashScreen from 'expo-splash-screen'
-import * as Updates from 'expo-updates'
-import { styles } from './Styles'
 import PropTypes from 'prop-types'
-import getAppStack from '../App'
-
-Splash.propTypes = {
-  navigation: PropTypes.object
-}
 
 AnimatedAppLoader.propTypes = {
   children: PropTypes.node.isRequired,
@@ -22,31 +14,12 @@ AnimatedSplashScreen.propTypes = {
   image: PropTypes.any.isRequired
 }
 
-SplashScreen.preventAutoHideAsync().catch(() => {
-  /* reloading the app might trigger some race conditions, ignore them */
-})
+/* Source: https://github.com/expo/expo/tree/master/packages/expo-splash-screen#-configure-android */
+SplashScreen.preventAutoHideAsync()
+  .then((result) => console.log('SplashScreen.preventAutoHideAsync() succeeded'))
+  .catch(console.warn)
 
 const splashDuration = 3000
-
-export function Splash ({ navigation }) {
-  const onReloadPress = useCallback(() => {
-    if (Platform.OS === 'web') {
-      location.reload()
-    } else {
-      Updates.reloadAsync()
-    }
-  }, [])
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Pretty Cool!</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <Text style={styles.text}>Return to Home</Text>
-      </TouchableOpacity>
-      <Button title='Run Again' onPress={onReloadPress} />
-    </View>
-  )
-}
 
 export function AnimatedAppLoader ({ children, image }) {
   const [isSplashReady, setSplashReady] = useState(false)
@@ -57,18 +30,9 @@ export function AnimatedAppLoader ({ children, image }) {
     [image]
   )
 
-  const onFinish = useCallback(() => setSplashReady(true), [])
-
   if (!isSplashReady) {
-    return (
-      <AppLoading
-        // Instruct SplashScreen not to hide yet, we want to do this manually
-        autoHideSplash={false}
-        startAsync={startAsync}
-        onError={console.error}
-        onFinish={onFinish}
-      />
-    )
+    startAsync().then(() => setSplashReady(true))
+    return null
   }
 
   return <AnimatedSplashScreen image={image}>{children}</AnimatedSplashScreen>
@@ -91,12 +55,14 @@ function AnimatedSplashScreen ({ children, image }) {
 
   const onImageLoaded = useCallback(async () => {
     try {
+      /* See https://github.com/expo/expo/tree/master/packages/expo-splash-screen#-api */
       await SplashScreen.hideAsync()
       // Load stuff
-      Splash(getAppStack())
+      // Splash(getAppStack())
       await Promise.all([])
     } catch (e) {
       // handle errors
+      console.log('Error animating splash screen: ' + e)
     } finally {
       setAppReady(true)
     }
@@ -111,7 +77,6 @@ function AnimatedSplashScreen ({ children, image }) {
           style={[
             StyleSheet.absoluteFill,
             {
-              // backgroundColor: Constants.manifest.splash.backgroundColor,
               opacity: animation
             }
           ]}
@@ -120,7 +85,6 @@ function AnimatedSplashScreen ({ children, image }) {
             style={{
               width: '100%',
               height: '100%',
-              // resizeMode: Constants.manifest.splash.resizeMode || 'contain',
               transform: [
                 {
                   scale: animation
