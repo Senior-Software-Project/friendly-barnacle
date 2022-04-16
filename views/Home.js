@@ -63,7 +63,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </Modal>
-      <AlarmPreview/>
+      <AlarmPreview title={'alarmtitle'} time={'Time!'}/>
       <View style = {styles.modalToggle}>
         <Pressable
           style = {{

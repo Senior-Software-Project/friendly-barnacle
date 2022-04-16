@@ -1,19 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 
-const AlarmPreview = () => {
+const AlarmPreview = (props) => {
 
   return (
     <View style={styles.item}>
       <View style={styles.itemLeft}>
-        <Text style={styles.alarmTitle}>alarm title</Text>
-        <Text style={styles.itemText}>Time!</Text>
-        <View style={styles.container}>
-          <Switch
-            trackColor={{ false: "#767577", true: "#5A57F7" }}
-            
-          />
-        </View>
+        <Text style={styles.alarmTitle}>{props.title}</Text>
+        <Text style={styles.itemText}>{props.time}</Text>
       </View>
     </View>
   )
