@@ -9,6 +9,11 @@ let newCount = 0
 const numCorrect = 5
 
 export function shuffleArray (array) {
+  /* SEE:
+    https://www.npmjs.com/package/react-native-simple-crypto
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array
+    https://developer.mozilla.org/en-US/docs/Web/API/crypto_property
+  */
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[array[i], array[j]] = [array[j], array[i]]
@@ -17,8 +22,8 @@ export function shuffleArray (array) {
 }
 
 export async function fetchTrivia () {
-  console.log('https://opentdb.com/api.php?amount=1&category=' + getCategory() + '&difficulty=' + getDifficulty())
-  return await fetch('https://opentdb.com/api.php?amount=1&category=' + getCategory() + '&difficulty=' + getDifficulty(), {
+  // console.log('https://opentdb.com/api.php?amount=1&category=' + getCategory() + '&difficulty=' + getDifficulty())
+  return fetch('https://opentdb.com/api.php?amount=1&category=' + getCategory() + '&difficulty=' + getDifficulty(), {
     method: 'GET'
   }).then((response) => response.json())
     .then((response) => {

@@ -31,7 +31,7 @@ const ModalContent = () => {
   const [show, setShow] = useState(false)
   const [text, setText] = useState('Empty')
 
-  const onChange = (event, selectedDate) => {
+  const onChange = (_event, selectedDate) => {
     setShow(false)
     const currentDate = selectedDate || date
     setDate(currentDate)

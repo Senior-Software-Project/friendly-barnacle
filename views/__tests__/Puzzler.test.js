@@ -28,10 +28,10 @@ describe('Puzzler View', () => {
     expect(getByTestId('View.answers')).toBeTruthy()
     const answers = getAllByTestId('Answers')
     const correctCount = getCorrect()
-    for (let i = 0; i < answers.length; i++) {
+    for (const answer of answers) {
       if (correctCount === getCorrect()) {
         act(() => {
-          fireEvent.press(answers[i])
+          fireEvent.press(answer)
         })
       }
     }

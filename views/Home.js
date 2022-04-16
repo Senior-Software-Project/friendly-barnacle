@@ -13,7 +13,7 @@ import RNRestart from 'react-native-restart'
 import { styles } from './Styles'
 import { images, getImage } from '../components/images'
 
-const HomeScreen = () => {
+const Home = () => {
   const onReloadPress = async () => {
     try {
       /* Source: https://aboutreact.com/react-native-restart-reset-current-screen/ */
@@ -92,4 +92,4 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen
+export default Home
