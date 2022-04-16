@@ -3,6 +3,9 @@ import { Text, View, Picker } from 'react-native'
 import { styles } from './Styles'
 import { decode } from 'html-entities'
 
+/**
+ * This provides all of the categories that are available
+ */
 const categories = {
   '': 'Any Category',
   9: 'General Knowledge',
@@ -31,11 +34,17 @@ const categories = {
   32: 'Cartoon &amp; Animations'
 }
 let categoryKey = ''
-
+/**
+ * Getter for category
+ * @returns categoryKey
+ */
 function getCategory () {
   return categoryKey
 }
-
+/**
+ * Setter for category
+ * @param {*} key
+ */
 function setCategory (key) {
   categoryKey = key
 }
@@ -44,7 +53,10 @@ const categoryOptions = []
 for (const cat in categories) {
   categoryOptions.push(<Picker.Item label={decode(categories[cat])} value={cat} key={cat} />)
 }
-
+/**
+ * This function allows the user to set the type of puzzle setting that they want
+ * @returns style settings
+ */
 function Settings () {
   const [catKey, setCategoryKey] = useState('')
   return (

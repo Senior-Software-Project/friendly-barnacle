@@ -13,6 +13,12 @@ import { images, getImage } from '../components/images'
 import ModalContent from '../components/modalContent'
 import ReactNativeAN from 'react-native-alarm-notification'
 
+/**
+ * This function contains all of the data needed for the home screen
+ * Contains all of the data for setting the alarm
+ * Closes the alarm page once an alarm has been chosen
+ * @returns image from the home screen
+ */
 const HomeScreen = () => {
   function renderHeader () {
     return (
@@ -29,6 +35,7 @@ const HomeScreen = () => {
       </View>
     )
   }
+
   const [modalVisible, setModalVisible] = useState(false)
   return (
     <SafeAreaView style = {styles.container}>
