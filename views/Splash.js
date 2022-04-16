@@ -16,7 +16,7 @@ AnimatedSplashScreen.propTypes = {
 
 /* Source: https://github.com/expo/expo/tree/master/packages/expo-splash-screen#-configure-android */
 SplashScreen.preventAutoHideAsync()
-  .then((result) => console.log('SplashScreen.preventAutoHideAsync() succeeded'))
+  .then((_result) => console.log('SplashScreen.preventAutoHideAsync() succeeded'))
   .catch(console.warn)
 
 const splashDuration = 3000

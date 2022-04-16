@@ -14,14 +14,14 @@ import { styles } from './Styles'
 import { images, getImage } from '../components/images'
 
 const HomeScreen = () => {
-  const onReloadPress = (async () => {
+  const onReloadPress = async () => {
     try {
       /* Source: https://aboutreact.com/react-native-restart-reset-current-screen/ */
       await RNRestart.Restart()
     } catch (e) {
       console.warn('Trigger splash failed: ' + e)
     }
-  })
+  }
 
   function renderHeader () {
     return (

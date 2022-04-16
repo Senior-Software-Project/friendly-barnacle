@@ -80,8 +80,8 @@ function Stat (props) {
 }
 
 function Stats ({ navigation }) {
-  // this is necessary for stats to update dynamically
   useEffect(() => {
+    // this is necessary for stats to update dynamically
   }, [useIsFocused()])
 
   return (
