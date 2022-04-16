@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import {
   Text,
   View,
-  Button
-  , NativeEventEmitter, NativeModules
+  Button,
+  NativeEventEmitter,
+  NativeModules
 } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import ReactNativeAN from 'react-native-alarm-notification'
@@ -71,24 +72,22 @@ const ModalContent = () => {
   }
   return (
         <View>
-
-            <Text>{text}</Text>
-            <View style = {{ margin: 20 }}>
-                <Button title = 'DatePicker' onPress={() => showMode('date')}/>
-            </View>
-            <View style = {{ margin: 20 }}>
-                <Button title = 'TimePicker' onPress={() => showMode('time')}/>
-            </View>
-            {show && (
-                <DateTimePicker
-                testID='dateTimePicker'
-                value={date}
-                mode={mode}
-                is24Hour={false}
-                display = 'default'
-                onChange={onChange}
-            />)}
-
+          <Text>{text}</Text>
+          <View style = {{ margin: 10 }}>
+            <Button testID='Modal.date' title='Date' onPress={() => showMode('date')}/>
+          </View>
+          <View style = {{ margin: 10 }}>
+            <Button testID='Modal.time' title='Time' onPress={() => showMode('time')}/>
+          </View>
+          {show && (
+            <DateTimePicker
+              testID='Picker.dateTime'
+              value={date}
+              mode={mode}
+              is24Hour={false}
+              display = 'default'
+              onChange={onChange}
+              />)}
         </View>
 
   )
