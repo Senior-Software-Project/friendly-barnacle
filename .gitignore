@@ -1,9 +1,12 @@
-# Expo blank template generated list.
+# Misc Directories
 node_modules/
-backend/node_modules/
+coverage/
+backend/
+design/
+
+# Expo blank template generated list.
 .expo/
 dist/
-coverage/
 npm-debug.*
 *.jks
 *.p8
