@@ -8,10 +8,6 @@ Stat.propTypes = {
   stat: PropTypes.string
 }
 
-Stats.propTypes = {
-  navigation: PropTypes.object
-}
-
 const caKey = 'correctAnswers'
 const iaKey = 'incorrectAnswers'
 const stats = {
