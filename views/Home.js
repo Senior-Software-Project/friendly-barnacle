@@ -14,7 +14,14 @@ import RNRestart from 'react-native-restart'
 import { styles } from './Styles'
 import { images, getImage } from '../components/images'
 
-const Home = () => {
+
+/**
+ * This function contains all of the data needed for the home screen
+ * Contains all of the data for setting the alarm
+ * Closes the alarm page once an alarm has been chosen
+ * @returns image from the home screen
+ */
+const HomeScreen = () => {
   const onReloadPress = async () => {
     try {
       /* Source: https://aboutreact.com/react-native-restart-reset-current-screen/ */
@@ -24,13 +31,6 @@ const Home = () => {
     }
   }
 
-/**
- * This function contains all of the data needed for the home screen
- * Contains all of the data for setting the alarm
- * Closes the alarm page once an alarm has been chosen
- * @returns image from the home screen
- */
-const HomeScreen = () => {
   function renderHeader () {
     return (
       <View style = {{ flexDirection: 'row', height: 50 }}>
@@ -101,4 +101,4 @@ const HomeScreen = () => {
   )
 }
 
-export default Home
+export default HomeScreen
