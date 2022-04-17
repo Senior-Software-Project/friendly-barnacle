@@ -8,10 +8,6 @@ Stat.propTypes = {
   stat: PropTypes.string
 }
 
-Stats.propTypes = {
-  navigation: PropTypes.object
-}
-
 const caKey = 'correctAnswers'
 const iaKey = 'incorrectAnswers'
 const stats = {
@@ -79,10 +75,10 @@ function Stat (props) {
   )
 }
 
-function Stats ({ navigation }) {
-  const isFocused = useIsFocused()
-  useEffect(() => { // this is necessary for stats to update dynamically
-  }, [isFocused])
+function Stats () {
+  useEffect(() => {
+    // this is necessary for stats to update dynamically
+  }, [useIsFocused()])
 
   return (
     <View style={styles.container}>

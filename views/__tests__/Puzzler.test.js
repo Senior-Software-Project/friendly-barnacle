@@ -1,28 +1,12 @@
 import React from 'react'
 import View, { shuffleArray, fetchTrivia } from '../Puzzler.js'
 import { getCorrect } from '../Stats.js'
-import { describe, expect, test, beforeEach } from '@jest/globals'
+import { describe, expect, test } from '@jest/globals'
 import { render, fireEvent, waitFor } from '@testing-library/react-native'
 import { act } from 'react-test-renderer'
 import fetchMock from 'jest-fetch-mock'
 
-const mockedDispatch = jest.fn()
-
-jest.mock('@react-navigation/native', () => {
-  const actualNav = jest.requireActual('@react-navigation/native')
-  return {
-    ...actualNav,
-    useNavigation: () => ({
-      navigate: jest.fn(),
-      dispatch: mockedDispatch
-    })
-  }
-})
-
 describe('Puzzler View', () => {
-  beforeEach(() => {
-    mockedDispatch.mockClear()
-  })
   test('Render Puzzler', () => {
     render(<View />)
   })
@@ -44,10 +28,10 @@ describe('Puzzler View', () => {
     expect(getByTestId('View.answers')).toBeTruthy()
     const answers = getAllByTestId('Answers')
     const correctCount = getCorrect()
-    for (let i = 0; i < answers.length; i++) {
+    for (const answer of answers) {
       if (correctCount === getCorrect()) {
         act(() => {
-          fireEvent.press(answers[i])
+          fireEvent.press(answer)
         })
       }
     }
@@ -57,7 +41,8 @@ describe('Puzzler View', () => {
     try {
       await fetchTrivia()
     } catch (e) {
-      expect(e).toMatch('FetchError')
+      expect(JSON.stringify(e)).toMatch('invalid json response body')
+      console.log(e)
     }
     fetchMock.dontMock()
   })

@@ -7,12 +7,22 @@ import {
   Modal,
   Pressable
 } from 'react-native'
-import { styles } from './Styles'
-import { images, getImage } from '../components/images'
 import ModalContent from '../components/modalContent'
 import ReactNativeAN from 'react-native-alarm-notification'
+import RNRestart from 'react-native-restart'
+import { styles } from './Styles'
+import { images, getImage } from '../components/images'
 
-const HomeScreen = () => {
+const Home = () => {
+  const onReloadPress = async () => {
+    try {
+      /* Source: https://aboutreact.com/react-native-restart-reset-current-screen/ */
+      await RNRestart.Restart()
+    } catch (e) {
+      console.warn('Trigger splash failed: ' + e)
+    }
+  }
+
   function renderHeader () {
     return (
       <View style = {{ flexDirection: 'row', height: 50 }}>
@@ -22,7 +32,10 @@ const HomeScreen = () => {
             paddingLeft: 10 * 2,
             justifyContent: 'center'
           }}
+          testID='App.reload'
+          onPress={onReloadPress}
         >
+          {/* alarmHeader is Alarm text icon. */}
           {getImage(images.alarmHeader, 45, 23)}
         </TouchableOpacity>
       </View>
@@ -35,6 +48,7 @@ const HomeScreen = () => {
       <View>
         <TouchableOpacity
                 style = {styles.button}
+                testID = 'Alarm.stop'
                 onPress={ () => ReactNativeAN.stopAlarmSound()}
         >
           <Text>Stop Alarm</Text>
@@ -78,4 +92,4 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen
+export default Home
