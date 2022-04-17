@@ -51,9 +51,9 @@ async function fromStorage (key) {
 async function toStorage (key, value) {
   if (isWindowed()) {
     if (value instanceof String) {
-      await localStorage.getItem(key, value)
+      localStorage.getItem(key, value)
     } else {
-      await localStorage.getItem(key, value.toString())
+      localStorage.getItem(key, value.toString())
     }
   } else {
     if (value instanceof String) {

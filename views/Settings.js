@@ -112,9 +112,12 @@ function Settings () {
   const [catKey, setCategoryKey] = useState('')
   const [difKey, setDifficultyKey] = useState('')
 
-  useEffect(async () => {
-    setCategoryKey(await getCategory())
-    setDifficultyKey(await getDifficultyKey())
+  useEffect(() => {
+    const setSettings = async () => {
+      await setCategoryKey(await getCategory())
+      await setDifficultyKey(await getDifficultyKey())
+    }
+    setSettings()
   }, [useIsFocused()])
 
   return (

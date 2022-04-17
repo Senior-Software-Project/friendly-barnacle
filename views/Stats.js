@@ -51,7 +51,7 @@ async function setCorrect (value) {
  * @param {*} incorrectAnswers
  */
 async function setIncorrect (value) {
-  Number.parseInt(value)
+  value = Number.parseInt(value)
   value = Number.isNaN(value) ? 0 : value
   incorrectCount = value
   await toStorage('incorrectAnswers', value)
@@ -84,9 +84,12 @@ function Stats () {
   const [caCount, setcaCount] = useState(0)
   const [iaCount, setiaCount] = useState(0)
 
-  useEffect(async () => {
-    setcaCount(await getCorrect())
-    setiaCount(await getIncorrect())
+  useEffect(() => {
+    const setStats = async () => {
+      setcaCount(await getCorrect())
+      setiaCount(await getIncorrect())
+    }
+    setStats()
   }, [useIsFocused()])
 
   return (

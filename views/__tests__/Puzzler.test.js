@@ -28,9 +28,9 @@ describe('Puzzler View', () => {
     await waitFor(() => fireEvent.press(getByTestId('Question')))
     expect(getByTestId('View.answers')).toBeTruthy()
     const answers = getAllByTestId('Answers')
-    const correctCount = getCorrect()
+    const correctCount = await getCorrect()
     for (const answer of answers) {
-      if (correctCount === getCorrect()) {
+      if (correctCount === await getCorrect()) {
         act(() => {
           fireEvent.press(answer)
         })
