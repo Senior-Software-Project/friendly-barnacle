@@ -12,5 +12,3 @@ jobs:
       run: npm run fixStyle
     - name: Run ESLint
       run: npm run checkStyle
-    - name: Run Tests
-      run: npm run testFinal
