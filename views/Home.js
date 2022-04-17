@@ -21,7 +21,7 @@ import { images, getImage } from '../components/images'
  * Closes the alarm page once an alarm has been chosen
  * @returns image from the home screen
  */
-const HomeScreen = () => {
+const Home = () => {
   const onReloadPress = async () => {
     try {
       /* Source: https://aboutreact.com/react-native-restart-reset-current-screen/ */
@@ -101,4 +101,4 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen
+export default Home
