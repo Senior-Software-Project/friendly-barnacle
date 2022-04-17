@@ -6,6 +6,9 @@ import { decode } from 'html-entities'
 import { fromStorage, toStorage } from '../components/storage'
 import { styles } from './Styles'
 
+/**
+ *  All the available categories.
+ */
 const categories = {
   '': 'Any Category',
   9: 'General Knowledge',
@@ -35,6 +38,10 @@ const categories = {
 }
 let categoryKey = ''
 
+/**
+ * Getter for category
+ * @returns categoryKey
+ */
 async function getCategory () {
   try {
     const key = await fromStorage('cat')
@@ -45,6 +52,10 @@ async function getCategory () {
   }
 }
 
+/**
+ * Setter for category
+ * @param {*} key
+ */
 function setCategory (key) {
   categoryKey = key
   toStorage('cat', key)
@@ -93,6 +104,10 @@ for (const key in difficulties) {
   difficultyOptions.push(<Picker.Item label={key === '' ? 'any' : difficulties[key]} value={key} key={key} />)
 }
 
+/**
+ *  Allows the user to set the type of puzzle setting that they want
+ *  @returns style settings
+ */
 function Settings () {
   const [catKey, setCategoryKey] = useState('')
   const [difKey, setDifficultyKey] = useState('')

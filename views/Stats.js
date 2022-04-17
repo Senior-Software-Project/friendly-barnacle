@@ -7,6 +7,10 @@ import { fromStorage, toStorage } from '../components/storage'
 let correctCount = 0
 let incorrectCount = 0
 
+/**
+ * A getter function that returns the amount of correct answers selected
+ * @returns the stats of correct
+ */
 async function getCorrect () {
   try {
     const value = Number.parseInt(await fromStorage('correctAnswers'))
@@ -17,6 +21,10 @@ async function getCorrect () {
   }
 }
 
+/**
+ * A getter function that returns the Incorrect answer amount
+ * @returns the stats of incorrect
+ */
 async function getIncorrect () {
   try {
     const value = Number.parseInt(await fromStorage('incorrectAnswers'))
@@ -27,6 +35,10 @@ async function getIncorrect () {
   }
 }
 
+/**
+ *A setter function that sets the correct functions
+ * @param {*} correctAnswers
+ */
 async function setCorrect (value) {
   value = Number.parseInt(value)
   value = Number.isNaN(value) ? 0 : value
@@ -34,6 +46,10 @@ async function setCorrect (value) {
   await toStorage('correctAnswers', value)
 }
 
+/**
+ *A setter function that sets the incorrect answers
+ * @param {*} incorrectAnswers
+ */
 async function setIncorrect (value) {
   Number.parseInt(value)
   value = Number.isNaN(value) ? 0 : value
@@ -41,18 +57,28 @@ async function setIncorrect (value) {
   await toStorage('incorrectAnswers', value)
 }
 
+/**
+ *This function increments the correct count every time a correct answer is chosen
+ */
 async function incrementCorrect () {
   const value = await getCorrect()
   await setCorrect(value + 1)
 }
 
+/**
+ *  Increments the incorrect count every time a wrong answer is chosen.
+ */
 async function incrementIncorrect () {
   const value = await getIncorrect()
   await setIncorrect(value + 1)
 }
 
 /**
- *  Accuracy Score: (total questions queried / total attempts) * 100%
+ *
+ * This function displays the amount of correct and incorrect questions
+ * Trivia Accuracy: (total questions queried / total attempts) * 100%
+ * @param {*} param0
+ * @returns {number}
  */
 function Stats () {
   const [caCount, setcaCount] = useState(0)
@@ -72,8 +98,6 @@ function Stats () {
     </View>
   )
 }
-// <Text style={styles.text}>Correct Attempts: {caCount}</Text>
-// <Text style={styles.text}>Incorrect Attempts: {iaCount}</Text>
 
 export { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect }
 
