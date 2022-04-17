@@ -1,5 +1,6 @@
 import React from 'react'
 import View, { shuffleArray, fetchTrivia } from '../Puzzler.js'
+import { NavigationContainer } from '@react-navigation/native'
 import { getCorrect } from '../Stats.js'
 import { describe, expect, test } from '@jest/globals'
 import { render, fireEvent, waitFor } from '@testing-library/react-native'
@@ -23,7 +24,7 @@ describe('Puzzler View', () => {
     expect(result).toBeTruthy()
   })
   test('Trigger Fetch Trivia', async () => {
-    const { getByTestId, getAllByTestId } = render(<View />)
+    const { getByTestId, getAllByTestId } = render(<NavigationContainer><View /></NavigationContainer>)
     await waitFor(() => fireEvent.press(getByTestId('Question')))
     expect(getByTestId('View.answers')).toBeTruthy()
     const answers = getAllByTestId('Answers')
