@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useIsFocused } from '@react-navigation/native'
 import { Text, View } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
-import { styles } from './Styles'
 import { decode } from 'html-entities'
+import { fromStorage, toStorage } from '../components/storage'
+import { styles } from './Styles'
 
 const categories = {
   '': 'Any Category',
@@ -33,12 +35,19 @@ const categories = {
 }
 let categoryKey = ''
 
-function getCategory () {
-  return categoryKey
+async function getCategory () {
+  try {
+    const key = await fromStorage('cat')
+    return key === null ? '' : key
+  } catch (error) {
+    console.warn(error)
+    return categoryKey
+  }
 }
 
 function setCategory (key) {
   categoryKey = key
+  toStorage('cat', key)
 }
 
 const categoryOptions = []
@@ -54,12 +63,29 @@ const difficulties = {
 }
 let difficultyKey = ''
 
-function getDifficulty () {
-  return difficulties[difficultyKey]
+async function getDifficulty () {
+  try {
+    const key = await getDifficultyKey()
+    return key === '' ? '' : difficulties[key]
+  } catch (error) {
+    console.warn(error)
+    return difficultyKey === '' ? '' : difficulties[difficultyKey]
+  }
+}
+
+async function getDifficultyKey () {
+  try {
+    const key = await fromStorage('dif')
+    return key === null ? '' : key
+  } catch (error) {
+    console.warn(error)
+    return difficultyKey
+  }
 }
 
 function setDifficulty (key) {
   difficultyKey = key
+  toStorage('dif', key)
 }
 
 const difficultyOptions = []
@@ -70,13 +96,19 @@ for (const key in difficulties) {
 function Settings () {
   const [catKey, setCategoryKey] = useState('')
   const [difKey, setDifficultyKey] = useState('')
+
+  useEffect(async () => {
+    setCategoryKey(await getCategory())
+    setDifficultyKey(await getDifficultyKey())
+  }, [useIsFocused()])
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Category:</Text>
+      <Text style={styles.title}>Category: {decode(categories[catKey])}</Text>
       <Picker testID='Picker.category' style={styles.picker} selectedValue={catKey} onValueChange={(key) => { setCategoryKey(key); setCategory(key) }}>
         {categoryOptions}
       </Picker>
-      <Text style={styles.title}>Difficulty:</Text>
+      <Text style={styles.title}>Difficulty: {difficulties[difKey]}</Text>
       <Picker testID='Picker.difficulty' style={styles.picker} selectedValue={difKey} onValueChange={(key) => { setDifficultyKey(key); setDifficulty(key) }}>
         {difficultyOptions}
       </Picker>

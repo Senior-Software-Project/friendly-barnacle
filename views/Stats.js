@@ -1,93 +1,80 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useIsFocused } from '@react-navigation/native'
 import { Text, View } from 'react-native'
 import { styles } from './Styles'
-import PropTypes from 'prop-types'
-import { useIsFocused } from '@react-navigation/native'
+import { fromStorage, toStorage } from '../components/storage'
 
-Stat.propTypes = {
-  stat: PropTypes.string
-}
+let correctCount = 0
+let incorrectCount = 0
 
-const caKey = 'correctAnswers'
-const iaKey = 'incorrectAnswers'
-const stats = {
-  caKey: getCorrect(),
-  iaKey: getIncorrect()
-}
-
-function isWindowed () {
+async function getCorrect () {
   try {
-    return localStorage === window.localStorage
-  } catch (e) {
-    return false
+    const value = Number.parseInt(await fromStorage('correctAnswers'))
+    return Number.isNaN(value) ? correctCount : value
+  } catch (error) {
+    console.warn(error)
+    return correctCount
   }
 }
 
-function setCorrect (correctAnswers) {
-  stats.caKey = correctAnswers
-  if (isWindowed()) {
-    localStorage.setItem(caKey, correctAnswers)
-  }
-}
-
-function setIncorrect (incorrectAnswers) {
-  stats.iaKey = incorrectAnswers
-  if (isWindowed()) {
-    localStorage.setItem(iaKey, incorrectAnswers)
-  }
-}
-
-function getCorrect () {
+async function getIncorrect () {
   try {
-    if (isWindowed()) {
-      return parseInt(localStorage.getItem(caKey))
-    } else {
-      return stats.caKey
-    }
-  } catch (e) {
-    return 0
+    const value = Number.parseInt(await fromStorage('incorrectAnswers'))
+    return Number.isNaN(value) ? incorrectCount : value
+  } catch (error) {
+    console.warn(error)
+    return incorrectCount
   }
 }
 
-function getIncorrect () {
-  try {
-    if (isWindowed()) {
-      return parseInt(localStorage.getItem(iaKey))
-    } else {
-      return stats.iaKey
-    }
-  } catch (e) {
-    return 0
-  }
+async function setCorrect (value) {
+  value = Number.parseInt(value)
+  value = Number.isNaN(value) ? 0 : value
+  correctCount = value
+  await toStorage('correctAnswers', value)
 }
 
-function incrementCorrect () {
-  setCorrect(getCorrect() + 1)
+async function setIncorrect (value) {
+  Number.parseInt(value)
+  value = Number.isNaN(value) ? 0 : value
+  incorrectCount = value
+  await toStorage('incorrectAnswers', value)
 }
 
-function incrementIncorrect () {
-  setIncorrect(getIncorrect() + 1)
+async function incrementCorrect () {
+  const value = await getCorrect()
+  await setCorrect(value + 1)
 }
 
-function Stat (props) {
-  return (
-    <Text style={styles.text}>{props.stat}</Text>
-  )
+async function incrementIncorrect () {
+  const value = await getIncorrect()
+  await setIncorrect(value + 1)
 }
 
+/**
+ *  Accuracy Score: (total questions queried / total attempts) * 100%
+ */
 function Stats () {
-  useEffect(() => {
-    // this is necessary for stats to update dynamically
+  const [caCount, setcaCount] = useState(0)
+  const [iaCount, setiaCount] = useState(0)
+
+  useEffect(async () => {
+    setcaCount(await getCorrect())
+    setiaCount(await getIncorrect())
   }, [useIsFocused()])
 
   return (
     <View style={styles.container}>
-      <Stat stat = {'Number of Correct Answers: ' + getCorrect()} />
-      <Stat stat = {'Number of Incorrect Answers: ' + getIncorrect()} />
+      <Text style={styles.title}>Stats:</Text>
+      <Text style={styles.text}>Questions Attempted: {caCount}</Text>
+      <Text style={styles.text}>Total Attempts: {caCount + iaCount}</Text>
+      <Text style={styles.text}>Trivia Accuracy: {(caCount / (caCount + iaCount) * 100).toFixed(2)}%</Text>
     </View>
   )
 }
+// <Text style={styles.text}>Correct Attempts: {caCount}</Text>
+// <Text style={styles.text}>Incorrect Attempts: {iaCount}</Text>
 
-export { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect, Stat }
+export { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect }
 
 export default Stats

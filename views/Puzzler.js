@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { Text, TouchableOpacity, StatusBar, View, TouchableHighlight } from 'react-native'
 import { styles } from './Styles'
 import { decode } from 'html-entities'
-import { getCorrect, getIncorrect, incrementCorrect, incrementIncorrect } from './Stats'
+import { incrementCorrect, incrementIncorrect } from './Stats'
 import { getCategory, getDifficulty } from './Settings'
 import ReactNativeAN from 'react-native-alarm-notification'
+
 let newCount = 0
 const numCorrect = 5
 
@@ -22,16 +23,15 @@ export function shuffleArray (array) {
 }
 
 export async function fetchTrivia () {
-  // console.log('https://opentdb.com/api.php?amount=1&category=' + getCategory() + '&difficulty=' + getDifficulty())
-  return fetch('https://opentdb.com/api.php?amount=1&category=' + getCategory() + '&difficulty=' + getDifficulty(), {
+  const url = 'https://opentdb.com/api.php?amount=1&category=' + await getCategory() + '&difficulty=' + await getDifficulty()
+  return fetch(url, {
     method: 'GET'
   }).then((response) => response.json())
     .then((response) => {
-      // console.log('Fetch received: \n' + response.results[0])
       return response.results[0]
     })
     .catch((error) => {
-      console.warn('The trivia fetch call was rejected: ' + error.message)
+      console.warn('The trivia fetch call was rejected: ' + url + ' ==> ' + error.message)
       throw error
     })
 }
@@ -49,7 +49,6 @@ function Puzzler () {
 
   const getTrivia = async () => {
     await fetchTrivia().then((result) => {
-      console.log('Result retrieved: \n' + result)
       setQuestion(decode(result.question))
       setType(result.type)
       setCategory(result.category)
@@ -76,7 +75,6 @@ function Puzzler () {
       answeredCorrectly(true)
       incrementCorrect()
       newCount++
-      console.log(newCount)
     } else if (selected !== '' && selected !== correct) {
       incrementIncorrect()
     }
@@ -90,16 +88,11 @@ function Puzzler () {
   const isMultiple = type === 'multiple'
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Stats:</Text>
-      <View style={{ selfAlign: 'left' }}>
-        <Text style={styles.text}>Number of correct answers: {getCorrect()}</Text>
-        <Text style={styles.text}>Number of incorrect answers: {getIncorrect()}</Text>
-      </View>
       <Text style={styles.title}>Question:</Text>
       <View style={{ selfAlign: 'left' }}>
-        <Text style={styles.text}>Category: {category}</Text>
+        <Text style={styles.text}>Category:   {category}</Text>
         <Text style={styles.text}>Difficulty: {difficulty}</Text>
-        <Text style={styles.text}>Type: {type}</Text>
+        <Text style={styles.text}>Type:       {type}</Text>
         <Text style={styles.text}>{decodeURI(question)}</Text>
       </View>
       <View testID = 'View.answers' style={isMultiple ? styles.row : styles.rowBol}>
