@@ -1,20 +1,7 @@
 import React from 'react'
 import View from '../Home.js'
-import { describe, expect, test, beforeEach } from '@jest/globals'
+import { describe, expect, test } from '@jest/globals'
 import { render, fireEvent, waitFor } from '@testing-library/react-native'
-
-const mockedDispatch = jest.fn()
-
-jest.mock('@react-navigation/native', () => {
-  const actualNav = jest.requireActual('@react-navigation/native')
-  return {
-    ...actualNav,
-    useNavigation: () => ({
-      navigate: jest.fn(),
-      dispatch: mockedDispatch
-    })
-  }
-})
 
 jest.mock('react-native/Libraries/Modal/Modal', () => {
   const Modal = jest.requireActual('react-native/Libraries/Modal/Modal')
@@ -23,10 +10,6 @@ jest.mock('react-native/Libraries/Modal/Modal', () => {
 })
 
 describe('Homescreen View', () => {
-  beforeEach(() => {
-    mockedDispatch.mockClear()
-  })
-
   test('Homescreen Renders', () => {
     render(<View />)
   })
@@ -42,6 +25,10 @@ describe('Homescreen View', () => {
     expect(() => getByTestId('Modal.close')).toThrow(
       'Unable to find an element with testID: Modal.close'
     )
+  })
+  test('Reload app', async () => {
+    const { getByTestId } = render(<View />)
+    await waitFor(() => fireEvent.press(getByTestId('App.reload')))
   })
 })
 

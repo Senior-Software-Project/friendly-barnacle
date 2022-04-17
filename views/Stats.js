@@ -8,16 +8,13 @@ Stat.propTypes = {
   stat: PropTypes.string
 }
 
-Stats.propTypes = {
-  navigation: PropTypes.object
-}
-
 const caKey = 'correctAnswers'
 const iaKey = 'incorrectAnswers'
 const stats = {
   caKey: getCorrect(),
   iaKey: getIncorrect()
 }
+
 /**
  * This function returns the local storage component that makes sure the data is stored locally
  * @returns boolean
@@ -29,6 +26,7 @@ function isWindowed () {
     return false
   }
 }
+
 /**
  *A setter function that sets the correct functions
  * @param {*} correctAnswers
@@ -49,6 +47,7 @@ function setIncorrect (incorrectAnswers) {
     localStorage.setItem(iaKey, incorrectAnswers)
   }
 }
+
 /**
  * A getter function that returns the amount of correct answers selected
  * @returns the stats of correct
@@ -64,6 +63,7 @@ function getCorrect () {
     return 0
   }
 }
+
 /**
  * A getter function that returns the Incorrect answer amount
  * @returns the stats of incorrect
@@ -79,18 +79,21 @@ function getIncorrect () {
     return 0
   }
 }
+
 /**
  *This function increments the correct count every time a correct answer is chosen
  */
 function incrementCorrect () {
   setCorrect(getCorrect() + 1)
 }
+
 /**
  *This function increments the incorrect count every time a wrong answer is chosen
  */
 function incrementIncorrect () {
   setIncorrect(getIncorrect() + 1)
 }
+
 /**
  * @param {*} props
  * @returns text style
@@ -100,15 +103,16 @@ function Stat (props) {
     <Text style={styles.text}>{props.stat}</Text>
   )
 }
+
 /**
  * This function displays the amount of correct and incorrect questions
  * @param {*} param0
  * @returns {number}
  */
-function Stats ({ navigation }) {
-  const isFocused = useIsFocused()
-  useEffect(() => { // this is necessary for stats to update dynamically
-  }, [isFocused])
+function Stats () {
+  useEffect(() => {
+    // this is necessary for stats to update dynamically
+  }, [useIsFocused()])
 
   return (
     <View style={styles.container}>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Text, View, Picker } from 'react-native'
+import { Text, View } from 'react-native'
+import { Picker } from '@react-native-picker/picker'
 import { styles } from './Styles'
 import { decode } from 'html-entities'
 
@@ -50,8 +51,29 @@ function setCategory (key) {
 }
 
 const categoryOptions = []
-for (const cat in categories) {
-  categoryOptions.push(<Picker.Item label={decode(categories[cat])} value={cat} key={cat} />)
+for (const key in categories) {
+  categoryOptions.push(<Picker.Item label={decode(categories[key])} value={key} key={key} />)
+}
+
+const difficulties = {
+  '': '',
+  0: 'easy',
+  1: 'medium',
+  2: 'hard'
+}
+let difficultyKey = ''
+
+function getDifficulty () {
+  return difficulties[difficultyKey]
+}
+
+function setDifficulty (key) {
+  difficultyKey = key
+}
+
+const difficultyOptions = []
+for (const key in difficulties) {
+  difficultyOptions.push(<Picker.Item label={key === '' ? 'any' : difficulties[key]} value={key} key={key} />)
 }
 /**
  * This function allows the user to set the type of puzzle setting that they want
@@ -59,16 +81,21 @@ for (const cat in categories) {
  */
 function Settings () {
   const [catKey, setCategoryKey] = useState('')
+  const [difKey, setDifficultyKey] = useState('')
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Category:</Text>
-      <Picker style={{ height: 20, width: '80%', weight: 10, color: 'white', textAlign: 'center' }} selectedValue={catKey} onValueChange={(cat) => { setCategoryKey(cat); setCategory(cat) }}>
+      <Picker testID='Picker.category' style={styles.picker} selectedValue={catKey} onValueChange={(key) => { setCategoryKey(key); setCategory(key) }}>
         {categoryOptions}
+      </Picker>
+      <Text style={styles.title}>Difficulty:</Text>
+      <Picker testID='Picker.difficulty' style={styles.picker} selectedValue={difKey} onValueChange={(key) => { setDifficultyKey(key); setDifficulty(key) }}>
+        {difficultyOptions}
       </Picker>
     </View>
   )
 }
 
-export { getCategory }
+export { getCategory, setCategory, getDifficulty, setDifficulty }
 
 export default Settings

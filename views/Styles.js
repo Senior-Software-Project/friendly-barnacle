@@ -73,7 +73,13 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'flex-end',
     alignSelf: 'center'
-
+  },
+  picker: {
+    height: 20,
+    width: '80%',
+    color: 'white',
+    backgroundColor: 'black',
+    textAlign: 'center'
   }
 })
 
