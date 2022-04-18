@@ -35,20 +35,24 @@ const HomeScreen = () => {
   const [data, setData] = useState([])
   const Item = ({ title, day, month, year, hour, minute, second }) => (
 
-    <View>
-      <Text style={{ backgroundColor: 'white' }}>[{title}- </Text>
-      <Text style={{ backgroundColor: 'white' }}>alarm: {day}-{month}-{year} {hour}:{minute}:{second}] </Text>
-      <Button
-            title="Remove"
-            color="red"
-            onPress={() => {
-              const id = parseInt(title, 10)
+    // <View>
+    //   <Text style={{ backgroundColor: 'white' }}>[{title}- </Text>
+    //   <Text style={{ backgroundColor: 'white' }}>alarm: {day}-{month}-{year} {hour}:{minute}:{second}] </Text>
+    //   <Button
+    //         title="Remove"
+    //         color="red"
+    //         onPress={() => {
+    //           const id = parseInt(title, 10)
 
-              ReactNativeAN.deleteAlarm(id)
-              // onPress()
-            }}
-          />
-    </View>
+    //           ReactNativeAN.deleteAlarm(id)
+    //           // onPress()
+    //         }}
+    //       />
+    // </View>
+    <AlarmPreview title = {title}
+      hours={hour}
+      minutes = {minute}
+      />
   )
   const renderItem = ({ item }) => (
     <Item title={item.alarmId} day={item.day} month ={item.month} year ={item.year} hour ={item.hour}
@@ -93,7 +97,16 @@ const HomeScreen = () => {
           </View>
         </View>
       </Modal>
-      <AlarmPreview title={'alarmtitle'} time={'Time!'}/>
+      <View style={{ flex: 1 }}>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{
+            flexGrow: 1
+          }}
+        />
+      </View>
       <TouchableOpacity
       onPress={onPress}>
       <Text style={{color:"white", backgroundColor:"blue"}}>
@@ -111,16 +124,6 @@ const HomeScreen = () => {
         >
           {getImage(images.footer, 80, 80)}
         </Pressable>
-      </View>
-      <View style={{ flex: 1 }}>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={{
-          flexGrow: 1
-        }}
-      />
       </View>
 
     </SafeAreaView>

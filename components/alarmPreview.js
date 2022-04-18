@@ -7,7 +7,7 @@ const AlarmPreview = (props) => {
     <View style={styles.item}>
       <View style={styles.itemLeft}>
         <Text style={styles.alarmTitle}>{props.title}</Text>
-        <Text style={styles.itemText}>{props.time}</Text>
+        <Text style={styles.itemText}>{props.hours}:{props.minutes}</Text>
       </View>
     </View>
   )
