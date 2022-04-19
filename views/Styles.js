@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
-
+/**
+ * Creates all of the different settings that will be used on the individual mobile pages
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

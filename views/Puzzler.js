@@ -8,6 +8,11 @@ import ReactNativeAN from 'react-native-alarm-notification'
 let newCount = 0
 const numCorrect = 5
 
+/**
+ * This function creates a random array
+ * @param {array} array
+ * @returns array
+ */
 export function shuffleArray (array) {
   /* SEE:
     https://www.npmjs.com/package/react-native-simple-crypto
@@ -21,6 +26,11 @@ export function shuffleArray (array) {
   return array
 }
 
+/**
+ * gets questions based on the user selected category,
+ * if there is an error, returns a default question
+ * @returns a question and its answer
+ */
 export async function fetchTrivia () {
   // console.log('https://opentdb.com/api.php?amount=1&category=' + getCategory() + '&difficulty=' + getDifficulty())
   return fetch('https://opentdb.com/api.php?amount=1&category=' + getCategory() + '&difficulty=' + getDifficulty(), {
@@ -37,6 +47,11 @@ export async function fetchTrivia () {
 }
 
 // Puzzle Page
+/**
+ *Beginning of the Puzzler Function
+ *Shows a question and answers,and switches off the alarm if a certain number of questions are answered correctly
+ * @returns a puzzle, the answers, and whether selection was correct or incorrect
+ */
 function Puzzler () {
   const [question, setQuestion] = useState('')
   const [incorrect, setIncorrect] = useState([])
@@ -47,6 +62,9 @@ function Puzzler () {
   const [selected, setSelected] = useState('')
   const [isAnswered, answeredCorrectly] = useState(false)
 
+  /**
+   *fetches the trivia question
+   */
   const getTrivia = async () => {
     await fetchTrivia().then((result) => {
       console.log('Result retrieved: \n' + result)

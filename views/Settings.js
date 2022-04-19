@@ -4,6 +4,9 @@ import { Picker } from '@react-native-picker/picker'
 import { styles } from './Styles'
 import { decode } from 'html-entities'
 
+/**
+ * This provides all of the categories that are available
+ */
 const categories = {
   '': 'Any Category',
   9: 'General Knowledge',
@@ -32,11 +35,17 @@ const categories = {
   32: 'Cartoon &amp; Animations'
 }
 let categoryKey = ''
-
+/**
+ * Getter for category
+ * @returns categoryKey
+ */
 function getCategory () {
   return categoryKey
 }
-
+/**
+ * Setter for category
+ * @param {*} key
+ */
 function setCategory (key) {
   categoryKey = key
 }
@@ -66,7 +75,10 @@ const difficultyOptions = []
 for (const key in difficulties) {
   difficultyOptions.push(<Picker.Item label={key === '' ? 'any' : difficulties[key]} value={key} key={key} />)
 }
-
+/**
+ * This function allows the user to set the type of puzzle setting that they want
+ * @returns style settings
+ */
 function Settings () {
   const [catKey, setCategoryKey] = useState('')
   const [difKey, setDifficultyKey] = useState('')

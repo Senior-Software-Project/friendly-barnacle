@@ -21,6 +21,10 @@ SplashScreen.preventAutoHideAsync()
 
 const splashDuration = 3000
 
+/**
+ * @param {*} children, image
+ * @returns instructions for hiding splash screen
+ */
 export function AnimatedAppLoader ({ children, image }) {
   const [isSplashReady, setSplashReady] = useState(false)
 
@@ -37,7 +41,11 @@ export function AnimatedAppLoader ({ children, image }) {
 
   return <AnimatedSplashScreen image={image}>{children}</AnimatedSplashScreen>
 }
-
+/**
+ * This function determines how long the splash screen will be displayed
+ * @param {*} children image
+ * @returns style of splash screen
+ */
 function AnimatedSplashScreen ({ children, image }) {
   const animation = useMemo(() => new Animated.Value(1), [])
   const [isAppReady, setAppReady] = useState(false)
