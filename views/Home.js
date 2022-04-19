@@ -123,18 +123,22 @@ const Home = () => {
           </View>
         </View>
       </Modal>
-      <View style={{ flex: 1 }}>
+      <SafeAreaView style={{flex: 1, width: '95%', height: '100%',justifyContent: 'center' }}>
         <FlatList
+          //the array to render
           data={data}
+          //every element will be rendered
           renderItem={renderItem}
+          //extract keys for every element in array
           keyExtractor={(item) => item.id}
           contentContainerStyle={{
-            flexGrow: 1
+            flexGrow: 0
           }}
         />
-      </View>
-      <TouchableOpacity
-      onPress={onPress}>
+      </SafeAreaView >
+      <TouchableOpacity style={{justifyContent:'space-between', padding:30}}
+      onPress={onPress}
+      >
       <Text style={{color:"white", backgroundColor:"blue"}}>
         Click me to show alarms
       </Text>
