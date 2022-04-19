@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: 20,
-    height: 177,
+    height: 115,
     width: 169,
   },
   itemLeft: {

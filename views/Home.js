@@ -49,10 +49,13 @@ const HomeScreen = () => {
     //         }}
     //       />
     // </View>
-    <AlarmPreview title = {title}
-      hours={hour}
-      minutes = {minute}
-      />
+    <TouchableOpacity>
+      <AlarmPreview title = {title}
+          hours={hour}
+          minutes = {minute}
+          />
+    </TouchableOpacity>
+ 
   )
   const renderItem = ({ item }) => (
     <Item title={item.alarmId} day={item.day} month ={item.month} year ={item.year} hour ={item.hour}
