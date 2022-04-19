@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
-
+/**
+ * Creates all of the different settings that will be used on the individual mobile pages
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -10,6 +12,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white'
+  },
+  title: {
+    color: 'white',
+    fontSize: 20
   },
   row: {
     flexDirection: 'row',
@@ -67,7 +73,13 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'flex-end',
     alignSelf: 'center'
-
+  },
+  picker: {
+    height: 20,
+    width: '80%',
+    color: 'white',
+    backgroundColor: 'black',
+    textAlign: 'center'
   }
 })
 

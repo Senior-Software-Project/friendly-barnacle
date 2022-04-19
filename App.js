@@ -3,7 +3,7 @@ import { NavigationContainer, DarkTheme } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AnimatedAppLoader } from './views/Splash'
 import Tabs from './Navigation/tabs'
-import { Puzzler, Settings, Splash, Stats } from './views'
+import { Puzzler, Settings, Stats } from './views'
 import { images } from './components/images'
 
 const Stack = createNativeStackNavigator()
@@ -20,17 +20,18 @@ const App = () => {
           screenOptions={{
             headerShown: false
           }}
+          testID = 'App.nav'
           initialRouteName="Home"
         >
           <Stack.Screen name="Home" component={Tabs} />
           <Stack.Screen name="Puzzler" component={Puzzler} />
           <Stack.Screen name="Settings" component={Settings} />
-          <Stack.Screen name="Splash" component={Splash} />
           <Stack.Screen name="Stats" component={Stats} />
         </Stack.Navigator>
       </AnimatedAppLoader>
     </NavigationContainer>
   )
 }
+// <Stack.Screen name="Splash" component={Splash} />
 
 export default App
