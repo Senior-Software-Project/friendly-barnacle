@@ -1,18 +1,25 @@
-import Settings from '../Settings'
 import React from 'react'
+import View, { getCategory, setCategory, getDifficulty, setDifficulty } from '../Settings.js'
 import { describe, expect, test } from '@jest/globals'
-import { create } from 'react-test-renderer'
+import { render, fireEvent, waitFor } from '@testing-library/react-native'
 
-describe('<Settings />', () => {
-  test('Settings should not have lexical errors.', () => {
-    expect(<Settings />).toBeTruthy()
+describe('Settings View', () => {
+  test('Render Settings', () => {
+    render(<View />)
   })
-  test('Settings should not return null.', () => {
-    expect(typeof (<Settings/>)).not.toEqual(null)
+  test('Change Category', () => {
+    const { getByTestId } = render(<View />)
+    waitFor(() => fireEvent(getByTestId('Picker.category'), 'onValueChange', 16))
+    expect(getCategory()).toBe(16)
+    setCategory('')
+    expect(getCategory()).toBe('')
   })
-  test('Settings should shuffle array.', () => {
-    const component = create(<Settings />)
-    const tree = component.toJSON()
-    expect(tree.type).toMatch('View')
+  test('Change Difficulty', async () => {
+    const { getByTestId } = render(<View />)
+    await waitFor(() => fireEvent(getByTestId('Picker.difficulty'), 'onValueChange', 0))
+    // setDifficultyKey(0)
+    expect(getDifficulty()).toBe('easy')
+    setDifficulty('')
+    expect(getDifficulty()).toBe('')
   })
 })

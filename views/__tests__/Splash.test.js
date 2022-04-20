@@ -1,26 +1,17 @@
 import React from 'react'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { Splash } from '../Splash'
-import { describe, expect, test } from '@jest/globals'
-import renderer, { create } from 'react-test-renderer'
+import { getAppStack } from '../../App'
+import { AnimatedAppLoader } from '../Splash'
+import { describe, test } from '@jest/globals'
+import { render, waitFor } from '@testing-library/react-native'
+import { images } from '../../components/images'
 
-describe('<Splash />', () => {
-  test('Splash should not have lexical errors.', () => {
-    expect(create(Splash)).toBeTruthy()
-  })
-  test('Splash should not return null.', () => {
-    expect(typeof (create(Splash))).not.toEqual(null)
-    const tree = JSON.stringify(create(Splash))
-    expect(tree).toMatch('null')
-  })
-  test('Splash should return a View component.', () => {
-    const nav = createNativeStackNavigator().Navigator
-    const tree = JSON.stringify(create(Splash))
-    expect(tree).toMatch('null')
-    expect(nav).toBeTruthy()
-  })
-  test('Is Splash rendering', () => {
-    const tree = renderer.create(<Splash />).toJSON()
-    expect(tree.children.length).toBe(3)
+describe('Splash Animation', () => {
+  test('Render Animated Splash', async () => {
+    await waitFor(() => render(<AnimatedAppLoader image={images.splash}>{getAppStack()}</AnimatedAppLoader>))
   })
 })
+
+/*
+  Sources:
+  * https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning
+*/

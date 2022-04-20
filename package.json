@@ -1,7 +1,6 @@
 {
   "name": "alarm-app",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "fixStyle": "npx eslint --fix . --ext .js",
     "checkStyle": "npx eslint . --ext .js",
@@ -9,10 +8,14 @@
     "coverage": "jest --collectCoverage --",
     "testDebug": "jest -o --watch --coverage=false",
     "testFinal": "jest",
-    "updateSnapshots": "jest -u --coverage=false"
+    "updateSnapshots": "jest -u --coverage=false",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@react-native-community/datetimepicker": "^6.1.0",
+    "@react-native-picker/picker": "^2.4.1",
     "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
@@ -32,6 +35,8 @@
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
     "react-native-alarm-manager": "^1.2.1",
+    "react-native-alarm-notification": "^1.8.0",
+    "react-native-restart": "^0.0.24",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-web": "0.17.1",
@@ -39,6 +44,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@testing-library/jest-dom": "^5.16.3",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
@@ -47,7 +53,9 @@
     "eslint-plugin-react": "^7.29.2",
     "jest": "^26.6.3",
     "jest-expo": "^44.0.1",
+    "jest-fetch-mock": "^3.0.3",
     "jest-sonar-reporter": "^2.0.0",
+    "node-fetch": "^3.2.3",
     "prettier": "2.5.1",
     "prettier-standard": "^13.0.6",
     "react-test-renderer": "17.0.1",
@@ -55,15 +63,13 @@
   },
   "private": true,
   "jest": {
+    "automock": false,
     "preset": "jest-expo",
     "transformIgnorePatterns": [
       "node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)"
     ],
     "setupFiles": [
       "<rootDir>/jest/setup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>setupTest.js"
     ],
     "testResultsProcessor": "jest-sonar-reporter",
     "testURL": "http://localhost/",
@@ -73,7 +79,9 @@
       "!**/coverage/**",
       "!**/node_modules/**",
       "!**/babel.config.js",
-      "!**/jest.setup.js"
+      "!**/jest.setup.js",
+      "!metro.config.js",
+      "!index.js"
     ]
   }
 }
