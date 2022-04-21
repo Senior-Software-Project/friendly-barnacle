@@ -54,24 +54,9 @@ const Home = () => {
 
   const [modalVisible, setModalVisible] = useState(false)
   const [data, setData] = useState([])
-  const Item = ({ title, day, month, year, hour, minute, second }) => (
-
-    // <View>
-    //   <Text style={{ backgroundColor: 'white' }}>[{title}- </Text>
-    //   <Text style={{ backgroundColor: 'white' }}>alarm: {day}-{month}-{year} {hour}:{minute}:{second}] </Text>
-    //   <Button
-    //         title="Remove"
-    //         color="red"
-    //         onPress={() => {
-    //           const id = parseInt(title, 10)
-
-    //           ReactNativeAN.deleteAlarm(id)
-    //           // onPress()
-    //         }}
-    //       />
-    // </View>
+  const Item = ({ alarmID, day, month, year, hour, minute, second }) => (
     <TouchableOpacity>
-      <AlarmPreview title = {title}
+      <AlarmPreview alarmID = {alarmID}
           hour={hour}
           minute = {minute}
           />
@@ -80,13 +65,13 @@ const Home = () => {
   )
 
   const renderItem = ({ item }) => (
-    <Item title={item.alarmId} day={item.day} month ={item.month} year ={item.year} hour ={item.hour}
+    <Item alarmID={item.alarmId} day={item.day} month ={item.month} year ={item.year} hour ={item.hour}
       minute ={item.minute} second ={item.second}
     />
   )
 
   Item.propTypes = {
-    title: PropTypes.string,
+    alarmID: PropTypes.number,
     day: PropTypes.number,
     month: PropTypes.number,
     year: PropTypes.number,
