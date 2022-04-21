@@ -32,6 +32,5 @@ const App = () => {
     </NavigationContainer>
   )
 }
-// <Stack.Screen name="Splash" component={Splash} />
 
 export default App
