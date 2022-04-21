@@ -6,17 +6,16 @@ import {
   SafeAreaView,
   Modal,
   Pressable,
-  FlatList,
-  Button
+  FlatList
 
 } from 'react-native'
+import PropTypes from 'prop-types'
 import ModalContent from '../components/modalContent'
 import ReactNativeAN from 'react-native-alarm-notification'
 import AlarmPreview from '../components/alarmPreview'
 import RNRestart from 'react-native-restart'
 import { styles } from './Styles'
 import { images, getImage } from '../components/images'
-
 
 /**
  * This function contains all of the data needed for the home screen
@@ -73,11 +72,11 @@ const Home = () => {
     // </View>
     <TouchableOpacity>
       <AlarmPreview title = {title}
-          hours={hour}
-          minutes = {minute}
+          hour={hour}
+          minute = {minute}
           />
     </TouchableOpacity>
- 
+
   )
   const renderItem = ({ item }) => (
     <Item title={item.alarmId} day={item.day} month ={item.month} year ={item.year} hour ={item.hour}
@@ -123,23 +122,24 @@ const Home = () => {
           </View>
         </View>
       </Modal>
-      <SafeAreaView style={{flex: 1, width: '95%', height: '100%',justifyContent: 'center' }}>
+      <SafeAreaView style={{ flex: 1, width: '95%', height: '100%', justifyContent: 'center' }}>
         <FlatList
-          //the array to render
+          // the array to render
           data={data}
-          //every element will be rendered
+          // every element will be rendered
           renderItem={renderItem}
-          //extract keys for every element in array
+          // extract keys for every element in array
           keyExtractor={(item) => item.id}
           contentContainerStyle={{
-            flexGrow: 0
+            flexGrow: 0,
+            justifyContent: 'center'
           }}
         />
       </SafeAreaView >
-      <TouchableOpacity style={{justifyContent:'space-between', padding:30}}
+      <TouchableOpacity style={{ justifyContent: 'space-between', padding: 30 }}
       onPress={onPress}
       >
-      <Text style={{color:"white", backgroundColor:"blue"}}>
+      <Text style={{ color: 'white', backgroundColor: 'blue' }}>
         Click me to show alarms
       </Text>
       </TouchableOpacity>
@@ -158,6 +158,17 @@ const Home = () => {
 
     </SafeAreaView>
   )
+}
+
+Home.propTypes = {
+  title: PropTypes.number,
+  day: PropTypes.number,
+  month: PropTypes.number,
+  year: PropTypes.number,
+  hour: PropTypes.number,
+  minute: PropTypes.number,
+  second: PropTypes.number
+
 }
 
 export default Home

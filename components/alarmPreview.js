@@ -1,16 +1,23 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
+import React from 'react'
+import { View, Text, StyleSheet } from 'react-native'
+import PropTypes from 'prop-types'
 
 const AlarmPreview = (props) => {
-
   return (
     <View style={styles.item}>
       <View style={styles.itemLeft}>
         <Text style={styles.alarmTitle}>{props.title}</Text>
-        <Text style={styles.itemText}>{props.hours}:{props.minutes}</Text>
+        <Text style={styles.itemText}>{props.hour}:{props.minute}</Text>
       </View>
     </View>
   )
+}
+
+AlarmPreview.propTypes = {
+  title: PropTypes.number,
+  hour: PropTypes.number,
+  minute: PropTypes.number
+
 }
 
 const styles = StyleSheet.create({
@@ -23,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 20,
     height: 115,
-    width: 169,
+    width: 169
   },
   itemLeft: {
     flexDirection: 'row',
@@ -32,19 +39,19 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 36,
-    color: '#FFF',
+    color: '#FFF'
 
   },
   alarmTitle: {
     fontSize: 14,
-    color: '#FFF',
+    color: '#FFF'
   },
   swithes: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 
-});
+})
 
-export default AlarmPreview;
+export default AlarmPreview
