@@ -5,15 +5,17 @@ import {
   View,
   SafeAreaView,
   Modal,
-  Pressable
+  Pressable,
+  FlatList
 
 } from 'react-native'
+import PropTypes from 'prop-types'
 import ModalContent from '../components/modalContent'
 import ReactNativeAN from 'react-native-alarm-notification'
+import AlarmPreview from '../components/alarmPreview'
 import RNRestart from 'react-native-restart'
 import { styles } from './Styles'
 import { images, getImage } from '../components/images'
-
 
 /**
  * This function contains all of the data needed for the home screen
@@ -51,6 +53,38 @@ const Home = () => {
   }
 
   const [modalVisible, setModalVisible] = useState(false)
+  const [data, setData] = useState([])
+  const Item = ({ alarmID, day, month, year, hour, minute, second }) => (
+    <TouchableOpacity>
+      <AlarmPreview alarmID = {alarmID}
+          hour={hour}
+          minute = {minute}
+          />
+    </TouchableOpacity>
+
+  )
+
+  const renderItem = ({ item }) => (
+    <Item alarmID={item.alarmId} day={item.day} month ={item.month} year ={item.year} hour ={item.hour}
+      minute ={item.minute} second ={item.second}
+    />
+  )
+
+  Item.propTypes = {
+    alarmID: PropTypes.number,
+    day: PropTypes.number,
+    month: PropTypes.number,
+    year: PropTypes.number,
+    hour: PropTypes.number,
+    minute: PropTypes.number,
+    second: PropTypes.number
+
+  }
+  async function onPress () {
+    console.log(await ReactNativeAN.getScheduledAlarms())
+    setData(await ReactNativeAN.getScheduledAlarms())
+  }
+
   return (
     <SafeAreaView style = {styles.container}>
       {renderHeader()}
@@ -85,6 +119,27 @@ const Home = () => {
           </View>
         </View>
       </Modal>
+      <SafeAreaView style={{ flex: 1, width: '95%', height: '100%', justifyContent: 'center' }}>
+        <FlatList
+          // the array to render
+          data={data}
+          // every element will be rendered
+          renderItem={renderItem}
+          // extract keys for every element in array
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{
+            flexGrow: 0,
+            justifyContent: 'center'
+          }}
+        />
+      </SafeAreaView >
+      <TouchableOpacity style={{ justifyContent: 'space-between', padding: 30 }}
+      onPress={onPress}
+      >
+      <Text style={{ color: 'white', backgroundColor: 'blue' }}>
+        Click me to show alarms
+      </Text>
+      </TouchableOpacity>
       <View style = {styles.modalToggle}>
         <Pressable
           style = {{
@@ -97,6 +152,7 @@ const Home = () => {
           {getImage(images.footer, 80, 80)}
         </Pressable>
       </View>
+
     </SafeAreaView>
   )
 }
