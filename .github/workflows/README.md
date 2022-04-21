@@ -7,7 +7,7 @@ Note: JavaScript fetch call fails in CI workflow. Check that tests pass locally 
 
       42 |   test('Trigger Fetch Trivia', async () => {
       43 |     const { getByTestId, getAllByTestId } = render(<View />)
-    > 44 |     await waitFor(() => fireEvent.press(getByTestId('Question')))
+    > 44 |     await waitFor(() => fireEvent.press(getByTestId('Trivia.fetch')))
 ```
 
 Sources:   
