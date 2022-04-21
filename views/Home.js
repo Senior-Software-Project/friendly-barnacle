@@ -56,7 +56,7 @@ const Home = () => {
   const [data, setData] = useState([])
   const Item = ({ alarmID, day, month, year, hour, minute, second }) => (
     <TouchableOpacity>
-      <AlarmPreview alarmID = {alarmID}
+      <AlarmPreview title = {alarmID}
           hour={hour}
           minute = {minute}
           />
