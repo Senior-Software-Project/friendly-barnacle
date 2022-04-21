@@ -78,11 +78,23 @@ const Home = () => {
     </TouchableOpacity>
 
   )
+
   const renderItem = ({ item }) => (
     <Item title={item.alarmId} day={item.day} month ={item.month} year ={item.year} hour ={item.hour}
       minute ={item.minute} second ={item.second}
     />
   )
+
+  Item.propTypes = {
+    title: PropTypes.string,
+    day: PropTypes.number,
+    month: PropTypes.number,
+    year: PropTypes.number,
+    hour: PropTypes.number,
+    minute: PropTypes.number,
+    second: PropTypes.number
+
+  }
   async function onPress () {
     console.log(await ReactNativeAN.getScheduledAlarms())
     setData(await ReactNativeAN.getScheduledAlarms())
@@ -158,17 +170,6 @@ const Home = () => {
 
     </SafeAreaView>
   )
-}
-
-Home.propTypes = {
-  title: PropTypes.number,
-  day: PropTypes.number,
-  month: PropTypes.number,
-  year: PropTypes.number,
-  hour: PropTypes.number,
-  minute: PropTypes.number,
-  second: PropTypes.number
-
 }
 
 export default Home
