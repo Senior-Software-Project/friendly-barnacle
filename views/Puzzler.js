@@ -7,7 +7,7 @@ import { getCategory, getDifficulty } from './Settings'
 import ReactNativeAN from 'react-native-alarm-notification'
 
 let newCount = 0
-const numCorrect = 5
+const numCorrect = 2
 
 /**
  * This function creates a random array
